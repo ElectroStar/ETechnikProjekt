@@ -29,6 +29,10 @@ Das Skript kann wie folgt aufgerufen werden:
  
 Das Skript kann per STRG+C abgebrochen werden. In diesen Fall wird wieder der Network-Manager Service gestartet.
 
+### WLAN-Daten
+ * SSID: `GPS-Hotspot`
+ * Kennwort: `meinpassword`
+
 
 ### Mögliche Fehler
 Es kann sein das ein WLAN-Adapter/Sick nicht von hostapd unterstützt wird, ggf. der Treiber im [hostapd.conf](https://github.com/ElectroStar/ETechnikProjekt/blob/master/WLAN/hostapd.conf) geändert werden muss. Mit dem Befehl ``` iw list | grep ap``` ob der Access-Point Modus unterstützt wird. Wenn nichts gefunden wird, wird der Adapter nicht unterstützt dann muss ggf. ein anderer Treiber als nl80211 gewählt werden.
