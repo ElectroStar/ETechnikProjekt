@@ -31,7 +31,7 @@ Das Skript kann per STRG+C abgebrochen werden. In diesen Fall wird wieder der Ne
 
 ### WLAN-Daten
  * SSID: `GPS-Hotspot`
- * Kennwort: `meinpassword`
+ * Kennwort: `meinpasswort`
 
 
 ### Mögliche Fehler
