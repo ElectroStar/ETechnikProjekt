@@ -43,6 +43,7 @@ class TCPServer
 
     int        start();
     TCPStream* accept();
+    operator int();
 
   private:
     TCPServer() {}

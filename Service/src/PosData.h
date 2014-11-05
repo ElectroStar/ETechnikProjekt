@@ -23,6 +23,7 @@ public:
 	string getX() { return _x; }
 	string getY() { return _y; }
 	string getZ() { return _z; }
+	operator string() const;
 };
 
 #endif /* POSDATA_H_ */

@@ -89,3 +89,7 @@ TCPStream* TCPServer::accept()
     }
     return new TCPStream(sd, &address);
 }
+
+TCPServer::operator int() {
+	return m_lsd;
+}

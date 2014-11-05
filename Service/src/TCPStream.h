@@ -48,6 +48,7 @@ class TCPStream
 
     string getPeerIP();
     int    getPeerPort();
+    operator int();
 
     enum {
         connectionClosed = 0,

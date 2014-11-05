@@ -10,6 +10,7 @@
 #define QUEUESIZE	10
 
 #include "Networkadapter.h"
+#include "PosData.h"
 
 using namespace std;
 
@@ -18,13 +19,6 @@ private:
 	int _sendport;
 	int _recvport;
 	Networkadapter* _adapter;
-	typedef struct {
-	    int buf[QUEUESIZE];
-	    long head, tail;
-	    int full, empty;
-	    pthread_mutex_t *mut;
-	    pthread_cond_t *notFull, *notEmpty;
-	} queue;
 public:
 	Service(int sendport, int recvport, Networkadapter* adapter) : _sendport(sendport), _recvport(recvport), _adapter(adapter) {};
 	virtual ~Service();

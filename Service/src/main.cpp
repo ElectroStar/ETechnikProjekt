@@ -94,7 +94,8 @@ int main(int argc, char** argv) {
 	cout << "Uebertragungsdienst starten..." << endl;
 
 	// Dienst starten lassen
-	Service* service = new Service();
+	Service* service = new Service(sendport, recvport, adapter);
+	service->start();
 
-
+	exit(EXIT_SUCCESS);
 }

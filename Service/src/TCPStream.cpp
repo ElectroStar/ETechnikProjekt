@@ -78,3 +78,7 @@ bool TCPStream::waitForReadEvent(int timeout)
     }
     return false;
 }
+
+TCPStream::operator int() {
+	return m_sd;
+}
