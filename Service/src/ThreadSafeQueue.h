@@ -12,6 +12,8 @@
 #include "Condition.h"
 #include <queue>
 #include <unistd.h>
+#include <pthread.h>
+#include <stdlib.h>
 
 template <class T>
 class ThreadSafeQueue {
@@ -24,6 +26,7 @@ private:
 public:
 	ThreadSafeQueue(size_t max_size = 10) : max_size(max_size) {}
 	~ThreadSafeQueue() {
+
 		mtx.lock();
 		while (data.size()) data.pop();
 		mtx.unlock();
@@ -39,7 +42,7 @@ public:
 	void push(T item) {
 		mtx.lock();
 		if (data.size() >= max_size) {
-			notFull.wait(mtx);
+			notFull.wait(&mtx);
 		}
 		data.push(item);
 		mtx.unlock();
@@ -49,7 +52,7 @@ public:
 	T pop() {
 		mtx.lock();
 		if (data.size() <= 0) {
-			notEmpty.wait(mtx);
+			notEmpty.wait(&mtx);
 		}
 		T item = data.front();
 		data.pop();

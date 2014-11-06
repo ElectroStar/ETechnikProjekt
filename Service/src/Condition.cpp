@@ -19,6 +19,6 @@ void Condition::signal() {
 	pthread_cond_signal(&_condition);
 }
 
-void Condition::wait(Mutex mutex) {
-	pthread_cond_wait(&_condition, &mutex._mutex);
+void Condition::wait(Mutex* mutex) {
+	pthread_cond_wait(&_condition, &(mutex->_mutex));
 }

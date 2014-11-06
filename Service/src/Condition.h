@@ -16,7 +16,7 @@ private:
 public:
 	Condition();
 	~Condition();
-	void wait(Mutex mutex);
+	void wait(Mutex *mutex);
 	void signal();
 };
 

@@ -20,6 +20,20 @@ void UDPSender::run() {
 		exit(EXIT_FAILURE);
 	}
 
+	// Socket fuer Broadcast erlauben
+	int yes = 1;
+	if(setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &yes, sizeof(int)) < 0) {
+		cout << "Konnte UDP-Socket nicht fuer Broadcast einstellen" << endl;
+		exit(EXIT_FAILURE);
+	}
+
+	// Socket auf TTL = 1 setzen
+	int ttl = 1;
+	if(setsockopt(sock, IPPROTO_IP, IP_TTL, &ttl, sizeof(ttl)) < 0) {
+		cout << "Konnte TTL nicht setzen" << endl;
+		exit(EXIT_FAILURE);
+	}
+
 	// Broadcast-Netzwerkadresse holen
 	struct sockaddr_in network;
 	memcpy(&network, _adapter->getBroadcastAddress(), sizeof(*(_adapter->getBroadcastAddress())));
