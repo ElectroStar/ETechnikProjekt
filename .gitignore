@@ -1,0 +1,10 @@
+$ cat .gitignore
+
+#Tilde-Dokumente ignorieren
+*~
+
+#Build-Verzeichnis ignorieren
+Service/build/**/*
+
+#Binary-Verzeichnis ignorieren
+Service/bin/**/*
