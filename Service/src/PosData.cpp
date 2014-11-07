@@ -25,7 +25,7 @@ PosData::PosData(string data) {
 	// Formatueberpruefung mit REGEX
 	regex_t reg;
 
-	string pattern = "[0-9]{3}\.[0-9]{2},[0-9]{3}\.[0-9]{2},[0-9]{3}\.[0-9]{2}\r\n";
+	string pattern = "[0-9]{3}\\.[0-9]{2},[0-9]{3}\\.[0-9]{2},[0-9]{3}\\.[0-9]{2}\r\n";
 
 	regmatch_t matches[1];
 
