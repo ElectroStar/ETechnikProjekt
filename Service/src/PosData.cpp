@@ -9,6 +9,10 @@
 #include "PositioningDataException.h"
 #include <regex.h>
 
+/**
+ * Konsturktor zum laden eines Positionsdatensatzes in String Format
+ * @param data
+ */
 PosData::PosData(string data) {
 	// Daten liegen im Format $XXX.XX,YYY.YY,ZZZ.ZZ<CR><LF> vor
 	if(data.length() < 1)
@@ -39,9 +43,6 @@ PosData::PosData(string data) {
 	_x = data.substr(1, 6);
 	_y = data.substr(8, 6);
 	_z = data.substr(15, 6);
-}
-
-PosData::~PosData() {
 }
 
 PosData::operator string() const {

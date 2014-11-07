@@ -12,9 +12,9 @@
 #include "TCPReceiver.h"
 #include "UDPSender.h"
 
-Service::~Service() {
-}
-
+/**
+ * Methode zum starten des Uebertragungsdienst
+ */
 void Service::start() {
 	printf("Um den Dienst wieder zu beenden tippen Sie 'ende' ein\n");
 
@@ -26,7 +26,7 @@ void Service::start() {
 	receiver.start();
 
 	// UDP-Sender starten
-	UDPSender sender(&queue, "Sender", _sendport, _adapter);
+	UDPSender sender(&queue, "Sender", _sendport, _interface);
 	sender.start();
 
 	// Auf TCP-Receiver warten

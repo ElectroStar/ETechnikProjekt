@@ -9,19 +9,36 @@
 #define SERVICE_H_
 #define QUEUESIZE	10
 
-#include "Networkadapter.h"
+#include "Networkinterface.h"
 #include "PosData.h"
 
 using namespace std;
 
+/**
+ * Klasse zur Repraesentierung des Uebertragungsdienst
+ * @author	Sebastian Hollermann
+ * @date	05.11.2014
+ */
 class Service {
 private:
+	// UDP-Senderport
 	int _sendport;
+	// TCP-Empfangsport
 	int _recvport;
-	Networkadapter* _adapter;
+	// Netzwerkinterface
+	Networkinterface* _interface;
 public:
-	Service(int sendport, int recvport, Networkadapter* adapter) : _sendport(sendport), _recvport(recvport), _adapter(adapter) {};
-	virtual ~Service();
+	/**
+	 * Konsturktor zum Initialisieren des Uebertragungsdienst
+	 * @param sendport	UDP-Port auf dem gesendet werden soll
+	 * @param recvport	TCP-Port auf dem empfangen werden soll
+	 * @param interface	Netzwerkinterface welches verwendet werden soll
+	 */
+	Service(int sendport, int recvport, Networkinterface* interface) : _sendport(sendport), _recvport(recvport), _interface(interface) {};
+
+	/**
+	 * Methode zum starten des Uebertragungsdienst
+	 */
 	void start();
 };
 

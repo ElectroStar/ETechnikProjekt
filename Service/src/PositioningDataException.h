@@ -12,12 +12,18 @@
 
 using namespace std;
 
+/**
+ * Struktur zum Werfen einer Fehlermeldung fuer ein Falsches Format bei den Positionsdaten
+ */
 struct PositioningDataException : public exception
 {
-  const char * what () const throw ()
-  {
-    return "Wrong PositioningDataFormat";
-  }
+	/**
+	 * Methode zum Zurueckgeben der Fehlermeldung
+	 * @return	Fehlermeldung
+	 */
+	const char * what () const throw () {
+		return "Flasches PositioningData-Format";
+	}
 };
 
 #endif /* POSITIONINGDATAEXCEPTION_H_ */

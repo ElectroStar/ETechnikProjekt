@@ -12,6 +12,9 @@
 #include <iostream>
 #include <string.h>
 
+/**
+ * Methode zum Abarbeiten der Aufgaben dieses Threads
+ */
 void UDPSender::run() {
 	// Socket erstellen
 	int sock;
@@ -36,7 +39,7 @@ void UDPSender::run() {
 
 	// Broadcast-Netzwerkadresse holen
 	struct sockaddr_in network;
-	memcpy(&network, _adapter->getBroadcastAddress(), sizeof(*(_adapter->getBroadcastAddress())));
+	memcpy(&network, _interface->getBroadcastAddress(), sizeof(*(_interface->getBroadcastAddress())));
 	// Ziel-Port setzen
 	network.sin_port = htons(_port);
 

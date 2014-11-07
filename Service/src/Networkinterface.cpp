@@ -1,11 +1,11 @@
 /*
- * Networkadapter.cpp
+ * Networkinterface.cpp
  *
  *  Created on: 05.11.2014
  *      Author: Sebastian Hollermann
  */
 
-#include "Networkadapter.h"
+#include "Networkinterface.h"
 #include <sys/types.h>
 #include <ifaddrs.h>
 #include <unistd.h>
@@ -13,19 +13,23 @@
 #include <stdio.h>
 #include <string.h>
 
-Networkadapter::Networkadapter() {
+/**
+ * Konstruktor zum Initialisieren der Datenstrukturen
+ */
+Networkinterface::Networkinterface() {
 	// Variablen initialisieren
-	_adapterName = "";
+	_interfaceName = "";
 	memset(&_broadcastAddress, 	0, sizeof(_broadcastAddress));
 	memset(&_netmask, 			0, sizeof(_netmask));
 	memset(&_address, 			0, sizeof(_address));
 }
 
-Networkadapter::~Networkadapter() {
-
-}
-
-bool Networkadapter::determineAdapter(string adapterName) {
+/**
+ * Methode zum Ermitteln eines Netzwerkinterfaces
+ * @param interfaceName	Interfacename dessen Daten ermittelt werden sollen
+ * @return	true = Interface gefunden, false = Interface nicht gefunden
+ */
+bool Networkinterface::determineInterface(string adapterName) {
 	// Merkvariable ob der Eintrag gefunden wurde
 	bool found = false;
 
@@ -52,7 +56,7 @@ bool Networkadapter::determineAdapter(string adapterName) {
 		// Nur Eintraege verarbeiten welche mit den uebergebneden Namen uebereinstimmen
 		string ifname(ifa->ifa_name);
 		if(ifname == adapterName) {
-			this->_adapterName = ifname;
+			this->_interfaceName = ifname;
 
 			// Struktur sockaddr in sockaddr_in casten und im Anschluss
 			// den Speicherinhalt in die Struktur kopieren

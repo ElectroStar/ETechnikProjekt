@@ -12,6 +12,9 @@
 #include <stdlib.h>
 #include <algorithm>
 
+/**
+ * Methode zum Abarbeiten der Aufgaben dieses Threads
+ */
 void TCPReceiver::run()
 {
 	// TCP-Port binden
@@ -59,6 +62,11 @@ void TCPReceiver::run()
 	}
 }
 
+/**
+ * Methode zum Warten bis der Benutzer ein ENDE eingegeben hat oder ein Klient eine Verbindung aufbaut
+ * @param server	Server welcher ueberwacht werden soll
+ * @return	true = Verbindunganfrage liegt vor, false = Benutzer hat ein ENDE eingegeben
+ */
 bool TCPReceiver::waitForAccepting(TCPServer* server) {
 	fd_set fdset;
 	// Stdin in FD-Set hinzufügen
@@ -87,6 +95,10 @@ bool TCPReceiver::waitForAccepting(TCPServer* server) {
 	return true;
 }
 
+/**
+ * Methode zum Ueberpruefen ob ein ENDE eingegeben worden ist
+ * @return	true = ENDE wurde eingegeben, false = kein ENDE
+ */
 bool TCPReceiver::checkForEnde() {
 	string line, out;
 	getline(cin, line);
@@ -99,6 +111,11 @@ bool TCPReceiver::checkForEnde() {
 	return false;
 }
 
+/**
+ * Methode zum Warten bis der Benutzer ein ENDE eingegeben hat oder Datenpakete vorhanden sind
+ * @param stream	Stream welcher ueberwacht werden soll
+ * @return	true = Datenpakete liegen vor, false = Benutzer hat ein ENDE eingegeben
+ */
 bool TCPReceiver::waitForReceiving(TCPStream* stream) {
 	fd_set fdset;
 	// Stdin in FD-Set hinzufügen
