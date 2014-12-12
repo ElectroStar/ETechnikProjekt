@@ -4,7 +4,7 @@ $ cat .gitignore
 *~
 
 #Build-Verzeichnis ignorieren
-Service/build/**/*
+build/
 
 #Binary-Verzeichnis ignorieren
-Service/bin/**/*
+bin/
