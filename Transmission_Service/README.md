@@ -4,7 +4,7 @@ Fürs compilieren wird das Programm `cmake` benötigt, falls nicht vorhanden lä
 
  * `sudo apt-get install cmake`
 
-Um den Übertragungsdienst zu compilieren und zu installieren müssen Sie ausgehend vom Verzeichnis `ETechnikProjekt/Service/` folgende Befehle ausführen:
+Um den Übertragungsdienst zu compilieren und zu installieren müssen Sie ausgehend vom Verzeichnis `ETechnikProjekt/Transmission_Service/` folgende Befehle ausführen:
 
  * `mkdir build`
  * `cd build`
@@ -12,7 +12,7 @@ Um den Übertragungsdienst zu compilieren und zu installieren müssen Sie ausgeh
  * `make`
  * `make install`
  
-Im Anschluss solle sich das Programm des Übertragungsdienst im Unterzeichnis `bin` des Verzeichnis `Service` befinden.
+Im Anschluss solle sich das Programm des Übertragungsdienst im Unterzeichnis `bin` des Verzeichnis `Transmission_Service` befinden.
 
 ### Ausführen
 Der Übertragungsdienst besitzt folgende Standardoptionen:
