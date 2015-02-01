@@ -1,6 +1,10 @@
+//============================================================================
+// Datei	: Undistorter.cpp
+// Autor	: Eric Buschermoehle
+// Version: 1.0
+//============================================================================
 
 #include "Undistorter.h"
-
 
 Undistorter::Undistorter() : cameraMatrix(Mat(3,3,CV_32FC1)), distCoeffs(Mat(5,1,CV_32FC1)) {}
 
