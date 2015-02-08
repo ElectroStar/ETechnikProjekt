@@ -16,7 +16,7 @@ void Undistorter::filter(Mat &distorted, Mat &undistorted) const{
 
 }
 
-int8_t Undistorter::readParam(const string path) {
+int Undistorter::readParam(const string path) {
 
     FileStorage fs(path, FileStorage::READ);
 

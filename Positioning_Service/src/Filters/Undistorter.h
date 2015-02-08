@@ -31,8 +31,6 @@ private:
 public:
 
   /** Konstruktor
-	*  	@param[in] _lowerLeft 	Position unten links
-	*  	@param[in] _upperRight 	Position unten rechts
 	*/
 	Undistorter();
   
@@ -46,10 +44,10 @@ public:
 	*/
 	void filter(Mat &_distorted, Mat &_undistorted) const;
   
-  /** Methode zum einlesen der Verzerrungparameter
+  /** Methode zum Einlesen der Verzerrungsparameter
 	*  	@param[in] _path  	  Pfad
 	*/
-	int8_t readParam(const string _path);
+	int readParam(const string _path);
 
 };
 

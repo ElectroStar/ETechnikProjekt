@@ -11,6 +11,15 @@ LocatedObject::LocatedObject() {
 
 }
 
+LocatedObject::LocatedObject(Point _p, int _length, LocatableObject _spec) {
+	
+	position = _p;
+	edgeLengthPx = _length;
+	spec = _spec;
+
+}
+
+
 LocatedObject::~LocatedObject() {
 	// TODO Auto-generated destructor stub
 }

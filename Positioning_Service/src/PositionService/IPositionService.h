@@ -8,12 +8,14 @@
 #define IPOSITIONSERVICE_H_
 
 #include "opencv2/core/core.hpp"
+#include "LocatableObject.h"
+#include "LocatedObject.h"
 
 using namespace cv;
 
-/** Interface zum erkennen von Objekten im Bild
+/** Interface zum Erkennen von Objekten im Bild
  *  @author		Eric Buschermoehle
- *  @date		31.07.2014
+ *  @date		07.02.2015
  */
 class IPositionService {
 
@@ -21,9 +23,10 @@ private:
 
 public:
 
-	virtual void getAllObjects(Mat &_input, Mat &_output) const = 0;
+	virtual vector<LocatedObject> getAllObjects(Mat src, LocatableObject spec) = 0;
 
-	/** Destruktor
+	/*
+	* Destruktor
 	*/
 	virtual ~IPositionService() {};
 };

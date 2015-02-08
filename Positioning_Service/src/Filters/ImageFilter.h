@@ -22,13 +22,14 @@ private:
 
 public:
 
-  /** Virtuelle Filtermethode
+   /* Virtuelle Filtermethode
 	*  	@param[in] _input 	Eingangsbild
 	*  	@param[in] _output 	Ausgangsbild
 	*/
 	virtual void filter(Mat &_input, Mat &_output) const = 0;
 
-  /** Destruktor
+   /*
+	* Destruktor
 	*/
 	virtual ~ImageFilter() {};
 };

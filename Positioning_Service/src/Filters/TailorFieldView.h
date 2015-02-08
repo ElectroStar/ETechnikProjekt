@@ -18,35 +18,35 @@
 class TailorFieldView : ImageFilter {
 
 private:
-	Point lowerLeft;
-	Point upperRight;
+	Point first;
+	Point second;
 
 public:
   /** Konstruktor
-	*  	@param[in] _lowerLeft 	Position unten links
-	*  	@param[in] _upperRight 	Position unten rechts
+	*  	@param[in] _first		Erster Punkt
+	*  	@param[in] _second		Zweiter Punkt
 	*/
-	TailorFieldView(const Point _lowerLeft, const Point _upperRight);
+	TailorFieldView(const Point _first, const Point _second);
   
   /** Destruktor
 	*/
 	~TailorFieldView();
   
-  /** Methode zum zuzuschneiden eines einer Mat
+  /** Methode zum Zuschneiden einer Mat
 	*  	@param[in] _input 	Eingangsbild
 	*  	@param[in] _output 	Ausgangsbild
 	*/
 	void filter(Mat &_input, Mat &_output) const;
 
   /** Setter fuer lowerLeft
-	*  	@param[in] _lowerLeft 	Eingabe
+	*  	@param[in] _first 	Eingabe
 	*/
-	void setlowerLeft(const Point &_lowerLeft);
+	void setlowerLeft(const Point _first);
   
    /** Setter fuer upperRight
-	*  	@param[in] _upperRight 	Eingabe
+	*  	@param[in] _second 	Eingabe
 	*/
-	void setupperRight(const Point &_upperRight);
+	void setupperRight(const Point _second);
 
 };
 
