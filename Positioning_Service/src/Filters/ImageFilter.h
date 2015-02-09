@@ -1,9 +1,9 @@
-/*
- * ImageFilter.h
- *
- *  Created on: Dec 12, 2014
- *      Author: user
- */
+//============================================================================
+// Datei	: ImageFilter.h
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 
 #ifndef IMAGEFILTER_H_
 #define IMAGEFILTER_H_
@@ -12,13 +12,26 @@
 
 using namespace cv;
 
+/** Interface fue Filterklassen
+ *  @author		Eric Buschermoehle
+ *  @date		31.07.2014
+ */
 class ImageFilter {
 
 private:
 
 public:
+
+   /* Virtuelle Filtermethode
+	*  	@param[in] _input 	Eingangsbild
+	*  	@param[in] _output 	Ausgangsbild
+	*/
+	virtual void filter(Mat &_input, Mat &_output) const = 0;
+
+   /*
+	* Destruktor
+	*/
 	virtual ~ImageFilter() {};
-	virtual void filter(Mat &input, Mat &output) const = 0;
 };
 
 #endif /* IMAGEFILTER_H_ */

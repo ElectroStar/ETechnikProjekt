@@ -1,6 +1,10 @@
+//============================================================================
+// Datei	: Undistorter.cpp
+// Autor	: Eric Buschermoehle
+// Version: 1.0
+//============================================================================
 
 #include "Undistorter.h"
-
 
 Undistorter::Undistorter() : cameraMatrix(Mat(3,3,CV_32FC1)), distCoeffs(Mat(5,1,CV_32FC1)) {}
 
@@ -12,7 +16,7 @@ void Undistorter::filter(Mat &distorted, Mat &undistorted) const{
 
 }
 
-int8_t Undistorter::readParam(const string path) {
+int Undistorter::readParam(const string path) {
 
     FileStorage fs(path, FileStorage::READ);
 

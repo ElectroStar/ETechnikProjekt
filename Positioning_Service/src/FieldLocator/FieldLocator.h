@@ -8,6 +8,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include "../PositionService/LocatableObject.h"
+#include "../PositionService/IPositionService.h"
 
 using namespace std;
 using namespace cv;
@@ -20,12 +22,14 @@ class FieldLocator{
 private:
 
 	LocatableObject origin;
-	LocatableObject fieldBoundaries;
+	LocatableObject reference;
+	IPositionService* ps;
 
 public:
 
 	FieldLocator();
-	vector<Point> locateField(Mat in);
+	FieldLocator(LocatableObject _origin, LocatableObject _reference);
+	vector<Point> locateField(Mat _src);
 
 };
 

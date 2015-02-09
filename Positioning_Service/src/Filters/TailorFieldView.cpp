@@ -1,30 +1,26 @@
-/*
- * TailorFieldView.cpp
- *
- *  Created on: Dec 12, 2014
- *      Author: user
- */
+//============================================================================
+// Datei	: TailorFieldView.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
 
 #include "TailorFieldView.h"
 
-TailorFieldView::TailorFieldView(const Point _lowerLeft, const Point _upperRight) : lowerLeft(_lowerLeft), upperRight(_upperRight) {}
+TailorFieldView::TailorFieldView(const Point _first, const Point _second) : first(_first), second(_second) {}
 
 TailorFieldView::~TailorFieldView() {}
 
-void TailorFieldView::filter(Mat &input, Mat &output) const {
+void TailorFieldView::filter(Mat &_input, Mat &_output) const {
 
-	uint32_t hight = upperRight.y - lowerLeft.y;
-	uint32_t width = upperRight.x - lowerLeft.x;
-
-	output = input(Rect(lowerLeft.x, lowerLeft.y, hight, width));
+	_output = _input(Rect(first,second));
 }
 
-void TailorFieldView::setlowerLeft(const Point &_lowerLeft) {
+void TailorFieldView::setlowerLeft(const Point _first) {
 
-	lowerLeft=_lowerLeft;
+	first = _first;
 }
 
-void TailorFieldView::setupperRight(const Point &_upperRight) {
+void TailorFieldView::setupperRight(const Point _second) {
 
-	upperRight=_upperRight;
+	second =_second;
 }

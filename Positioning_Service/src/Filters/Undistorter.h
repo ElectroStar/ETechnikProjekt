@@ -1,3 +1,8 @@
+//============================================================================
+// Datei	: ImageFilter.h
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
 
 #ifndef UNDISTORTER_H_
 #define UNDISTORTER_H_
@@ -13,7 +18,10 @@
 
 using namespace cv;
 
-
+/** Klasse um Bilder zu entzerren.
+ *  @author		Eric Buschermoehle
+ *  @date		  31.07.2014
+ */
 class Undistorter : public ImageFilter {
 
 private:
@@ -21,11 +29,25 @@ private:
 	Mat distCoeffs;
 
 public:
+
+  /** Konstruktor
+	*/
 	Undistorter();
+  
+  /** Destruktor
+	*/
 	~Undistorter();
 
-	void filter(Mat &distorted, Mat &undistorted) const;
-	int8_t readParam(const string path);
+  /** Methode zum entzerren eines Bildes
+	*  	@param[in] _input 	  Eingangsbild
+	*  	@param[in] _output  	Ausgangsbild
+	*/
+	void filter(Mat &_distorted, Mat &_undistorted) const;
+  
+  /** Methode zum Einlesen der Verzerrungsparameter
+	*  	@param[in] _path  	  Pfad
+	*/
+	int readParam(const string _path);
 
 };
 
