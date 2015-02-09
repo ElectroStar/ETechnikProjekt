@@ -27,6 +27,18 @@ private:
 	string _y;
 	// Position in Z-Richtung
 	string _z;
+	// Fehler
+	string _error;
+	// Marker
+	string _mr;
+	// Position des Randes in X-Richtung
+	string _x2;
+	// Position des Randes in Y-Richtung
+	string _y2;
+	// Koeffizient fuer reales Bild
+	string _coef;
+	// Datum
+	string _date;
 public:
 	/**
 	 * Konsturktor zum laden eines Positionsdatensatzes in String Format
@@ -57,6 +69,42 @@ public:
 	 * @return	Position in Z-Richtung
 	 */
 	string getZ() { return _z; }
+
+	/**
+	 * Methode zum Zurueckgeben des Fehlers
+	 * @return	Fehler der Position
+	 */
+	string getError() { return _error; }
+
+	/**
+	 * Methode zum Zurueckgeben des Markers
+	 * @return	Marker fuer die die Positionsdaten gilt
+	 */
+	string getMarker() { return _mr; }
+
+	/**
+	 * Methode zum Zurueckgeben der Position des Randes in X-Richtung
+	 * @return	Randposition in X-Richtung
+	 */
+	string getX2() { return _x2; }
+
+	/**
+	 * Methode zum Zurueckgeben der Position des Randes in Y-Richtung
+	 * @return	Randposition in Y-Richtung
+	 */
+	string getY2() { return _y2; }
+
+	/**
+	 * Methode zum Zurueckgeben des Koeffizienten zwischen Bild und Positionsdaten
+	 * @return	Bild zu Positionssystem Koeffizient
+	 */
+	string getCoefficient() { return _coef; }
+
+	/**
+	 * Methode zum Zurueckgeben des Datums der Positionsbestimmung
+	 * @return	Zeitstempel zum Zeitpunkt wann die Position ermittelt wurde
+	 */
+	string getDate() { return _date; }
 
 	/**
 	 * Operator zum Umwandeln des Positionsdatensatzen einen String
