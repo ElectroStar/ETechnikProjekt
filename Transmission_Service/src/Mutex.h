@@ -1,9 +1,8 @@
-/*
- * Mutex.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Mutex.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef MUTEX_H_
 #define MUTEX_H_

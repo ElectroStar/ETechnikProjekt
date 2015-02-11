@@ -1,9 +1,8 @@
-/*
- * PosData.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: PosData.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef POSDATA_H_
 #define POSDATA_H_

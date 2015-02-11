@@ -1,9 +1,8 @@
-/*
- * TCPReceiver.cpp
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: TCPReceiver.cpp
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #include "TCPReceiver.h"
 #include "TCPServer.h"

@@ -1,9 +1,8 @@
-/*
- * Condition.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Condition.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef CONDITION_H_
 #define CONDITION_H_

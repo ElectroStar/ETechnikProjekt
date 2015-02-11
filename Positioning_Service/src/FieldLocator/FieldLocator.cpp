@@ -23,12 +23,14 @@ vector<Point> FieldLocator::locateField(Mat _src){
 
 	vector<Point> result;
 
+	//Alle Objekte finden, die aussehen wie das Muster
 	vector<LocatedObject> ori = ps->getAllObjects(_src, origin);
 
 	if (ori.size() == 1){
 		result.push_back(ori[0].position);
 	}
 
+	//Alle Objekte finden, die aussehen wie das Muster
 	vector<LocatedObject> ref = ps->getAllObjects(_src, reference);
 
 	if (ref.size() == 1){

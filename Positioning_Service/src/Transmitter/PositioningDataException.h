@@ -1,9 +1,8 @@
-/*
- * PositioningDataException.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: PositioningDataException.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef POSITIONINGDATAEXCEPTION_H_
 #define POSITIONINGDATAEXCEPTION_H_

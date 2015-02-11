@@ -1,9 +1,8 @@
-/*
- * Service.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Service.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef SERVICE_H_
 #define SERVICE_H_

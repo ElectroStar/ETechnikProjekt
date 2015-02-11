@@ -9,25 +9,42 @@
 
 #include "IPositionService.h"
 
+/** Klasse zur Erkennung von Objekten.
+ *  @author		Christian
+ *  @date		11.02.2015
+ */
 class ObjectLocator : public IPositionService {
 
 private:
 
-	/// Corner detection parameters
+	//Parameter zur Kantenerkennung
 	int blockSize = 4;
 	int apertureSize = 3;
 	double k = 0.1;
 	int thresh = 180;
 	int max_thresh = 255;
 
-	//Circle and Corner storage
+	//Gefundene Kreise und Kanten
 	vector<Point> cornerP;
 	vector<Vec3f> circles;
 
 public:
+
+	/** Konstruktor.
+	*/
 	ObjectLocator();
+	
+	/** Methode zur Addition zweier Zahlen.
+	*  	@param[in] _src		Ausgangsbild
+	*  	@param[in] _spec 	Objektspezifikation
+	*  	@return 			Erkannte Objekte
+	*/
+	vector<LocatedObject> getAllObjects(Mat _src, LocatableObject _spec);
+	
+	/** Destruktor.
+	*/
 	~ObjectLocator();
-	vector<LocatedObject> getAllObjects(Mat src, LocatableObject spec);
+	
 };
 
 #endif /* OBJECTLOCATOR_H_ */

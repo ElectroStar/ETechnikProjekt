@@ -1,6 +1,6 @@
 //============================================================================
 // Datei	: Settings.h
-// Autor	: Christian Jungblut
+// Autor	: Christian Jungblut + Codebeispiel aus OpenCV
 // Version	: 1.0
 //============================================================================
 
@@ -19,6 +19,10 @@ using namespace cv;
 #ifndef SETTINGS_H
 #define	SETTINGS_H
 
+/** Klasse zur Speicherung von Kalibrierparametern.
+ *  @author		Christian
+ *  @date		21.12.2014
+ */
 class Settings{
 
 public:
@@ -36,7 +40,7 @@ public:
 	bool calibZeroTangentDist; // Assume zero tangential distortion
 	bool calibFixPrincipalPoint;// Fix the principal point at the center
 	string outputFileName;      // The name of the file where to write
-	string input;               // The input ->
+	string input;               
 
 	int cameraID;
 	InputType inputType;
@@ -48,11 +52,19 @@ private:
 
 public:
 
+	/** Konstruktor.
+	*/
 	Settings() : goodInput(false) {}
+	
+	/** Methode zum Einlesen der Kalibrierparameter.
+	*  	@param[in] _a 	XML-Datei
+	*/
 	void readSettings(const FileNode& node);
 	
 private:
 	
+	/** Methode zur Interpretation der eingelesenen Daten.
+	*/
 	void interprate();
 
 };

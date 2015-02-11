@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: Settings.cpp
+// Autor	: Christian Jungblut + Codebeispiel aus OpenCV
+// Version	: 1.0
+//============================================================================
+
 #include "Settings.h"
 #include <iostream>
 #include <sstream>

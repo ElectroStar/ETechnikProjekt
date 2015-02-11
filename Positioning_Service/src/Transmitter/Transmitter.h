@@ -1,9 +1,8 @@
-/*
- * Transmitter.h
- *
- *  Created on: 12.12.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Transmitter.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef TRANSMITTER_H_
 #define TRANSMITTER_H_

@@ -1,9 +1,8 @@
-/*
- * Transmitter.cpp
- *
- *  Created on: 12.12.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Transmitter.cpp
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #include "Transmitter.h"
 #include <netdb.h>

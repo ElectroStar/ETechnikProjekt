@@ -1,9 +1,8 @@
-/*
- * Thread.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Thread.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef THREAD_H_
 #define THREAD_H_

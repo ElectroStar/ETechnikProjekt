@@ -1,9 +1,8 @@
-/*
- * UDPSender.cpp
- *
- *  Created on: 06.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: UDPSender.cpp
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #include "UDPSender.h"
 #include <stdio.h>

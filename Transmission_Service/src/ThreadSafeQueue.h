@@ -1,9 +1,8 @@
-/*
- * TreadSafeQueue.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: ThreadSafeQueue.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef TREADSAFEQUEUE_H_
 #define TREADSAFEQUEUE_H_

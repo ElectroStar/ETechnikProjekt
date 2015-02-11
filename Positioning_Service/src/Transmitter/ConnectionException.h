@@ -1,9 +1,8 @@
-/*
- * ConnectionException.h
- *
- *  Created on: 14.12.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: ConnectionException.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef CONNECTIONEXCEPTION_H_
 #define CONNECTIONEXCEPTION_H_

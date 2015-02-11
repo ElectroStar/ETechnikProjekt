@@ -1,16 +1,15 @@
-/*
- * PosData.cpp
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: PosData.cpp
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #include "PosData.h"
 #include "PositioningDataException.h"
 #include <regex.h>
 
 /**
- * Konsturktor zum laden eines Positionsdatensatzes in String Format
+ * Konstruktor zum Laden eines Positionsdatensatzes im String Format
  * @param data
  */
 PosData::PosData(string data) {

@@ -1,9 +1,8 @@
-/*
- * Mutex.cpp
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Mutex.cpp
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #include "Mutex.h"
 

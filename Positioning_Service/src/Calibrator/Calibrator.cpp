@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: Calibrator.h
+// Autor	: Christian Jungblut + Codebeispiel aus OpenCV
+// Version	: 1.0
+//============================================================================
+
 #include "Calibrator.h"
 #include <iostream>
 #include <sstream>

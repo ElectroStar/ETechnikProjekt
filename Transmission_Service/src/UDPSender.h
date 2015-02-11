@@ -1,9 +1,8 @@
-/*
- * UDPSender.h
- *
- *  Created on: 06.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: UDPSender.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef UDPSENDER_H_
 #define UDPSENDER_H_

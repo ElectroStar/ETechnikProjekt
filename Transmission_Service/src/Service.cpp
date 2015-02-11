@@ -1,9 +1,8 @@
-/*
- * Service.cpp
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Service.cpp
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #include "Service.h"
 #include <stdio.h>

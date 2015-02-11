@@ -23,9 +23,14 @@ private:
 
 public:
 
-	virtual vector<LocatedObject> getAllObjects(Mat src, LocatableObject spec) = 0;
+	/** Methode zur Lokalisierung Objekten eines bestimmbaren Typs.
+	*  	@param[in] _src			Ausgangsbild
+	*  	@param[in] _spec		Objektspezifikation
+	*  	@return					Alle erkannten Objekte des Typs
+	*/
+	virtual vector<LocatedObject> getAllObjects(Mat _src, LocatableObject _spec) = 0;
 
-	/*
+	/**
 	* Destruktor
 	*/
 	virtual ~IPositionService() {};

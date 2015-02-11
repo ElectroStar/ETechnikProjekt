@@ -1,9 +1,8 @@
-/*
- * TransmittingException.h
- *
- *  Created on: 14.12.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: TransmittingException.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef TRANSMITTINGEXCEPTION_H_
 #define TRANSMITTINGEXCEPTION_H_
@@ -25,7 +24,6 @@ struct TransmittingException : public exception
 		return "Es wurden nicht alle Daten uebertragen!";
 	}
 };
-
 
 
 #endif /* TRANSMITTINGEXCEPTION_H_ */

@@ -1,9 +1,8 @@
-/*
- * PosData.cpp
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: PosData.cpp
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #include "PosData.h"
 #include "PositioningDataException.h"

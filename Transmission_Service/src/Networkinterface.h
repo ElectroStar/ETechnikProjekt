@@ -1,9 +1,8 @@
-/*
- * Networkinterface.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: Networkinterface.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef NETWORKINTERFACE_H_
 #define NETWORKINTERFACE_H_

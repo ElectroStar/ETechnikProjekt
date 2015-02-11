@@ -12,9 +12,9 @@
 
 using namespace cv;
 
-/** Interface fue Filterklassen
+/** Interface fuer Filterklassen
  *  @author		Eric Buschermoehle
- *  @date		31.07.2014
+ *  @date		11.02.2015
  */
 class ImageFilter {
 

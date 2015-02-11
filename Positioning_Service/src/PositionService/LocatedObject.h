@@ -15,18 +15,33 @@
 
 using namespace cv;
 
+/** Klasse zur Speicherung gefundener Objekte.
+ *  @author		Christian
+ *  @date		11.02.2015
+ */
 class LocatedObject {
 
 public:
-
+	
 	Point position;
 	int edgeLengthPx;
 	LocatableObject spec;
 
 public:
 
+	/** Konstruktor.
+	*/
 	LocatedObject();
+	
+	/** Erweiterter Konstruktor.
+	*  	@param[in] _p 		Position
+	*  	@param[in] _length 	Laenge der Objektkante
+	*  	@param[in] _spec 	Objektspezifikaion
+	*/
 	LocatedObject(Point _p, int _length, LocatableObject _spec);
+	
+	/** Destruktor.
+	*/
 	~LocatedObject();
 };
 

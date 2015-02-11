@@ -1,9 +1,8 @@
-/*
- * config.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: config.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef CONFIG_H_
 #define CONFIG_H_

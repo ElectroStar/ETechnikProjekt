@@ -9,12 +9,18 @@
 
 #include <stdint.h>
 
+/** Klasse zur Berechnung der metrischen Position.
+ *  @author		Christian
+ *  @date		11.02.2015
+ */
 class MetricPositionTransformator {
 
 private:
-	uint32_t imgSize;
+
+	int imgSize;
 
 public:
+
 
 	MetricPositionTransformator();
 	~MetricPositionTransformator();

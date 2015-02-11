@@ -1,9 +1,8 @@
-/*
- * TCPReceiver.h
- *
- *  Created on: 05.11.2014
- *      Author: Sebastian Hollermann
- */
+//============================================================================
+// Datei	: TCPReceiver.h
+// Autor	: Sebastian Hollermann
+// Version	: 1.0
+//============================================================================
 
 #ifndef TCPRECEIVER_H_
 #define TCPRECEIVER_H_
