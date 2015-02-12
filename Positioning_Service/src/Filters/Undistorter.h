@@ -20,13 +20,11 @@ using namespace cv;
 
 /** Klasse um Bilder zu entzerren.
  *  @author		Eric Buschermoehle
- *  @date		11.02.2015
+ *  @date		  31.07.2014
  */
 class Undistorter : public ImageFilter {
 
 private:
-
-	//Entzerrungsparameter
 	Mat cameraMatrix;
 	Mat distCoeffs;
 
@@ -40,8 +38,8 @@ public:
 	*/
 	~Undistorter();
 
-  /** Methode zum Entzerren eines Bildes
-	*  	@param[in] _input 	  	Eingangsbild
+  /** Methode zum entzerren eines Bildes
+	*  	@param[in] _input 	  Eingangsbild
 	*  	@param[in] _output  	Ausgangsbild
 	*/
 	void filter(Mat &_distorted, Mat &_undistorted) const;
