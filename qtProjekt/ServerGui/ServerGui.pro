@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     model/Calibrator/Settings.cpp \
     model/Filters/TailorFieldView.cpp \
     model/Filters/Undistorter.cpp \
-    gui/errordialog.cpp
+    gui/errordialog.cpp \
+    gui/guiFunctionClasses/player.cpp \
+    gui/guiFunctionClasses/playercalib.cpp
 
 
 HEADERS  += gui/mainwindow.h \
@@ -39,7 +41,9 @@ HEADERS  += gui/mainwindow.h \
     model/Filters/ImageFilter.h \
     model/Filters/TailorFieldView.h \
     model/Filters/Undistorter.h \
-    gui/errordialog.h
+    gui/errordialog.h \
+    gui/guiFunctionClasses/player.h \
+    gui/guiFunctionClasses/playercalib.h
 
 
 FORMS    += gui/mainwindow.ui \

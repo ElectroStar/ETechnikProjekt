@@ -10,7 +10,6 @@
 #include <time.h>
 #include <stdio.h>
 
-
 using namespace std;
 using namespace cv;
 
@@ -19,8 +18,61 @@ using namespace cv;
 #endif
 
 
+
+Settings Calibrator::getS() const
+{
+    return s;
+}
+
+void Calibrator::setS(const Settings &value)
+{
+    s = value;
+}
 Calibrator::Calibrator(){
 
+    const string inputSettingsFile = "/home/user/ServerGui/configFiles/in_VID5.xml";
+
+    // Read the settings
+    FileStorage fs(inputSettingsFile, FileStorage::READ);
+
+    if (!fs.isOpened())
+    {
+        cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
+        return;
+    }
+
+    s.readSettings(fs["Settings"]);
+
+    // close Settings file
+    fs.release();
+
+    //Check input data
+    if (!s.goodInput)
+    {
+        cout << "Invalid input detected. Application stopping. " << endl;
+        return;
+    }
+}
+
+void Calibrator::takePicture(Mat &_currentImage) {
+
+    img.push_back(_currentImage.clone());
+    bitwise_not(_currentImage, _currentImage);
+}
+
+void Calibrator::start() {
+    runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints);
+}
+
+void Calibrator::reset() {
+
+    img.clear();
+    imagePoints.clear();
+
+}
+
+Mat Calibrator::getImgAt(int index) {
+    return img[index];
 }
 
 bool Calibrator::runCalibrationAndSave(Settings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
@@ -200,146 +252,45 @@ void Calibrator::saveCameraParams(Settings& s, Size& imageSize, Mat& cameraMatri
 		}
 		fs << "Image_points" << imagePtMat;
 	}
-
 }
 
-void Calibrator::start(VideoCapture inputCapture){
+void Calibrator::process(Mat &view){
 
-	const string inputSettingsFile = "in_VID5.xml";
-
-	// Read the settings
-	FileStorage fs(inputSettingsFile, FileStorage::READ);
-
-	if (!fs.isOpened())
-	{
-		cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
-		return;
-	}
-
-	s.readSettings(fs["Settings"]);
-
-	// close Settings file
-	fs.release();                                         
-
-	//Check input data
-	if (!s.goodInput)
-	{
-		cout << "Invalid input detected. Application stopping. " << endl;
-		return;
-	}
-
-	vector<vector<Point2f> > imagePoints;
-	Mat cameraMatrix, distCoeffs;
-	Size imageSize;
-	int mode = s.inputType ==  DETECTION;//Capturing?
-	clock_t prevTimestamp = 0;
-	const Scalar RED(0, 0, 255), GREEN(0, 255, 0);
-	const char ESC_KEY = 27;
+    imageSize = view.size();
+    vector<Point2f> pointBuf;
+    bool found;
 
 
-	while (true)
-	{
-		Mat view;	
-		bool blinkOutput = false;
+    switch (s.calibrationPattern) // Find feature points on the input format
+    {
+    case Settings::CHESSBOARD:
+        found = findChessboardCorners(view, s.boardSize, pointBuf,
+            CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FAST_CHECK | CV_CALIB_CB_NORMALIZE_IMAGE);
+        break;
 
-		//Open Camera
-		if (s.inputType == Settings::CAMERA && !inputCapture.isOpened()){
+    default:
+        found = false;
+        break;
+    }
 
-			inputCapture.open(s.cameraID);
-		}
-
-
-		//Get Frame
-		if (inputCapture.isOpened())
-		{
-			inputCapture >> view;
-		}
-
-
-		//-----  If no more image, or got enough, then stop calibration and show result -------------
-		if (mode == CAPTURING && imagePoints.size() >= (unsigned)s.nrFrames)
-		{
-			if (runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints))
-				mode = CALIBRATED;
-			else
-				mode = DETECTION;
-		}
-
-		// Format input image.
-		imageSize = view.size();  
-
-		vector<Point2f> pointBuf;
-		bool found;
-
-		switch (s.calibrationPattern) // Find feature points on the input format
-		{
-		case Settings::CHESSBOARD:
-			found = findChessboardCorners(view, s.boardSize, pointBuf,
-				CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FAST_CHECK | CV_CALIB_CB_NORMALIZE_IMAGE);
-			break;
-
-		default:
-			found = false;
-			break;
-		}
-
-		// If done with success,
-		if (found)                
-		{
-			// improve the found corners' coordinate accuracy for chessboard
-			if (s.calibrationPattern == Settings::CHESSBOARD)
-			{
-				Mat viewGray;
-				cvtColor(view, viewGray, COLOR_BGR2GRAY);
-				cornerSubPix(viewGray, pointBuf, Size(11, 11),
-					Size(-1, -1), TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
-			}
-
-			if (mode == CAPTURING && inputCapture.isOpened() )
-			{
-				char key = (char)waitKey(inputCapture.isOpened() ? 10 : 1000);
-
-				if (key == 'x'){
-					imagePoints.push_back(pointBuf);
-					prevTimestamp = clock();
-					blinkOutput = inputCapture.isOpened();
-				}
-			}
-
-			// Draw the corners.
-			drawChessboardCorners(view, s.boardSize, Mat(pointBuf), found);
-		}
-
-		//----------------------------- Output Text ------------------------------------------------
-		string msg = (mode == CAPTURING) ? "100/100" : 
-			mode == CALIBRATED ? "Calibration completed. Press 's' to restart. Quit with ESC." : "Press 's' to start";
-		int baseLine = 0;
-		Size textSize = getTextSize(msg, 1, 1, 1, &baseLine);
-		Point textOrigin(20, 20);
-		//Current number of frames
-		if (mode == CAPTURING)
-		{
-				msg = format("Press 'x' to capture a frame. Progress: %d/%d", (int)imagePoints.size(), s.nrFrames);
-		}
-
-		putText(view, msg, textOrigin, 1, 1, mode == CALIBRATED ? GREEN : RED);
-
-		if (blinkOutput)
-			bitwise_not(view, view);
+    // If done with success,
+    if (found)
+    {
+        // improve the found corners' coordinate accuracy for chessboard
+        if (s.calibrationPattern == Settings::CHESSBOARD)
+        {
+            Mat viewGray;
+            cvtColor(view, viewGray, COLOR_BGR2GRAY);
+            cornerSubPix(viewGray, pointBuf, Size(11, 11),
+                Size(-1, -1), TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
+        }
 
 
-		//------------------------------ Show image and check for input commands -------------------
-		imshow("Calibration", view);
-		char key = (char)waitKey(inputCapture.isOpened() ? 10 : 1000);
+        imagePoints.push_back(pointBuf);
 
-		if (key == ESC_KEY)
-			break;
-
-		if (inputCapture.isOpened() && key == 's')
-		{
-			mode = CAPTURING;
-			imagePoints.clear();
-		}
-	}
+        // Draw the corners.
+        drawChessboardCorners(view, s.boardSize, Mat(pointBuf), found);
+    }
 }
+
 

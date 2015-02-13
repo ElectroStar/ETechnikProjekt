@@ -51,18 +51,11 @@ PlayerStream::~PlayerStream() {
     mutex.unlock();
     wait();
 }
-void PlayerStream::stop() {
-    stopStream = true;
-}
 
 void PlayerStream::msleep(int ms) {
 
     struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
     nanosleep(&ts, NULL);
-}
-
-bool PlayerStream::isStopped() const {
-    return this->stopStream;
 }
 
 QImage PlayerStream::getCurrentImage() const {

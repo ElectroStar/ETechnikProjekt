@@ -10,19 +10,15 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #include "converter.h"
+#include "player.h"
 #include <stdint.h>
 
 using namespace cv;
-class PlayerTracking : public QThread {
+class PlayerTracking : public QThread, public Player {
 
     Q_OBJECT
- private:
 
-    bool stopStream;
-    QMutex mutex;
-    QWaitCondition condition;
-    Mat frame;
-    QImage img;
+ private:
 
     uint32_t imageHeight;
     uint32_t imageWidth;
@@ -39,8 +35,6 @@ class PlayerTracking : public QThread {
     PlayerTracking(QObject *parent = 0);
     ~PlayerTracking();
     void play();
-    void stop();
-    bool isStopped() const;
 
     void setImageHeight(uint32_t _imageHeight);
     void setImageWidth(uint32_t _imageWidth);

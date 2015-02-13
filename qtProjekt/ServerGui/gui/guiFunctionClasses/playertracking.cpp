@@ -34,9 +34,6 @@ PlayerTracking::~PlayerTracking() {
     mutex.unlock();
     wait();
 }
-void PlayerTracking::stop() {
-    stopStream = true;
-}
 
 void PlayerTracking::msleep(int ms) {
 
@@ -44,22 +41,9 @@ void PlayerTracking::msleep(int ms) {
     nanosleep(&ts, NULL);
 }
 
-bool PlayerTracking::isStopped() const {
-    return this->stopStream;
-}
-
 void PlayerTracking::createNewBlackImage() {
     frame = Mat::zeros(imageHeight, imageWidth, CV_8UC3);
-
-    line(frame, Point(imageWidth/2, 0), Point(imageWidth/2, imageHeight), Scalar( 255, 255, 255 ),0.1,1);
-    line(frame, Point(0, imageHeight-1), Point(imageWidth, imageHeight-1), Scalar( 255, 255, 255 ),0.1,1);
-
-    const uint32_t step = 50;
-
-    for(int32_t i = imageHeight /10; i >= 0; i--) {
-
-        line(frame, Point(imageWidth/2-5, i*step), Point(imageWidth/2+5, i*step), Scalar( 255, 255, 255 ),0.1,1);
-    }
+    circle( frame ,Point(640,360),200,Scalar( 255, 255, 255 ),2,1);
 }
 
 void PlayerTracking::setImageHeight(uint32_t _imageHeight) {

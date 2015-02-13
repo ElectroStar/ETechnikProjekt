@@ -23,7 +23,18 @@ using namespace cv;
  *  @author		Christian
  *  @date		21.12.2014
  */
-class Calibrator{
+class Calibrator {
+
+private:
+
+    vector<vector<Point2f> > imagePoints;
+    Mat cameraMatrix, distCoeffs;
+    Size imageSize;
+
+    enum { DETECTION = 0, CAPTURING = 1, CALIBRATED = 2 };
+    Settings s;
+
+    Vector<Mat> img;
 
 public:
 	
@@ -34,15 +45,22 @@ public:
 	/** Methode zur Durchfuehrung der Kalibrierung.
 	*  	@param[in] inputCapture 	Kameraobjekt
 	*/
-	void start(VideoCapture inputCapture);
+    void process(Mat &view);
 
+    void takePicture(Mat &_currentImage);
+
+    void start();
+    void reset();
+
+    Mat getImgAt(int index);
+
+
+    Settings getS() const;
+    void setS(const Settings &value);
 
 private:
 
-	enum { DETECTION = 0, CAPTURING = 1, CALIBRATED = 2 };
-	Settings s;
-
-	/** Interne Methode zur Erkennung des Kalibriermusters.
+    /** Interne Methode zur Erkennung des Kalibriermusters.
 	*/
 	bool runCalibrationAndSave(Settings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
 		vector<vector<Point2f> > imagePoints);

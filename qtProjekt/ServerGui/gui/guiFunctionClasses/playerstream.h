@@ -10,36 +10,31 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #include "converter.h"
+#include "player.h"
 
 using namespace cv;
-class PlayerStream : public QThread {
+class PlayerStream : public QThread, public Player {
 
     Q_OBJECT
- private:
 
-    bool stopStream;
-    QMutex mutex;
-    QWaitCondition condition;
-    Mat frame;
+private:
+
     int frameRate;
     VideoCapture capture;
-    QImage img;
 
- signals:
+signals:
       void processedImage(const QImage &image);
 
- protected:
+protected:
      void run();
      void msleep(int ms);
 
- public:
+public:
 
     PlayerStream(QObject *parent = 0);
     ~PlayerStream();
     bool loadVideo(string filename);
     void play();
-    void stop();
-    bool isStopped() const;
 
     QImage getCurrentImage() const;
 

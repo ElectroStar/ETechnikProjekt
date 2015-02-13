@@ -49,7 +49,7 @@ void MainWindow::updatePlayerTracking(QImage img) {
 
 bool MainWindow::connectWithStream() {
 
-    if (!myPlayer->loadVideo("/home/user/Desktop/drop.avi"))
+    if (!myPlayer->loadVideo("http://192.168.0.1:8080/?action=stream&amp;type=.mjpg"))
     {
         return false;
     }
@@ -108,6 +108,7 @@ void MainWindow::on_actionKamerakalibrierung_triggered() {
     cameraCalibrationDialog cameraDialog;
     cameraDialog.setModal(true);
     cameraDialog.exec();
+
 }
 
 void MainWindow::on_buttonResetWindow_clicked() {

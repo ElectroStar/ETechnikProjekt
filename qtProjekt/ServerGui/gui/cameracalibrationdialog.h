@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "guiFunctionClasses/playerstream.h"
+#include "guiFunctionClasses/playercalib.h"
 
 namespace Ui {
 class cameraCalibrationDialog;
@@ -20,10 +20,17 @@ public:
 private slots:
 
     void updatePlayerStream(QImage img);
+    void on_buttonTakePicture_clicked();
+    void on_buttonStartCalib_2_clicked();
+    void on_buttonStartStream_clicked();
+
+    void setCntShowlabel(int _i);
+
 
 private:
     Ui::cameraCalibrationDialog *ui;
-    PlayerStream* myPlayer;
+    PlayerCalib* myPlayer;
+
 };
 
 #endif // CAMERACALIBRATIONDIALOG_H
