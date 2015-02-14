@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QObject::connect(myTracking, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerTracking(QImage)));
 
     //toDo relativenPfad angeben
-    FileStorage fs("/home/user/ServerGui/configFiles/out_camera_data.xml", FileStorage::READ);
+    FileStorage fs(cameraParmFile, FileStorage::READ);
 
     if (!fs.isOpened())
     {
@@ -49,7 +49,7 @@ void MainWindow::updatePlayerTracking(QImage img) {
 
 bool MainWindow::connectWithStream() {
 
-    if (!myPlayer->loadVideo("http://192.168.0.1:8080/?action=stream&amp;type=.mjpg"))
+    if (!myPlayer->loadVideo(cameraAdress))
     {
         return false;
     }
@@ -113,4 +113,10 @@ void MainWindow::on_actionKamerakalibrierung_triggered() {
 
 void MainWindow::on_buttonResetWindow_clicked() {
     myTracking->createNewBlackImage();
+}
+
+void MainWindow::on_action_ber_EagleEye_triggered() {
+    InfoEagleEyeDialog InfoEagleEyeDialog;
+    InfoEagleEyeDialog.setModal(true);
+    InfoEagleEyeDialog.exec();
 }

@@ -26,7 +26,9 @@ SOURCES += main.cpp\
     model/Filters/Undistorter.cpp \
     gui/errordialog.cpp \
     gui/guiFunctionClasses/player.cpp \
-    gui/guiFunctionClasses/playercalib.cpp
+    gui/guiFunctionClasses/playercalib.cpp \
+    model/Exception/exception.cpp \
+    gui/infoeagleeyedialog.cpp
 
 
 HEADERS  += gui/mainwindow.h \
@@ -43,13 +45,17 @@ HEADERS  += gui/mainwindow.h \
     model/Filters/Undistorter.h \
     gui/errordialog.h \
     gui/guiFunctionClasses/player.h \
-    gui/guiFunctionClasses/playercalib.h
+    gui/guiFunctionClasses/playercalib.h \
+    model/Exception/exception.h \
+    config.h \
+    gui/infoeagleeyedialog.h
 
 
 FORMS    += gui/mainwindow.ui \
     gui/login.ui \
     gui/cameracalibrationdialog.ui \
-    gui/errordialog.ui
+    gui/errordialog.ui \
+    gui/infoeagleeyedialog.ui
 
 
 LIBS += `pkg-config opencv --libs`

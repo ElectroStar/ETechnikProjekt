@@ -1,12 +1,13 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
+#include <stdint.h>
+#include <QDialog>
+
 #include "login.h"
 #include "ui_login.h"
 #include "mainwindow.h"
-
-#include <stdint.h>
-#include <QDialog>
+#include "config.h"
 
 namespace Ui {
 class Login;

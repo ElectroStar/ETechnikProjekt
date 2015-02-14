@@ -3,12 +3,13 @@
 
 cameraCalibrationDialog::cameraCalibrationDialog(QWidget *parent) : QDialog(parent), ui(new Ui::cameraCalibrationDialog) {
 
-    myPlayer = new PlayerCalib();
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(picCntSend(int)),this, SLOT(setCntShowlabel(int)));
+    QObject::connect(myPlayer, SIGNAL(sendExceptionToGui(eagleeye::Exception e)),this, SLOT(getExeptionForGui(eagleeye::Exception e)));
 
-    myPlayer->loadVideo("http://192.168.0.1:8080/?action=stream&amp;type=.mjpg");
 
+    myPlayer = new PlayerCalib();
+    myPlayer->loadVideo(cameraAdress);
 
     ui->setupUi(this);
     ui->buttonStartCalib_2->setEnabled(false);
@@ -21,6 +22,32 @@ void cameraCalibrationDialog::updatePlayerStream(QImage img) {
         ui->showCalibLabel->setAlignment(Qt::AlignCenter);
         ui->showCalibLabel->setPixmap(QPixmap::fromImage(img).scaled(ui->showCalibLabel->size(),Qt::KeepAspectRatio, Qt::FastTransformation));
     }
+}
+
+void cameraCalibrationDialog::getExeptionForGui(eagleeye::Exception e) {
+
+    ErrorDialog err;
+
+    if(e.getType() == eagleeye::Exception::ERROR_OPEN_CONFIGURATIONFILE) {
+        err.setMsg("Konnte Konfigurationsdatei nicht öffnen!");
+    }
+
+    else if (e.getType() == eagleeye::Exception::INVALID_CONFIGURATIONFILE) {
+        err.setMsg("Parameter in Konfigurationsdatei ungültig!");
+    }
+
+    else if (e.getType() == eagleeye::Exception::ERROR_DURING_CALIBRATION) {
+        err.setMsg("Es ist ein Fehler waerend der Kalibrierung aufgetreten!");
+    }
+
+    myPlayer->setMode(PlayerCalib::Init);
+    ui->buttonStartStream->setText("Neustart");
+    ui->buttonStartCalib_2->setEnabled(false);
+    ui->buttonTakePicture->setEnabled(true);
+
+    err.setModal(true);
+    err.exec();
+
 }
 
 cameraCalibrationDialog::~cameraCalibrationDialog() {
@@ -37,14 +64,14 @@ void cameraCalibrationDialog::on_buttonTakePicture_clicked() {
 }
 
 void cameraCalibrationDialog::on_buttonStartCalib_2_clicked() {
-    myPlayer->setMode(Calib);
+    myPlayer->setMode(PlayerCalib::Calib);
 }
 
 void cameraCalibrationDialog::on_buttonStartStream_clicked() {
 
         myPlayer->play();
 
-        myPlayer->setMode(Init);
+        myPlayer->setMode(PlayerCalib::Init);
         ui->buttonStartStream->setText("Neustart");
         ui->buttonStartCalib_2->setEnabled(false);
         ui->buttonTakePicture->setEnabled(true);

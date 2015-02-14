@@ -1,9 +1,15 @@
 #include "playercalib.h"
 
-PlayerCalib::PlayerCalib(QObject *parent) : QThread(parent), picCnt(0), mode(Init), takePic(false)  {
+PlayerCalib::PlayerCalib(QObject *parent) : QThread(parent), picCnt(0), takePic(false), mode(Init)  {
 
     stopStream = true;
-    calibrator = new Calibrator();
+
+    try {
+        calibrator = new Calibrator();
+    }
+    catch(eagleeye::Exception e) {
+        sendExceptionToGui(e);
+    }
 
 }
 
@@ -97,7 +103,13 @@ void PlayerCalib::run() {
             }
             else {
 
-                calibrator->start();
+                try {
+                    calibrator->start();
+                }
+                catch (eagleeye::Exception e) {
+                    sendExceptionToGui(e);
+                }
+
                 mode = Finished;
 
             }
@@ -133,7 +145,6 @@ void PlayerCalib::msleep(int ms) {
 
 
 Settings PlayerCalib::getSettings() const{
-
     return calibrator->getS();
 }
 

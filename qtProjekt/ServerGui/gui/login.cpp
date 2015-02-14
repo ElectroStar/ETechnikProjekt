@@ -1,17 +1,15 @@
 #include "login.h"
 
-Login::Login(QWidget *parent) : QDialog(parent),ui(new Ui::Login)
-{
+Login::Login(QWidget *parent) : QDialog(parent),ui(new Ui::Login){
     ui->setupUi(this);
+    ui->label_2->setText(currentVersion);
 }
 
-Login::~Login()
-{
+Login::~Login(){
     delete ui;
 }
 
-void Login::on_pushButton_clicked()
-{
+void Login::on_pushButton_clicked(){
     MainWindow* w = new MainWindow();
 
 

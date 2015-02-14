@@ -12,15 +12,9 @@
 #include "converter.h"
 #include "player.h"
 #include "model/Calibrator/Calibrator.h"
+#include "model/Exception/exception.h"
 
 using namespace cv;
-
-enum Mode {
-    TakePicture = 0,
-    Calib = 1,
-    Finished = 2,
-    Init = 3
-};
 
 class PlayerCalib : public QThread, public Player {
 
@@ -34,12 +28,21 @@ private:
     Calibrator* calibrator;
 
     int picCnt;
-    Mode mode;
     bool takePic;
 
+public:
+    enum Mode {
+        TakePicture = 0,
+        Calib = 1,
+        Finished = 2,
+        Init = 3
+    };
+
+     Mode mode;
 signals:
       void processedImage(const QImage &image);
       void picCntSend(int i);
+      void sendExceptionToGui(eagleeye::Exception e);
 
 protected:
      void run();

@@ -4,11 +4,13 @@
 // Version	: 1.0
 //============================================================================
 
-#include "Calibrator.h"
 #include <iostream>
 #include <sstream>
 #include <time.h>
 #include <stdio.h>
+
+#include "config.h"
+#include "Calibrator.h"
 
 using namespace std;
 using namespace cv;
@@ -16,8 +18,6 @@ using namespace cv;
 #ifndef _CRT_SECURE_NO_WARNINGS
 # define _CRT_SECURE_NO_WARNINGS
 #endif
-
-
 
 Settings Calibrator::getS() const
 {
@@ -30,15 +30,14 @@ void Calibrator::setS(const Settings &value)
 }
 Calibrator::Calibrator(){
 
-    const string inputSettingsFile = "/home/user/ServerGui/configFiles/in_VID5.xml";
+    const string inputSettingsFile = calibConfigFile;
 
     // Read the settings
     FileStorage fs(inputSettingsFile, FileStorage::READ);
 
     if (!fs.isOpened())
     {
-        cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
-        return;
+        throw eagleeye::Exception(eagleeye::Exception::ERROR_OPEN_CONFIGURATIONFILE);
     }
 
     s.readSettings(fs["Settings"]);
@@ -49,8 +48,8 @@ Calibrator::Calibrator(){
     //Check input data
     if (!s.goodInput)
     {
-        cout << "Invalid input detected. Application stopping. " << endl;
-        return;
+        throw eagleeye::Exception(eagleeye::Exception::INVALID_CONFIGURATIONFILE);
+
     }
 }
 
@@ -61,7 +60,12 @@ void Calibrator::takePicture(Mat &_currentImage) {
 }
 
 void Calibrator::start() {
-    runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints);
+    try {
+        runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints);
+    }
+    catch(cv::Exception& e) {
+        throw eagleeye::Exception(eagleeye::Exception::ERROR_DURING_CALIBRATION);
+    }
 }
 
 void Calibrator::reset() {

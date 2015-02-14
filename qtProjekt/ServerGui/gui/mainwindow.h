@@ -37,6 +37,8 @@ private slots:
 
     void on_buttonResetWindow_clicked();
 
+    void on_action_ber_EagleEye_triggered();
+
 private:
     bool newCalib;
     Ui::MainWindow *ui;
