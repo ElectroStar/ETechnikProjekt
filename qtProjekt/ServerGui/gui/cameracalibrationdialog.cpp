@@ -61,9 +61,11 @@ void cameraCalibrationDialog::updateCalibSuccess(bool e) {
 
     if(!e) {
         err.setMsg("Es ist ein Fehler waerend der Kalibrierung aufgetreten!");
+        err.setWindowTitle("Error");
     }
     else {
         err.setMsg("Kalibrierung erfolgreich!");
+        err.setWindowTitle("Erfolgreich");
     }
 
     ui->buttonStartStream->setText("Neustart");

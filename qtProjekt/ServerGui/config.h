@@ -6,8 +6,7 @@
 #define calibConfigFile "/home/user/ServerGui/configFiles/in_VID5.xml"
 #define cameraAdress "http://192.168.0.1:8080/?action=stream&amp;type=.mjpg"
 
-<<<<<<< HEAD
-=======
+
 //Landmarks: Shapes
 #define landMarkShapeOrigin 4
 #define landMarkShapeReference 4
@@ -30,7 +29,7 @@
 #define objectColorMax 127
 
 //Object: Size(cm)
-#define objectSize 10
+#define objectSizeCM 10
 
 //ObjectLocator: Harris Corner Parameters
 #define harrisCornerBlockSize 4
@@ -46,7 +45,5 @@
 #define gaussianStandardDeviation 3
 #define gaussianSize 9
 
-
->>>>>>> 0da082293d404cc52570187d8096aaabc43843b2
 #endif // CONFIG_HH_
 

@@ -113,7 +113,7 @@ void PlayerStream::run() {
             cropFView.filter(undistorted,cropped);
 
 
-            result = ips->getAllObjects(cropped, LocatableObject((Form) objectShape, objectColorMin, objectColorMax, objectSize));
+            result = ips->getAllObjects(cropped, LocatableObject((Form) objectShape, objectColorMin, objectColorMax, objectSizeCM));
 
             for (size_t i = 0; i < result.size(); i++){
                 circle(cropped, result[i].position, cropped.cols/100, Scalar(0, 0, 255), -1);
@@ -122,8 +122,16 @@ void PlayerStream::run() {
 
             Converter::convertMatToQImage(cropped,img);
 
+            if(result.size()==0){
 
-            emit newCord(QPoint(result[0].position.x,result[0].position.y));
+                emit newCord(QString("-"), QString("-"));
+            }
+            else{
+                emit newCord(QString().setNum(result[0].position.x), QString().setNum(result[0].position.y));
+
+            }
+
+
             emit processedImage(img);
 
             break;

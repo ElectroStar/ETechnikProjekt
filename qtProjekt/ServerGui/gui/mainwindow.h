@@ -36,7 +36,7 @@ private slots:
 
     void updatePlayerStream(QImage img);
     void updateTrackingButton(bool flag);
-    void updatePosLabel(const QPoint pos);
+    void updatePosLabel(const QString posX, const QString posY);
 
     void on_buttonStarteStream_clicked();
 

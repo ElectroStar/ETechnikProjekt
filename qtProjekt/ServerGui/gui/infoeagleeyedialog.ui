@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Information</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="image.qrc">
+    <normaloff>:/new/image/image/icon.jpg</normaloff>:/new/image/image/icon.jpg</iconset>
   </property>
   <widget class="QPushButton" name="ButtonCloseInfo">
    <property name="geometry">
@@ -88,6 +92,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>

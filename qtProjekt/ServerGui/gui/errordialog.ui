@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Error</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="image.qrc">
+    <normaloff>:/new/image/image/icon.jpg</normaloff>:/new/image/image/icon.jpg</iconset>
+  </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
@@ -43,7 +47,9 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

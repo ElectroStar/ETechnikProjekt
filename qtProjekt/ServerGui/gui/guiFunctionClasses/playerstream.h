@@ -53,7 +53,7 @@ public:
 signals:
       void processedImage(const QImage &image);
       void foundLandMarks(const bool flag);
-      void newCord(const QPoint pos);
+      void newCord(const QString posX, const QString posY);
 
 protected:
      void run();

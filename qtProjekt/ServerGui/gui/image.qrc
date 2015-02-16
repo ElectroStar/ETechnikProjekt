@@ -3,5 +3,6 @@
         <file>image/logo.jpg</file>
         <file>image/hsLogo.png</file>
         <file>image/Logo_klein.jpg</file>
+        <file>image/icon.jpg</file>
     </qresource>
 </RCC>

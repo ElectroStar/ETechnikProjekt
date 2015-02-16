@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(foundLandMarks(bool)),this, SLOT(updateTrackingButton(bool)));
-    QObject::connect(myPlayer, SIGNAL(newCord(QPoint)), this, SLOT(updatePosLabel(QPoint)));
+    QObject::connect(myPlayer, SIGNAL(newCord(QString,QString)), this, SLOT(updatePosLabel(QString,QString)));
 
     ui->setupUi(this);
 
@@ -36,10 +36,10 @@ void MainWindow::updateTrackingButton(bool flag){
     ui->buttonStartTracking->setEnabled(flag);
 }
 
-void MainWindow::updatePosLabel(const QPoint pos) {
+void MainWindow::updatePosLabel(const QString posX, const QString posY) {
 
-    ui->labelPosX->setText(QString("Pos X: ")+QString().setNum(pos.x()));
-    ui->labelPosY->setText(QString("Pos Y: ")+QString().setNum(pos.y()));
+    ui->labelPosX->setText(QString("Pos X: ")+posX);
+    ui->labelPosY->setText(QString("Pos Y: ")+posY);
 }
 
 bool MainWindow::connectWithStream() {
