@@ -13,6 +13,7 @@
 #include "player.h"
 #include "model/Calibrator/Calibrator.h"
 #include "model/Exception/exception.h"
+#include "config.h"
 
 using namespace cv;
 
@@ -42,7 +43,7 @@ public:
 signals:
       void processedImage(const QImage &image);
       void picCntSend(int i);
-      void sendExceptionToGui(eagleeye::Exception e);
+      void sendExceptionToGui(const eagleeye::EeException &e);
 
 protected:
      void run();
@@ -52,6 +53,9 @@ public:
 
     PlayerCalib(QObject *parent = 0);
     ~PlayerCalib();
+
+    bool init();
+
     bool loadVideo(string filename);
     void play();
 

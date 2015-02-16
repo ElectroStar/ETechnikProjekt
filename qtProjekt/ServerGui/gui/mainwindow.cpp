@@ -3,11 +3,10 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 
-    myTracking = new PlayerTracking();
     myPlayer = new PlayerStream();
 
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
-    QObject::connect(myTracking, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerTracking(QImage)));
+    QObject::connect(myPlayer, SIGNAL(foundLandMarks(bool)),this, SLOT(updateTrackingButton(bool)));
 
     //toDo relativenPfad angeben
     FileStorage fs(cameraParmFile, FileStorage::READ);
@@ -21,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     fs.release();
 
     ui->setupUi(this);
+
+    ui->buttonFindLandMark->setEnabled(false);
+    ui->buttonStartTracking->setEnabled(false);
+    ui->checkBoxSend->setEnabled(false);
 }
 
 MainWindow::~MainWindow(){
@@ -33,18 +36,16 @@ void MainWindow::updatePlayerStream(QImage img) {
 
     if (!img.isNull())
     {
+
         ui->showStreamLabel->setAlignment(Qt::AlignCenter);
         ui->showStreamLabel->setPixmap(QPixmap::fromImage(img).scaled(ui->showStreamLabel->size(),Qt::KeepAspectRatio, Qt::FastTransformation));
+
     }
 }
 
-void MainWindow::updatePlayerTracking(QImage img) {
+void MainWindow::updateTrackingButton(bool flag){
 
-    if (!img.isNull())
-    {
-        ui->showTrackingLabel->setAlignment(Qt::AlignCenter);
-        ui->showTrackingLabel->setPixmap(QPixmap::fromImage(img).scaled(ui->showTrackingLabel->size(),Qt::KeepAspectRatio, Qt::FastTransformation));
-    }
+    ui->buttonStartTracking->setEnabled(flag);
 }
 
 bool MainWindow::connectWithStream() {
@@ -53,30 +54,10 @@ bool MainWindow::connectWithStream() {
     {
         return false;
     }
-
-    myTracking->setImageHeight(myPlayer->getImageHeight());
-    myTracking->setImageWidth(myPlayer->getImageWidth());
-    myTracking->createNewBlackImage();
-
     return true;
 }
 
 void MainWindow::on_buttonStarteStream_clicked() {
-
-    if (myPlayer->isStopped())
-    {
-        myPlayer->play();
-        ui->buttonStarteStream->setText(tr("Stoppe Stream"));
-    }
-
-    else
-    {
-        myPlayer->stop();
-        ui->buttonStarteStream->setText(tr("Starte Stream"));
-    }
-}
-
-void MainWindow::on_buttonStartTracking_clicked() {
 
     if(newCalib)
     {
@@ -86,20 +67,25 @@ void MainWindow::on_buttonStartTracking_clicked() {
         err.exec();
     }
 
+    if (myPlayer->isStopped())
+    {
+        myPlayer->play();
+        ui->buttonStarteStream->setText(tr("Stoppe Stream"));
+        ui->buttonFindLandMark->setEnabled(true);
+
+        if(myPlayer->getMode()==PlayerStream::Tracking) {
+            ui->buttonStartTracking->setEnabled(true);
+            ui->checkBoxSend->setEnabled(true);
+        }
+    }
+
     else
     {
-
-        if (myTracking->isStopped())
-        {
-            myTracking->play();
-            ui->buttonStartTracking->setText(tr("Stoppe Tracking"));
-        }
-
-        else
-        {
-            myTracking->stop();
-            ui->buttonStartTracking->setText(tr("Starte Tracking"));
-        }
+        myPlayer->stop();
+        ui->buttonStarteStream->setText(tr("Starte Stream"));
+        ui->buttonFindLandMark->setEnabled(false);
+        ui->checkBoxSend->setEnabled(false);
+        ui->buttonStartTracking->setEnabled(false);
     }
 }
 
@@ -111,12 +97,38 @@ void MainWindow::on_actionKamerakalibrierung_triggered() {
 
 }
 
-void MainWindow::on_buttonResetWindow_clicked() {
-    myTracking->createNewBlackImage();
-}
 
 void MainWindow::on_action_ber_EagleEye_triggered() {
+
     InfoEagleEyeDialog InfoEagleEyeDialog;
     InfoEagleEyeDialog.setModal(true);
     InfoEagleEyeDialog.exec();
+}
+
+void MainWindow::on_buttonFindLandMark_clicked() {
+
+    ui->checkBoxSend->setEnabled(false);
+    ui->checkBoxSend->setChecked(false);
+    ui->buttonStartTracking->setText("Starte Tracking");
+    myPlayer->setMode(PlayerStream::FindLandMark);
+}
+
+void MainWindow::on_buttonStartTracking_clicked() {
+
+    if (myPlayer->getMode() == PlayerStream::Tracking) {
+
+        myPlayer->setMode(PlayerStream::Idle);
+        ui->buttonStartTracking->setEnabled(false);
+        ui->checkBoxSend->setEnabled(false);
+        ui->checkBoxSend->setChecked(false);
+        ui->buttonStartTracking->setText("Starte Tracking");
+
+
+    }
+    else {
+         myPlayer->setMode(PlayerStream::Tracking);
+         ui->checkBoxSend->setEnabled(true);
+         ui->buttonStartTracking->setText("Stoppe Tracking");
+    }
+
 }

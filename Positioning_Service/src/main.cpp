@@ -15,7 +15,7 @@
 #include "PositionService\LocatableObject.h"
 #include "Filters/Undistorter.h"
 #include "FieldLocator\FieldLocator.h"
-#include "Filters\TailorFieldView.h"
+#include "Filters\CropFieldView.h"
 #include "PositionService\ObjectLocator.h"
 using namespace cv;
 using namespace std;
@@ -33,7 +33,8 @@ int main(int argc, char** argv)
 
 	Undistorter undis;
 	FieldLocator fl(LocatableObject(TRIANGLE, 0, 127, 10), LocatableObject(TRIANGLE, 128, 255, 10));
-	vector<Point> boundaries;
+	
+  vector<Point> boundaries;
 
 	Mat src;
 	Mat undistorted;
@@ -64,7 +65,7 @@ int main(int argc, char** argv)
 		waitKey(30);
 	}
 
-	TailorFieldView tfv(boundaries[0], boundaries[1]);
+	CropFieldView tfv(boundaries[0], boundaries[1]);
 	Mat cropped;
 
 	ObjectLocator ol;

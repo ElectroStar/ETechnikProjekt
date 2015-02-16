@@ -9,7 +9,7 @@ InfoEagleEyeDialog::InfoEagleEyeDialog(QWidget *parent) : QDialog(parent), ui(ne
 
     ui->labelNames->setText("Eric Buschermöhle\n"
                             "Sebastian Hollermann\n"
-                            "Joel Bartelheimer"
+                            "Joel Bartelheimer\n"
                             "Benjamin Augenstein\n"
                             "Tung Pham\n"
                             "Michael Over\n"

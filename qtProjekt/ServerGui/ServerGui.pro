@@ -22,13 +22,18 @@ SOURCES += main.cpp\
     gui/cameracalibrationdialog.cpp \
     model/Calibrator/Calibrator.cpp \
     model/Calibrator/Settings.cpp \
-    model/Filters/TailorFieldView.cpp \
     model/Filters/Undistorter.cpp \
     gui/errordialog.cpp \
     gui/guiFunctionClasses/player.cpp \
     gui/guiFunctionClasses/playercalib.cpp \
     model/Exception/exception.cpp \
-    gui/infoeagleeyedialog.cpp
+    gui/infoeagleeyedialog.cpp \
+    model/PositionService/LocatableObject.cpp \
+    model/PositionService/LocatedObject.cpp \
+    model/PositionService/MetricPositionTransformator.cpp \
+    model/PositionService/ObjectLocator.cpp \
+    model/Filters/CropFieldView.cpp \
+    model/FieldLocator/FieldLocator.cpp
 
 
 HEADERS  += gui/mainwindow.h \
@@ -41,14 +46,20 @@ HEADERS  += gui/mainwindow.h \
     model/Calibrator/Calibrator.h \
     model/Calibrator/Settings.h \
     model/Filters/ImageFilter.h \
-    model/Filters/TailorFieldView.h \
     model/Filters/Undistorter.h \
     gui/errordialog.h \
     gui/guiFunctionClasses/player.h \
     gui/guiFunctionClasses/playercalib.h \
     model/Exception/exception.h \
     config.h \
-    gui/infoeagleeyedialog.h
+    gui/infoeagleeyedialog.h \
+    model/PositionService/IPositionService.h \
+    model/PositionService/LocatableObject.h \
+    model/PositionService/LocatedObject.h \
+    model/PositionService/MetricPositionTransformator.h \
+    model/PositionService/ObjectLocator.h \
+    model/Filters/CropFieldView.h \
+    model/FieldLocator/FieldLocator.h
 
 
 FORMS    += gui/mainwindow.ui \
@@ -62,3 +73,4 @@ LIBS += `pkg-config opencv --libs`
 
 RESOURCES += \
     gui/image.qrc
+

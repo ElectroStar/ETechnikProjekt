@@ -3,17 +3,18 @@
 
 cameraCalibrationDialog::cameraCalibrationDialog(QWidget *parent) : QDialog(parent), ui(new Ui::cameraCalibrationDialog) {
 
+    myPlayer = new PlayerCalib();
+
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(picCntSend(int)),this, SLOT(setCntShowlabel(int)));
-    QObject::connect(myPlayer, SIGNAL(sendExceptionToGui(eagleeye::Exception e)),this, SLOT(getExeptionForGui(eagleeye::Exception e)));
-
-
-    myPlayer = new PlayerCalib();
-    myPlayer->loadVideo(cameraAdress);
+    QObject::connect(myPlayer, SIGNAL(sendExceptionToGui(eagleeye::EeException)),this, SLOT(getExeptionForGui(eagleeye::EeException)));
 
     ui->setupUi(this);
     ui->buttonStartCalib_2->setEnabled(false);
     ui->buttonTakePicture->setEnabled(false);
+
+    myPlayer->loadVideo(cameraAdress);
+    myPlayer->init();
 }
 
 void cameraCalibrationDialog::updatePlayerStream(QImage img) {
@@ -24,19 +25,19 @@ void cameraCalibrationDialog::updatePlayerStream(QImage img) {
     }
 }
 
-void cameraCalibrationDialog::getExeptionForGui(eagleeye::Exception e) {
+void cameraCalibrationDialog::getExeptionForGui(eagleeye::EeException e) {
 
     ErrorDialog err;
 
-    if(e.getType() == eagleeye::Exception::ERROR_OPEN_CONFIGURATIONFILE) {
+    if(e.getType() == eagleeye::EeException::ERROR_OPEN_CONFIGURATIONFILE) {
         err.setMsg("Konnte Konfigurationsdatei nicht öffnen!");
     }
 
-    else if (e.getType() == eagleeye::Exception::INVALID_CONFIGURATIONFILE) {
+    else if (e.getType() == eagleeye::EeException::INVALID_CONFIGURATIONFILE) {
         err.setMsg("Parameter in Konfigurationsdatei ungültig!");
     }
 
-    else if (e.getType() == eagleeye::Exception::ERROR_DURING_CALIBRATION) {
+    else if (e.getType() == eagleeye::EeException::ERROR_DURING_CALIBRATION) {
         err.setMsg("Es ist ein Fehler waerend der Kalibrierung aufgetreten!");
     }
 

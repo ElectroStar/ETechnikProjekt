@@ -1,7 +1,7 @@
 #ifndef CONFIG_HH_
 #define CONFIG_HH_
 
-#define currentVersion "1.0.0.0"
+#define currentVersion "1.2.1.1"
 
 #define cameraParmFile "/home/user/ServerGui/configFiles/out_camera_data.xml"
 #define calibConfigFile "/home/user/ServerGui/configFiles/in_VID5.xml"
@@ -9,3 +9,4 @@
 
 
 #endif // CONFIG_HH_
+

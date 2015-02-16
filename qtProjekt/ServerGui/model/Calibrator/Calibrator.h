@@ -14,6 +14,7 @@
 
 #include "Settings.h"
 #include "model/Exception/exception.h"
+#include "config.h"
 
 using namespace std;
 using namespace cv;

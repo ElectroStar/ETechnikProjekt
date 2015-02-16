@@ -11,6 +11,7 @@
 #include "gui/guiFunctionClasses/playertracking.h"
 #include "cameracalibrationdialog.h"
 #include "errordialog.h"
+#include "infoeagleeyedialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,22 +29,21 @@ public:
 private slots:
 
     void updatePlayerStream(QImage img);
-    void updatePlayerTracking(QImage img);
+    void updateTrackingButton(bool flag);
 
     void on_buttonStarteStream_clicked();
-    void on_buttonStartTracking_clicked();
 
     void on_actionKamerakalibrierung_triggered();
-
-    void on_buttonResetWindow_clicked();
-
     void on_action_ber_EagleEye_triggered();
+
+    void on_buttonFindLandMark_clicked();
+
+    void on_buttonStartTracking_clicked();
 
 private:
     bool newCalib;
     Ui::MainWindow *ui;
     PlayerStream* myPlayer;
-    PlayerTracking* myTracking;
 
 };
 #endif // MAINWINDOW_H

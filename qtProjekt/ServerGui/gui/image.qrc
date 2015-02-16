@@ -2,5 +2,6 @@
     <qresource prefix="/new/image">
         <file>image/logo.jpg</file>
         <file>image/hsLogo.png</file>
+        <file>image/Logo_klein.jpg</file>
     </qresource>
 </RCC>

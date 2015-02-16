@@ -11,6 +11,16 @@
 
 #include "converter.h"
 #include "player.h"
+#include "config.h"
+
+#include "model/PositionService/IPositionService.h"
+#include "model/PositionService/LocatableObject.h"
+#include "model/PositionService/LocatedObject.h"
+#include "model/PositionService/ObjectLocator.h"
+#include "model/Filters/CropFieldView.h"
+#include "model/Filters/Undistorter.h"
+#include "model/FieldLocator/FieldLocator.h"
+
 
 using namespace cv;
 class PlayerStream : public QThread, public Player {
@@ -22,8 +32,27 @@ private:
     int frameRate;
     VideoCapture capture;
 
+    Undistorter undist;
+    FieldLocator fieldLoc;
+    CropFieldView cropFView;
+    IPositionService* ips;
+
+    vector<Point> boundaries;
+
+
+public:
+    enum Mode {
+        Idle,
+        FindLandMark,
+        FoundLandMark,
+        Tracking
+    };
+
+     Mode mode;
+
 signals:
       void processedImage(const QImage &image);
+      void foundLandMarks(const bool flag);
 
 protected:
      void run();
@@ -40,5 +69,8 @@ public:
 
     int getImageHeight();
     int getImageWidth();
+
+    int getMode() const;
+    void setMode(const int value);
 };
 #endif

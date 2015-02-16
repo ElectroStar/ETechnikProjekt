@@ -23,7 +23,7 @@ public:
 private slots:
 
     void updatePlayerStream(QImage img);
-    void getExeptionForGui(eagleeye::Exception e);
+    void getExeptionForGui(eagleeye::EeException e);
     void on_buttonTakePicture_clicked();
     void on_buttonStartCalib_2_clicked();
     void on_buttonStartStream_clicked();

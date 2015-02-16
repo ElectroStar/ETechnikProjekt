@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1202</width>
-    <height>525</height>
+    <width>861</width>
+    <height>572</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,39 +26,10 @@
    <widget class="QLabel" name="showStreamLabel">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>10</y>
-      <width>571</width>
-      <height>361</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">Background-color: #000;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonStarteStream">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>390</y>
-      <width>159</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Starte Stream</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="showTrackingLabel">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>10</y>
-      <width>571</width>
-      <height>361</height>
+      <width>800</width>
+      <height>450</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -71,76 +42,86 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>1070</x>
-      <y>390</y>
-      <width>52</width>
-      <height>42</height>
+      <x>440</x>
+      <y>469</y>
+      <width>251</width>
+      <height>31</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Cord X:</string>
+        <string>Pos X:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Cord Y:</string>
+        <string>Pos Y:</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>390</y>
-      <width>245</width>
-      <height>62</height>
+      <x>30</x>
+      <y>470</y>
+      <width>392</width>
+      <height>29</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="buttonStarteStream">
+       <property name="text">
+        <string>Starte Stream</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonFindLandMark">
+       <property name="text">
+        <string>Finde Landmarken</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="buttonStartTracking">
        <property name="text">
         <string>Starte Tracking</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="buttonStartDrawRoute">
-       <property name="text">
-        <string>Enter Route</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="buttonResetWindow">
-       <property name="text">
-        <string>Reset Window</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Platzhalter</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
+   <widget class="QCheckBox" name="checkBoxSend">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>471</y>
+      <width>97</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Senden</string>
+    </property>
+   </widget>
+   <zorder>layoutWidget</zorder>
+   <zorder>showStreamLabel</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>checkBoxSend</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1202</width>
+     <width>861</width>
      <height>25</height>
     </rect>
    </property>

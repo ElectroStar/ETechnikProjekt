@@ -1,11 +1,11 @@
 //============================================================================
-// Datei	: TailorFieldView.h
+// Datei	: CropFieldView.h
 // Autor	: Eric Buschermoehle
-// Version: 1.0
+// Version	: 1.0
 //============================================================================
 
-#ifndef TAILORFIELDVIEW_H_
-#define TAILORFIELDVIEW_H_
+#ifndef CROPFIELDVIEW_H_
+#define CROPFIELDVIEW_H_
 
 #include "opencv2/core/core.hpp"
 
@@ -13,41 +13,42 @@
 
 /** Klasse um Bilder zuzuschneiden.
  *  @author		Eric Buschermoehle
- *  @date		31.07.2014
+ *  @date		11.02.2015
  */
-class TailorFieldView : ImageFilter {
+class CropFieldView : ImageFilter {
 
 private:
+
 	Point first;
 	Point second;
 
 public:
+
+    CropFieldView();
+
   /** Konstruktor
 	*  	@param[in] _first		Erster Punkt
 	*  	@param[in] _second		Zweiter Punkt
 	*/
-	TailorFieldView(const Point _first, const Point _second);
+	CropFieldView(const Point _first, const Point _second);
   
   /** Destruktor
 	*/
-	~TailorFieldView();
+	~CropFieldView();
   
-  /** Methode zum Zuschneiden einer Mat
+  /** Methode zum Zuschneiden einer Matrix
 	*  	@param[in] _input 	Eingangsbild
 	*  	@param[in] _output 	Ausgangsbild
 	*/
 	void filter(Mat &_input, Mat &_output) const;
 
-  /** Setter fuer lowerLeft
-	*  	@param[in] _first 	Eingabe
-	*/
-	void setlowerLeft(const Point _first);
-  
-   /** Setter fuer upperRight
-	*  	@param[in] _second 	Eingabe
-	*/
-	void setupperRight(const Point _second);
+    //coding guidelines
+    Point getFirst() const;
+    void setFirst(const Point &value);
 
+
+    Point getSecond() const;
+    void setSecond(const Point &value);
 };
 
-#endif /* TAILORFIELDVIEW_H_ */
+#endif /* CROPFIELDVIEW_H_ */

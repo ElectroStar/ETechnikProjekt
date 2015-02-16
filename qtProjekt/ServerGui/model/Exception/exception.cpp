@@ -1,11 +1,9 @@
 #include "exception.h"
 
 namespace eagleeye {
-    Exception::Exception(Type type) : type(type){}
+    EeException::EeException(Type type) : type(type){}
 
-    Exception::~Exception() {}
-
-    Exception::Type Exception::getType() {
+    EeException::Type EeException::getType() {
         return type;
     }
 }

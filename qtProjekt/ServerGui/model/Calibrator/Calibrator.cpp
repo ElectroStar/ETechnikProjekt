@@ -8,7 +8,7 @@
 #include <sstream>
 #include <time.h>
 #include <stdio.h>
-
+#include <exception>
 #include "config.h"
 #include "Calibrator.h"
 
@@ -37,7 +37,7 @@ Calibrator::Calibrator(){
 
     if (!fs.isOpened())
     {
-        throw eagleeye::Exception(eagleeye::Exception::ERROR_OPEN_CONFIGURATIONFILE);
+        throw  eagleeye::EeException(eagleeye::EeException::ERROR_OPEN_CONFIGURATIONFILE);
     }
 
     s.readSettings(fs["Settings"]);
@@ -48,7 +48,7 @@ Calibrator::Calibrator(){
     //Check input data
     if (!s.goodInput)
     {
-        throw eagleeye::Exception(eagleeye::Exception::INVALID_CONFIGURATIONFILE);
+        throw eagleeye::EeException(eagleeye::EeException::INVALID_CONFIGURATIONFILE);
 
     }
 }
@@ -64,7 +64,7 @@ void Calibrator::start() {
         runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints);
     }
     catch(cv::Exception& e) {
-        throw eagleeye::Exception(eagleeye::Exception::ERROR_DURING_CALIBRATION);
+        throw eagleeye::EeException(eagleeye::EeException::ERROR_DURING_CALIBRATION);
     }
 }
 

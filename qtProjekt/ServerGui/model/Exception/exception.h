@@ -2,8 +2,11 @@
 #ifndef EXCEPTION_H_
 #define EXCEPTION_H_
 
+#include "config.h"
+#include <exception>
+
 namespace eagleeye {
-    class Exception {
+    class EeException : public std::exception{
     public:
         enum Type {
             ERROR_OPEN_CONFIGURATIONFILE,
@@ -11,8 +14,8 @@ namespace eagleeye {
             ERROR_DURING_CALIBRATION
         };
 
-        Exception(Type type);
-        virtual ~Exception();
+        EeException(Type type);
+        virtual ~EeException() throw() {}
 
         Type getType();
     private:
