@@ -1,6 +1,6 @@
 //============================================================================
 // Datei	: MetricPositionTransformator.h
-// Autor	: Eric Buschermoehle
+// Autor	: Joel Bartelheimer
 // Version	: 1.0
 //============================================================================
 
@@ -10,19 +10,26 @@
 #include <stdint.h>
 
 /** Klasse zur Berechnung der metrischen Position.
- *  @author		Christian
- *  @date		11.02.2015
+ *  @author		Joel Bartelheimer
+ *  @date		16.02.2015
  */
 class MetricPositionTransformator {
 
 private:
+	cv::Mat Cm;			//Kamera Matrix
+	cv::Mat Ex;			//Extrinsische Parameter
 
-	int imgSize;
+	double dk;			//dicke der Kalibrierplatte
+	double tz;			//Entfernung zum Optischen Mittelpunkt
+
+	double f;			//Fokuaslaenge fx = fy
+	double cx;
+	double cy;
 
 public:
+	cv::Mat Transform(LocatedObject origin, LocatedObject tracked);
 
-
-	MetricPositionTransformator();
+	MetricPositionTransformator(String calibFilename);
 	~MetricPositionTransformator();
 
 };
