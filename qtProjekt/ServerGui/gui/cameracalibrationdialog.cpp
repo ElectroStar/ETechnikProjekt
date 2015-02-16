@@ -1,20 +1,22 @@
 #include "cameracalibrationdialog.h"
 #include "ui_cameracalibrationdialog.h"
 
-cameraCalibrationDialog::cameraCalibrationDialog(QWidget *parent) : QDialog(parent), ui(new Ui::cameraCalibrationDialog) {
+cameraCalibrationDialog::cameraCalibrationDialog(QWidget *parent) : QDialog(parent), calibSuccess(false), ui(new Ui::cameraCalibrationDialog) {
 
     myPlayer = new PlayerCalib();
 
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(picCntSend(int)),this, SLOT(setCntShowlabel(int)));
-    QObject::connect(myPlayer, SIGNAL(sendExceptionToGui(eagleeye::EeException)),this, SLOT(getExeptionForGui(eagleeye::EeException)));
+  //  QObject::connect(myPlayer, SIGNAL(sendExceptionToGui(eagleeye::EeException)),this, SLOT(getExeptionForGui(eagleeye::EeException)));
+    QObject::connect(myPlayer, SIGNAL(sendCalibStatus(bool)),this, SLOT(updateCalibSuccess(bool)));
+
+   // qRegisterMetaType<eagleeye::EeException>("eagleeye::EeException");
 
     ui->setupUi(this);
     ui->buttonStartCalib_2->setEnabled(false);
     ui->buttonTakePicture->setEnabled(false);
 
     myPlayer->loadVideo(cameraAdress);
-    myPlayer->init();
 }
 
 void cameraCalibrationDialog::updatePlayerStream(QImage img) {
@@ -24,7 +26,7 @@ void cameraCalibrationDialog::updatePlayerStream(QImage img) {
         ui->showCalibLabel->setPixmap(QPixmap::fromImage(img).scaled(ui->showCalibLabel->size(),Qt::KeepAspectRatio, Qt::FastTransformation));
     }
 }
-
+/*
 void cameraCalibrationDialog::getExeptionForGui(eagleeye::EeException e) {
 
     ErrorDialog err;
@@ -39,9 +41,31 @@ void cameraCalibrationDialog::getExeptionForGui(eagleeye::EeException e) {
 
     else if (e.getType() == eagleeye::EeException::ERROR_DURING_CALIBRATION) {
         err.setMsg("Es ist ein Fehler waerend der Kalibrierung aufgetreten!");
+        calibSuccess = false;
     }
 
-    myPlayer->setMode(PlayerCalib::Init);
+    myPlayer->setMode(PlayerCalib::Error);
+    ui->buttonStartStream->setText("Neustart");
+    ui->buttonStartCalib_2->setEnabled(false);
+    ui->buttonTakePicture->setEnabled(true);
+
+    err.setModal(true);
+    err.exec();
+
+}
+*/
+void cameraCalibrationDialog::updateCalibSuccess(bool e) {
+
+    calibSuccess=e;
+    ErrorDialog err;
+
+    if(!e) {
+        err.setMsg("Es ist ein Fehler waerend der Kalibrierung aufgetreten!");
+    }
+    else {
+        err.setMsg("Kalibrierung erfolgreich!");
+    }
+
     ui->buttonStartStream->setText("Neustart");
     ui->buttonStartCalib_2->setEnabled(false);
     ui->buttonTakePicture->setEnabled(true);
@@ -70,16 +94,26 @@ void cameraCalibrationDialog::on_buttonStartCalib_2_clicked() {
 
 void cameraCalibrationDialog::on_buttonStartStream_clicked() {
 
-        myPlayer->play();
+    myPlayer->play();
 
-        myPlayer->setMode(PlayerCalib::Init);
-        ui->buttonStartStream->setText("Neustart");
-        ui->buttonStartCalib_2->setEnabled(false);
-        ui->buttonTakePicture->setEnabled(true);
+    myPlayer->setMode(PlayerCalib::Init);
+    ui->buttonStartStream->setText("Neustart");
+    ui->buttonStartCalib_2->setEnabled(false);
+    ui->buttonTakePicture->setEnabled(true);
 
 }
 
  void cameraCalibrationDialog::setCntShowlabel(int _i) {
      ui->labelShowPicCnt->setText(QString("Aufnahmen: ")+QString().setNum(_i));
  }
+ bool cameraCalibrationDialog::getCalibSuccess() const
+ {
+     return calibSuccess;
+ }
+
+ void cameraCalibrationDialog::setCalibSuccess(bool value)
+ {
+     calibSuccess = value;
+ }
+
 

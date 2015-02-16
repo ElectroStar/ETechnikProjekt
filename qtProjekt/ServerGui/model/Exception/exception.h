@@ -2,8 +2,8 @@
 #ifndef EXCEPTION_H_
 #define EXCEPTION_H_
 
-#include "config.h"
 #include <exception>
+#include <QMetaType>
 
 namespace eagleeye {
     class EeException : public std::exception{
@@ -13,7 +13,7 @@ namespace eagleeye {
             INVALID_CONFIGURATIONFILE,
             ERROR_DURING_CALIBRATION
         };
-
+EeException();
         EeException(Type type);
         virtual ~EeException() throw() {}
 
@@ -21,6 +21,8 @@ namespace eagleeye {
     private:
         Type type;
     };
+
 }
+
 
 #endif /* EXCEPTION_H_ */

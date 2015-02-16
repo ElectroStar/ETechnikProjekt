@@ -33,17 +33,19 @@ private:
 
 public:
     enum Mode {
-        TakePicture = 0,
-        Calib = 1,
-        Finished = 2,
-        Init = 3
+        TakePicture,
+        Calib,
+        Finished,
+        Init,
+        Error
     };
 
      Mode mode;
 signals:
       void processedImage(const QImage &image);
       void picCntSend(int i);
-      void sendExceptionToGui(const eagleeye::EeException &e);
+     // void sendExceptionToGui(const eagleeye::EeException e);
+      void sendCalibStatus(const bool value);
 
 protected:
      void run();
@@ -53,8 +55,6 @@ public:
 
     PlayerCalib(QObject *parent = 0);
     ~PlayerCalib();
-
-    bool init();
 
     bool loadVideo(string filename);
     void play();

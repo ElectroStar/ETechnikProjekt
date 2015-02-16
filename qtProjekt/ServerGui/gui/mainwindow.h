@@ -26,10 +26,17 @@ public:
 
     bool connectWithStream();
 
+    bool getFoundConfig() const;
+    void setFoundConfig(bool value);
+
+    bool getFoundCalib() const;
+    void setFoundCalib(bool value);
+
 private slots:
 
     void updatePlayerStream(QImage img);
     void updateTrackingButton(bool flag);
+    void updatePosLabel(const QPoint pos);
 
     void on_buttonStarteStream_clicked();
 
@@ -41,9 +48,11 @@ private slots:
     void on_buttonStartTracking_clicked();
 
 private:
-    bool newCalib;
+    bool foundConfig;
+    bool foundCalib;
     Ui::MainWindow *ui;
     PlayerStream* myPlayer;
+
 
 };
 #endif // MAINWINDOW_H

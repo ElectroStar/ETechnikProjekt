@@ -7,17 +7,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(foundLandMarks(bool)),this, SLOT(updateTrackingButton(bool)));
-
-    //toDo relativenPfad angeben
-    FileStorage fs(cameraParmFile, FileStorage::READ);
-
-    if (!fs.isOpened())
-    {
-        newCalib = true;
-    }
-    else newCalib = false;
-
-    fs.release();
+    QObject::connect(myPlayer, SIGNAL(newCord(QPoint)), this, SLOT(updatePosLabel(QPoint)));
 
     ui->setupUi(this);
 
@@ -36,16 +26,20 @@ void MainWindow::updatePlayerStream(QImage img) {
 
     if (!img.isNull())
     {
-
         ui->showStreamLabel->setAlignment(Qt::AlignCenter);
         ui->showStreamLabel->setPixmap(QPixmap::fromImage(img).scaled(ui->showStreamLabel->size(),Qt::KeepAspectRatio, Qt::FastTransformation));
-
     }
 }
 
 void MainWindow::updateTrackingButton(bool flag){
 
     ui->buttonStartTracking->setEnabled(flag);
+}
+
+void MainWindow::updatePosLabel(const QPoint pos) {
+
+    ui->labelPosX->setText(QString("Pos X: ")+QString().setNum(pos.x()));
+    ui->labelPosY->setText(QString("Pos Y: ")+QString().setNum(pos.y()));
 }
 
 bool MainWindow::connectWithStream() {
@@ -59,15 +53,15 @@ bool MainWindow::connectWithStream() {
 
 void MainWindow::on_buttonStarteStream_clicked() {
 
-    if(newCalib)
+    if(!foundCalib)
     {
         ErrorDialog err;
-        err.setMsg("Konnte Kalibrierungsdatei nicht öffnen! Bitte füren Sie \neine Kalibrierung durch.");
+        err.setMsg("Konnte Kalibrierungsdatei nicht öffnen! Bitte führen Sie \neine Kalibrierung durch.");
         err.setModal(true);
         err.exec();
     }
 
-    if (myPlayer->isStopped())
+    else if (myPlayer->isStopped())
     {
         myPlayer->play();
         ui->buttonStarteStream->setText(tr("Stoppe Stream"));
@@ -91,9 +85,24 @@ void MainWindow::on_buttonStarteStream_clicked() {
 
 void MainWindow::on_actionKamerakalibrierung_triggered() {
 
-    cameraCalibrationDialog cameraDialog;
-    cameraDialog.setModal(true);
-    cameraDialog.exec();
+    if(!foundConfig)
+    {
+        ErrorDialog err;
+        err.setMsg("Konnte Konfigurationsdatei nicht finden!");
+        err.setModal(true);
+        err.exec();
+    }
+
+    else {
+
+        cameraCalibrationDialog cameraDialog;
+        cameraDialog.setModal(true);
+        cameraDialog.exec();
+
+        if(!foundCalib || cameraDialog.getCalibSuccess()) {
+            foundCalib = cameraDialog.getCalibSuccess();
+        }
+    }
 
 }
 
@@ -131,4 +140,23 @@ void MainWindow::on_buttonStartTracking_clicked() {
          ui->buttonStartTracking->setText("Stoppe Tracking");
     }
 
+}
+bool MainWindow::getFoundCalib() const
+{
+    return foundCalib;
+}
+
+void MainWindow::setFoundCalib(bool value)
+{
+    foundCalib = value;
+}
+
+bool MainWindow::getFoundConfig() const
+{
+    return foundConfig;
+}
+
+void MainWindow::setFoundConfig(bool value)
+{
+    foundConfig = value;
 }

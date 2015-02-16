@@ -12,18 +12,22 @@ namespace Ui {
 class cameraCalibrationDialog;
 }
 
-class cameraCalibrationDialog : public QDialog
-{
+class cameraCalibrationDialog : public QDialog {
     Q_OBJECT
 
 public:
     explicit cameraCalibrationDialog(QWidget *parent = 0);
     ~cameraCalibrationDialog();
 
+    bool getCalibSuccess() const;
+    void setCalibSuccess(bool value);
+
 private slots:
 
     void updatePlayerStream(QImage img);
-    void getExeptionForGui(eagleeye::EeException e);
+    //  void getExeptionForGui(eagleeye::EeException e);
+    void updateCalibSuccess(bool e);
+
     void on_buttonTakePicture_clicked();
     void on_buttonStartCalib_2_clicked();
     void on_buttonStartStream_clicked();
@@ -32,6 +36,8 @@ private slots:
 
 
 private:
+
+    bool calibSuccess;
     Ui::cameraCalibrationDialog *ui;
     PlayerCalib* myPlayer;
 

@@ -21,6 +21,8 @@ public:
     explicit Login(QWidget *parent = 0);
     ~Login();
 
+    bool checkFile(String _path) const;
+
 private slots:
     void on_pushButton_clicked();
 

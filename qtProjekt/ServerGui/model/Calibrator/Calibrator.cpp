@@ -60,12 +60,7 @@ void Calibrator::takePicture(Mat &_currentImage) {
 }
 
 void Calibrator::start() {
-    try {
-        runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints);
-    }
-    catch(cv::Exception& e) {
-        throw eagleeye::EeException(eagleeye::EeException::ERROR_DURING_CALIBRATION);
-    }
+    runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints);
 }
 
 void Calibrator::reset() {
@@ -99,7 +94,6 @@ bool Calibrator::runCalibrationAndSave(Settings& s, Size imageSize, Mat&  camera
 	return ok;
 
 }
-
 
 double Calibrator::computeReprojectionErrors(
 	const vector<vector<Point3f> >& objectPoints,

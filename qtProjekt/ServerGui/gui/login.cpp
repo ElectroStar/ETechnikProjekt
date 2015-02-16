@@ -9,9 +9,21 @@ Login::~Login(){
     delete ui;
 }
 
-void Login::on_pushButton_clicked(){
-    MainWindow* w = new MainWindow();
+bool Login::checkFile(String _path) const {
 
+    FileStorage fs(_path, FileStorage::READ);
+
+    if (!fs.isOpened())
+    {
+        return false;
+    }
+
+    fs.release();
+    return true;
+}
+
+void Login::on_pushButton_clicked() {
+    MainWindow* w = new MainWindow();
 
     if (!w->connectWithStream()) {
         QMessageBox msgBox;
@@ -24,6 +36,9 @@ void Login::on_pushButton_clicked(){
 
         uint16_t x = this->x();
         uint16_t y = this->y();
+
+        w->setFoundCalib(checkFile(cameraParmFile));
+        w->setFoundConfig(checkFile(calibConfigFile));
 
         w->move(x,y);
         w->show();

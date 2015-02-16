@@ -1,19 +1,11 @@
 #include "playercalib.h"
 
+#include <QMetaType>
+
 PlayerCalib::PlayerCalib(QObject *parent) : QThread(parent), picCnt(0), takePic(false), mode(Init)  {
+    calibrator = new Calibrator();
     stopStream = true;
-}
 
-bool PlayerCalib::init() {
-
-    try {
-        calibrator = new Calibrator();
-    }
-    catch(eagleeye::EeException &e) {
-        sendExceptionToGui(e);
-        return false;
-    }
-    return true;
 }
 
 bool PlayerCalib::loadVideo(string filename) {
@@ -105,22 +97,27 @@ void PlayerCalib::run() {
                 picCnt--;
             }
             else {
-
                 try {
                     calibrator->start();
+                    mode = Finished;
                 }
 
-                catch (eagleeye::EeException &e) {
-                    sendExceptionToGui(e);
+                catch (cv::Exception& e) {
+                    mode=Error;
                 }
 
-                mode = Finished;
             }
             break;
 
         case Finished:
 
+            emit sendCalibStatus(true);
             stopStream = true;
+            break;
+
+        case Error:
+            stopStream = true;
+            emit sendCalibStatus(false);
             break;
         }
 
