@@ -1,12 +1,13 @@
 //============================================================================
 // Datei	: ObjectLocator.cpp
-// Autor	: Eric Buschermoehle
+// Autor	: Christian Jungblut
 // Version	: 1.0
 //============================================================================
 
 #include "ObjectLocator.h"
+#include "config.h"
 
-ObjectLocator::ObjectLocator(): blockSize(4), apertureSize(3), k(0.1), thresh(180), max_thresh(255) {
+ObjectLocator::ObjectLocator(): blockSize(harrisCornerBlockSize), apertureSize(harrisCornerApertureSize), k(harrisCornerVariance), thresh(harrisCornerThresh) {
 
 }
 
@@ -25,20 +26,20 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat _src, LocatableObject _sp
 
 	//Rauschen rausfiltern
 	Mat src_gray_blurred;
-	GaussianBlur(src_gray, src_gray_blurred, Size(9, 9), 3, 3);
+    GaussianBlur(src_gray, src_gray_blurred, Size(gaussianSize, gaussianSize), gaussianStandardDeviation, gaussianStandardDeviation);
 
 	//Hough Transformation fuer Kreise anwenden
-	HoughCircles(src_gray_blurred, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows / 20, 200, 50, 0, 0);
+    HoughCircles(src_gray_blurred, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows / 20, 200, houghCircleThreshold, 0, 0);
 
 	//Die gefundenen Kreise auswerten
-    if (circles.size() > 0){															//////////////////////////////////TODO: Float in INT!!!!!!!!!!!!!!!!!!!!!!!!!
+    if (circles.size() > 0){
 
 		for (unsigned int i = 0; i < circles.size(); i++)
 		{
 
 			//Bild zuschneiden, extra Behandlung an Bildraendern
-			int referencePx = circles[i][0] - circles[i][2];
-			int referencePy = circles[i][1] - circles[i][2];
+            int referencePx = circles[i][0] - circles[i][2];
+            int referencePy = circles[i][1] - circles[i][2];
 
 			int width = 2 * circles[i][2];
 			int height = 2 * circles[i][2];
@@ -87,7 +88,7 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat _src, LocatableObject _sp
 
 						for (unsigned int l = 0; l < cornerP.size(); l++){
 
-							if (abs(cornerP[l].x - k) <= 3 && abs(cornerP[l].y - j) <= 3){
+                            if (abs(cornerP[l].x - k) <= harrisCornerMergeArea && abs(cornerP[l].y - j) <= harrisCornerMergeArea){
 
 								foundNew = false;
 								cornerP[l].x = (cornerP[l].x + k) / 2;
@@ -104,7 +105,7 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat _src, LocatableObject _sp
 				}
 			}
 
-			//Pruefen, ob passende Figur gefunden wurde
+            //Pruefen, ob passende Form gefunden wurde
 			if (cornerP.size() == _spec.form){
 
 				//Offset wieder draufaddieren, Zentrum berechnen

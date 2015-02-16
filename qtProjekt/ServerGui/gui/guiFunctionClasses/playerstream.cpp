@@ -5,7 +5,8 @@ PlayerStream::PlayerStream(QObject *parent) : QThread(parent), mode(Idle) {
     stopStream = true;
 
     undist.readParam(cameraParmFile);
-    fieldLoc = FieldLocator(LocatableObject(TRIANGLE, 0, 127, 10), LocatableObject(TRIANGLE, 128, 255, 10));
+    fieldLoc = FieldLocator(LocatableObject((Form)landMarkShapeOrigin, landMarkColorOriginMin, landMarkColorOriginMax, landMarkSizeOrigin),
+                            LocatableObject((Form)landMarkShapeReference, landMarkColorReferenceMin, landMarkColorReferenceMax, landMarkSizeReference));
     ips = new ObjectLocator();
 
 }
@@ -28,7 +29,7 @@ void PlayerStream::play() {
         if (isStopped()){
             stopStream = false;
         }
-        start(HighestPriority);
+        start(HighPriority);
     }
 }
 
@@ -40,6 +41,7 @@ int PlayerStream::getMode() const {
 void PlayerStream::setMode(const int value) {
     mode = (Mode)value;
 }
+
 void PlayerStream::run() {
 
     Mat undistorted, cropped;
@@ -65,7 +67,7 @@ void PlayerStream::run() {
 
         case FindLandMark:
 
-            foundLandMarks(false);
+            emit foundLandMarks(false);
 
             if (!capture.read(frame)) {
                 stopStream = true;
@@ -90,7 +92,7 @@ void PlayerStream::run() {
 
         case FoundLandMark:
 
-            foundLandMarks(true);
+            emit foundLandMarks(true);
 
 
             break;
@@ -111,15 +113,17 @@ void PlayerStream::run() {
             cropFView.filter(undistorted,cropped);
 
 
-            result = ips->getAllObjects(cropped, LocatableObject(RECTANGLE, 0, 128, 10));
+            result = ips->getAllObjects(cropped, LocatableObject((Form) objectShape, objectColorMin, objectColorMax, objectSize));
 
-            for (int i = 0; i < result.size(); i++){
+            for (size_t i = 0; i < result.size(); i++){
                 circle(cropped, result[i].position, cropped.cols/100, Scalar(0, 0, 255), -1);
                 circle(cropped, result[i].position, cropped.cols/150, Scalar(255, 0, 0), -1);
             }
 
             Converter::convertMatToQImage(cropped,img);
 
+
+            emit newCord(QPoint(result[0].position.x,result[0].position.y));
             emit processedImage(img);
 
             break;
