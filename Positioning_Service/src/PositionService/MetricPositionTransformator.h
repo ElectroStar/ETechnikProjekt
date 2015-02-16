@@ -8,6 +8,7 @@
 #define METRICPOSITIONTRANSFORMATOR__H_
 
 #include <stdint.h>
+#include "LocatedObject.h"
 
 /** Klasse zur Berechnung der metrischen Position.
  *  @author		Joel Bartelheimer
@@ -27,9 +28,9 @@ private:
 	double cy;
 
 public:
-	cv::Mat Transform(LocatedObject origin, LocatedObject tracked);
+	cv::Mat Transform(const LocatedObject* origin,const LocatedObject* tracked);
 
-	MetricPositionTransformator(String calibFilename);
+	MetricPositionTransformator(const String& calibFilename,const double& _dk);
 	~MetricPositionTransformator();
 
 };
