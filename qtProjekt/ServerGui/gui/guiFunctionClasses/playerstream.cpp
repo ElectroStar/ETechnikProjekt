@@ -5,7 +5,8 @@ PlayerStream::PlayerStream(QObject *parent) : QThread(parent), mode(Idle) {
     stopStream = true;
 
     undist.readParam(cameraParmFile);
-    fieldLoc = FieldLocator(LocatableObject(TRIANGLE, 0, 127, 10), LocatableObject(TRIANGLE, 128, 255, 10));
+    fieldLoc = FieldLocator(LocatableObject((Form)landMarkShapeOrigin, landMarkColorOriginMin, landMarkColorOriginMax, landMarkSizeOrigin),
+                            LocatableObject((Form)landMarkShapeReference, landMarkColorReferenceMin, landMarkColorReferenceMax, landMarkSizeReference));
     ips = new ObjectLocator();
 
 }
@@ -112,7 +113,7 @@ void PlayerStream::run() {
             cropFView.filter(undistorted,cropped);
 
 
-            result = ips->getAllObjects(cropped, LocatableObject(RECTANGLE, 0, 128, 10));
+            result = ips->getAllObjects(cropped, LocatableObject((Form) objectShape, objectColorMin, objectColorMax, objectSize));
 
             for (size_t i = 0; i < result.size(); i++){
                 circle(cropped, result[i].position, cropped.cols/100, Scalar(0, 0, 255), -1);

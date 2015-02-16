@@ -22,7 +22,6 @@ private:
     int apertureSize;
     double k;
     int thresh;
-    int max_thresh;
 
 	//Gefundene Kreise und Kanten
 	vector<Point> cornerP;
