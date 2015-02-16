@@ -9,6 +9,7 @@
 
 #include <string>
 #include <cv.h>
+#include "PosData.h"
 
 using namespace std;
 using namespace cv;
@@ -52,6 +53,12 @@ public:
 	 * @param	Position
 	 */
 	void transmit(Point2d pos);
+
+	/**
+	 * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
+	 * @param	PositionsDataSet
+	 */
+	void transmit(PosData pos);
 };
 
 #endif /* TRANSMITTER_H_ */

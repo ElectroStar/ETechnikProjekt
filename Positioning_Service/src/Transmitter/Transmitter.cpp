@@ -57,6 +57,20 @@ void Transmitter::transmit(Point2d pos) {
 		throw TransmittingException();
 }
 
+/**
+ * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
+ * @param	PositionsData
+ */
+void Transmitter::transmit(PosData pos) {
+	// Datenpaket versenden an den Server
+	string packet = pos;
+
+	size_t laenge = packet.length();
+	ssize_t sended = write(_socket, packet.c_str(), packet.length());
+	if(sended != laenge)
+		throw TransmittingException();
+}
+
 int Transmitter::resolveHostName(const char* hostname, struct in_addr* addr)
 {
     struct addrinfo *res;
