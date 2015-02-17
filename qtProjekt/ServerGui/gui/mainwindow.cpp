@@ -101,11 +101,15 @@ void MainWindow::on_actionKamerakalibrierung_triggered() {
         cameraDialog.exec();
 
         if(!foundCalib || cameraDialog.getCalibSuccess()) {
-            foundCalib = cameraDialog.getCalibSuccess();
-        }
-        myPlayer->play();
-    }
 
+            foundCalib = cameraDialog.getCalibSuccess();
+            myPlayer->setMode(PlayerStream::Init);
+            ui->buttonStarteStream->setText(tr("Starte Stream"));
+            ui->buttonFindLandMark->setEnabled(false);
+            ui->checkBoxSend->setEnabled(false);
+            ui->buttonStartTracking->setEnabled(false);
+        }          
+    }
 }
 
 
@@ -161,4 +165,16 @@ bool MainWindow::getFoundConfig() const
 void MainWindow::setFoundConfig(bool value)
 {
     foundConfig = value;
+}
+
+void MainWindow::on_checkBoxSend_clicked(bool checked) {
+
+    if(checked) {
+        myPlayer->setSend(true);
+    }
+
+    else {
+        myPlayer->setSend(false);
+    }
+
 }

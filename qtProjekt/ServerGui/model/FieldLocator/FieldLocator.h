@@ -46,7 +46,7 @@ public:
 	*  	@param[in] _src 		Ausgangsbild
 	*  	@return 				Gefundene Objekte gemaess Muster
 	*/
-	vector<Point> locateField(Mat _src);
+    vector<LocatedObject> locateField(Mat _src);
 
 };
 

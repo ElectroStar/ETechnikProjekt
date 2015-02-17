@@ -33,7 +33,9 @@ SOURCES += main.cpp\
     model/PositionService/MetricPositionTransformator.cpp \
     model/PositionService/ObjectLocator.cpp \
     model/Filters/CropFieldView.cpp \
-    model/FieldLocator/FieldLocator.cpp
+    model/FieldLocator/FieldLocator.cpp \
+    model/Transmitter/PosData.cpp \
+    model/Transmitter/Transmitter.cpp
 
 
 HEADERS  += gui/mainwindow.h \
@@ -59,7 +61,12 @@ HEADERS  += gui/mainwindow.h \
     model/PositionService/MetricPositionTransformator.h \
     model/PositionService/ObjectLocator.h \
     model/Filters/CropFieldView.h \
-    model/FieldLocator/FieldLocator.h
+    model/FieldLocator/FieldLocator.h \
+    model/Transmitter/ConnectionException.h \
+    model/Transmitter/PosData.h \
+    model/Transmitter/PositioningDataException.h \
+    model/Transmitter/Transmitter.h \
+    model/Transmitter/TransmittingException.h
 
 
 FORMS    += gui/mainwindow.ui \

@@ -17,21 +17,21 @@
 class MetricPositionTransformator {
 
 private:
-	cv::Mat Cm;			//Kamera Matrix
-	cv::Mat Ex;			//Extrinsische Parameter
+    cv::Mat Cm;			//Kamera Matrix
+    cv::Mat Ex;			//Extrinsische Parameter
 
-	double dk;			//dicke der Kalibrierplatte
-	double tz;			//Entfernung zum Optischen Mittelpunkt
+    double dk;			//dicke der Kalibrierplatte
+    double tz;			//Entfernung zum Optischen Mittelpunkt
 
-	double f;			//Fokuaslaenge fx = fy
-	double cx;
-	double cy;
+    double f;			//Fokuaslaenge fx = fy
+    double cx;
+    double cy;
 
 public:
-	cv::Mat Transform(const LocatedObject* origin,const LocatedObject* tracked);
+    cv::Mat transform(const LocatedObject &origin,const LocatedObject &tracked);
 
-	MetricPositionTransformator(const String& calibFilename,const double& _dk);
-	~MetricPositionTransformator();
+    MetricPositionTransformator(const String& calibFilename,const double& _dk);
+    ~MetricPositionTransformator();
 
 };
 

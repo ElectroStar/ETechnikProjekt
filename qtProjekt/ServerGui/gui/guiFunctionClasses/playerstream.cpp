@@ -1,13 +1,18 @@
-#include <QLabel>
+
 #include "playerstream.h"
 
-PlayerStream::PlayerStream(QObject *parent) : QThread(parent), mode(Idle) {
-    stopStream = true;
+#include <iostream>
 
-    undist.readParam(cameraParmFile);
+PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NULL),send(false), mode(Idle) {
+
+    init();
+    stopStream = true;
     fieldLoc = FieldLocator(LocatableObject((Form)landMarkShapeOrigin, landMarkColorOriginMin, landMarkColorOriginMax, landMarkSizeOrigin),
                             LocatableObject((Form)landMarkShapeReference, landMarkColorReferenceMin, landMarkColorReferenceMax, landMarkSizeReference));
+
     ips = new ObjectLocator();
+
+    //tm = new Transmitter("Adress", 3478);
 
 }
 
@@ -42,6 +47,16 @@ void PlayerStream::setMode(const int value) {
     mode = (Mode)value;
 }
 
+
+bool PlayerStream::getSend() const
+{
+    return send;
+}
+
+void PlayerStream::setSend(bool value)
+{
+    send = value;
+}
 void PlayerStream::run() {
 
     Mat undistorted, cropped;
@@ -51,6 +66,13 @@ void PlayerStream::run() {
     while(!stopStream) {
 
         switch(mode) {
+
+        case Init:
+
+            init();
+            mode = Idle;
+
+            break;
 
         case Idle:
 
@@ -76,9 +98,10 @@ void PlayerStream::run() {
             undist.filter(frame, undistorted);
 
             boundaries = fieldLoc.locateField(undistorted);
+
             for (size_t i = 0; i < boundaries.size(); i++){
-                circle(undistorted, boundaries[i], undistorted.cols/100, Scalar(0, 0, 255));
-                circle(undistorted, boundaries[i], undistorted.cols/150, Scalar(0, 255, 0),-1);
+                circle(undistorted, boundaries[i].position, undistorted.cols/100, Scalar(0, 0, 255));
+                circle(undistorted, boundaries[i].position, undistorted.cols/150, Scalar(0, 255, 0),-1);
             }
 
             if (boundaries.size() == 2){
@@ -91,14 +114,10 @@ void PlayerStream::run() {
             break;
 
         case FoundLandMark:
-
             emit foundLandMarks(true);
-
-
             break;
 
         case Tracking:
-
 
             if (!capture.read(frame)) {
                 stopStream = true;
@@ -107,8 +126,8 @@ void PlayerStream::run() {
             undist.filter(frame, undistorted);
 
 
-            cropFView.setFirst(boundaries[0]);
-            cropFView.setSecond(boundaries[1]);
+            cropFView.setFirst(boundaries[0].position);
+            cropFView.setSecond(boundaries[1].position);
 
             cropFView.filter(undistorted,cropped);
 
@@ -120,18 +139,25 @@ void PlayerStream::run() {
                 circle(cropped, result[i].position, cropped.cols/150, Scalar(255, 0, 0), -1);
             }
 
-            Converter::convertMatToQImage(cropped,img);
-
             if(result.size()==0){
 
                 emit newCord(QString("-"), QString("-"));
             }
-            else{
-                emit newCord(QString().setNum(result[0].position.x), QString().setNum(result[0].position.y));
+            else {
 
+
+                Mat temp = mpt->transform(boundaries[0],result[0]);
+                double x = temp.at<double>(0,0);
+                double y = temp.at<double>(1,0);
+
+                if(send) {
+                    tm->transmit(Point2d(x,y));
+                }
+
+                emit newCord(QString().setNum(x), QString().setNum(y));
             }
 
-
+            Converter::convertMatToQImage(cropped,img);
             emit processedImage(img);
 
             break;
@@ -149,6 +175,10 @@ PlayerStream::~PlayerStream() {
     capture.release();
     condition.wakeOne();
     mutex.unlock();
+
+    delete ips;
+    delete mpt;
+    delete tm;
     wait();
 }
 
@@ -161,6 +191,14 @@ void PlayerStream::msleep(int ms) {
 QImage PlayerStream::getCurrentImage() const {
     return img;
 }
+void PlayerStream::init(){
+
+    delete mpt;
+    mpt = new MetricPositionTransformator(cameraParmFile,calibPanelHeightMM);
+    undist.readParam(cameraParmFile);
+
+}
+
 
 int PlayerStream::getImageHeight()  {
     return capture.get(CV_CAP_PROP_FRAME_HEIGHT);

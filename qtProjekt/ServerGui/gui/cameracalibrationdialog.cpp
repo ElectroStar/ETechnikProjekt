@@ -15,6 +15,7 @@ cameraCalibrationDialog::cameraCalibrationDialog(QWidget *parent) : QDialog(pare
     ui->setupUi(this);
     ui->buttonStartCalib_2->setEnabled(false);
     ui->buttonTakePicture->setEnabled(false);
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 
     myPlayer->loadVideo(cameraAdress);
 }
@@ -62,16 +63,19 @@ void cameraCalibrationDialog::updateCalibSuccess(int e) {
     if(!e) {
         err.setMsg("Es ist ein Fehler waerend der Kalibrierung aufgetreten!");
         err.setWindowTitle("Error");
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
     }
     else {
 
         err.setMsg(QString("Kalibrierung erfolgreich! Es wurden ") + QString().setNum(e) + QString(" Bilder erkannt"));
         err.setWindowTitle("Erfolgreich");
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
     }
 
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setEnabled(true);
     ui->buttonStartStream->setText("Neustart");
     ui->buttonStartCalib_2->setEnabled(false);
-    ui->buttonTakePicture->setEnabled(true);
+    ui->buttonTakePicture->setEnabled(false);
 
     err.setModal(true);
     err.exec();
@@ -93,6 +97,8 @@ void cameraCalibrationDialog::on_buttonTakePicture_clicked() {
 
 void cameraCalibrationDialog::on_buttonStartCalib_2_clicked() {
     myPlayer->setMode(PlayerCalib::Calib);
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setEnabled(false);
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
 void cameraCalibrationDialog::on_buttonStartStream_clicked() {
@@ -111,14 +117,14 @@ void cameraCalibrationDialog::on_buttonStartStream_clicked() {
  }
 
 
- bool cameraCalibrationDialog::getCalibSuccess() const
- {
+ bool cameraCalibrationDialog::getCalibSuccess() const {
      return calibSuccess;
  }
 
- void cameraCalibrationDialog::setCalibSuccess(bool value)
- {
+ void cameraCalibrationDialog::setCalibSuccess(bool value) {
      calibSuccess = value;
  }
 
-
+void cameraCalibrationDialog::on_buttonBox_rejected() {
+    calibSuccess = false;
+}

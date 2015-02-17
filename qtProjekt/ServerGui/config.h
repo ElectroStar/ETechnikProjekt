@@ -5,7 +5,7 @@
 #define cameraParmFile "/home/user/ServerGui/configFiles/out_camera_data.xml"
 #define calibConfigFile "/home/user/ServerGui/configFiles/in_VID5.xml"
 #define cameraAdress "http://192.168.0.1:8080/?action=stream&amp;type=.mjpg"
-
+#define calibPanelHeightMM 6
 
 //Landmarks: Shapes
 #define landMarkShapeOrigin 4
@@ -18,8 +18,8 @@
 #define landMarkColorReferenceMax 255
 
 //Landmarks: Sizes(cm)
-#define landMarkSizeOrigin 10
-#define landMarkSizeReference 10
+#define landMarkSizeOrigin 8
+#define landMarkSizeReference 8
 
 //Object: Shape
 #define objectShape 3
@@ -29,7 +29,7 @@
 #define objectColorMax 127
 
 //Object: Size(cm)
-#define objectSizeCM 10
+#define objectSizeCM 8
 
 //ObjectLocator: Harris Corner Parameters
 #define harrisCornerBlockSize 4

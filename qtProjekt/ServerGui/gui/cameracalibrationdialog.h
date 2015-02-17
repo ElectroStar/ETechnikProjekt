@@ -34,6 +34,8 @@ private slots:
 
     void setCntShowlabel(int _i);
 
+    void on_buttonBox_rejected();
+
 private:
 
     bool calibSuccess;

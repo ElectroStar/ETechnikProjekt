@@ -47,6 +47,8 @@ private slots:
 
     void on_buttonStartTracking_clicked();
 
+    void on_checkBoxSend_clicked(bool checked);
+
 private:
     bool foundConfig;
     bool foundCalib;

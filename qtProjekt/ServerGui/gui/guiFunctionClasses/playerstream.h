@@ -20,6 +20,8 @@
 #include "model/Filters/CropFieldView.h"
 #include "model/Filters/Undistorter.h"
 #include "model/FieldLocator/FieldLocator.h"
+#include "model/PositionService/MetricPositionTransformator.h"
+#include "model/Transmitter/Transmitter.h"
 
 
 using namespace cv;
@@ -35,13 +37,19 @@ private:
     Undistorter undist;
     FieldLocator fieldLoc;
     CropFieldView cropFView;
-    IPositionService* ips;
 
-    vector<Point> boundaries;
+    IPositionService* ips;
+    MetricPositionTransformator* mpt;
+    Transmitter* tm;
+
+    vector<LocatedObject> boundaries;
+
+    bool send;
 
 
 public:
     enum Mode {
+        Init,
         Idle,
         FindLandMark,
         FoundLandMark,
@@ -68,10 +76,13 @@ public:
 
     QImage getCurrentImage() const;
 
+    void init();
     int getImageHeight();
     int getImageWidth();
 
     int getMode() const;
     void setMode(const int value);
+    bool getSend() const;
+    void setSend(bool value);
 };
 #endif
