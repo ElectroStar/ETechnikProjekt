@@ -21,7 +21,6 @@ SOURCES += main.cpp\
     gui/guiFunctionClasses/converter.cpp \
     gui/cameracalibrationdialog.cpp \
     model/Calibrator/Calibrator.cpp \
-    model/Calibrator/Settings.cpp \
     model/Filters/Undistorter.cpp \
     gui/errordialog.cpp \
     gui/guiFunctionClasses/player.cpp \
@@ -35,7 +34,9 @@ SOURCES += main.cpp\
     model/Filters/CropFieldView.cpp \
     model/FieldLocator/FieldLocator.cpp \
     model/Transmitter/PosData.cpp \
-    model/Transmitter/Transmitter.cpp
+    model/Transmitter/Transmitter.cpp \
+    gui/settingsdialog.cpp \
+    Settings.cpp
 
 
 HEADERS  += gui/mainwindow.h \
@@ -46,14 +47,12 @@ HEADERS  += gui/mainwindow.h \
     gui/guiFunctionClasses/converter.h \
     gui/cameracalibrationdialog.h \
     model/Calibrator/Calibrator.h \
-    model/Calibrator/Settings.h \
     model/Filters/ImageFilter.h \
     model/Filters/Undistorter.h \
     gui/errordialog.h \
     gui/guiFunctionClasses/player.h \
     gui/guiFunctionClasses/playercalib.h \
     model/Exception/exception.h \
-    config.h \
     gui/infoeagleeyedialog.h \
     model/PositionService/IPositionService.h \
     model/PositionService/LocatableObject.h \
@@ -66,14 +65,16 @@ HEADERS  += gui/mainwindow.h \
     model/Transmitter/PosData.h \
     model/Transmitter/PositioningDataException.h \
     model/Transmitter/Transmitter.h \
-    model/Transmitter/TransmittingException.h
-
+    model/Transmitter/TransmittingException.h \
+    gui/settingsdialog.h \
+    Settings.h
 
 FORMS    += gui/mainwindow.ui \
     gui/login.ui \
     gui/cameracalibrationdialog.ui \
     gui/errordialog.ui \
-    gui/infoeagleeyedialog.ui
+    gui/infoeagleeyedialog.ui \
+    gui/settingsdialog.ui
 
 
 LIBS += `pkg-config opencv --libs`

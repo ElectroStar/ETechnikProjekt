@@ -13,7 +13,7 @@
 #include "player.h"
 #include "model/Calibrator/Calibrator.h"
 #include "model/Exception/exception.h"
-#include "config.h"
+#include "Settings.h"
 
 using namespace cv;
 

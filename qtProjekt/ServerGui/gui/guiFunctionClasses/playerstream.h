@@ -11,7 +11,7 @@
 
 #include "converter.h"
 #include "player.h"
-#include "config.h"
+#include "Settings.h"
 
 #include "model/PositionService/IPositionService.h"
 #include "model/PositionService/LocatableObject.h"

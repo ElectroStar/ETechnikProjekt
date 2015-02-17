@@ -6,7 +6,7 @@
 #include "guiFunctionClasses/playercalib.h"
 #include "model/Exception/exception.h"
 #include "gui/errordialog.h"
-#include "config.h"
+#include "Settings.h"
 
 namespace Ui {
 class cameraCalibrationDialog;

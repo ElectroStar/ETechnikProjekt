@@ -17,12 +17,6 @@ class ObjectLocator : public IPositionService {
 
 private:
 
-	//Parameter zur Kantenerkennung
-    int blockSize;
-    int apertureSize;
-    double k;
-    int thresh;
-
 	//Gefundene Kreise und Kanten
 	vector<Point> cornerP;
 	vector<Vec3f> circles;

@@ -7,7 +7,7 @@
 #include "login.h"
 #include "ui_login.h"
 #include "mainwindow.h"
-#include "config.h"
+#include "Settings.h"
 
 namespace Ui {
 class Login;

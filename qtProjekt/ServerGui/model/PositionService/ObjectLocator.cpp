@@ -7,7 +7,7 @@
 #include "ObjectLocator.h"
 #include "config.h"
 
-ObjectLocator::ObjectLocator(): blockSize(harrisCornerBlockSize), apertureSize(harrisCornerApertureSize), k(harrisCornerVariance), thresh(harrisCornerThresh) {
+ObjectLocator::ObjectLocator() {
 
 }
 
@@ -26,10 +26,11 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat _src, LocatableObject _sp
 
 	//Rauschen rausfiltern
 	Mat src_gray_blurred;
-    GaussianBlur(src_gray, src_gray_blurred, Size(gaussianSize, gaussianSize), gaussianStandardDeviation, gaussianStandardDeviation);
+    GaussianBlur(src_gray, src_gray_blurred, Size(Settings::instance().gaussianSize, Settings::instance().gaussianSize),
+                 Settings::instance().gaussianStandardDeviation, Settings::instance().gaussianStandardDeviation);
 
 	//Hough Transformation fuer Kreise anwenden
-    HoughCircles(src_gray_blurred, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows / 20, 200, houghCircleThreshold, 0, 0);
+    HoughCircles(src_gray_blurred, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows / 20, 200, Settings::instance().houghCircleThreshold, 0, 0);
 
 	//Die gefundenen Kreise auswerten
     if (circles.size() > 0){
@@ -71,7 +72,8 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat _src, LocatableObject _sp
 
 			//Harris Kantenerkennung
 			Mat corners, corners_norm, corners_norm_scaled;
-			cornerHarris(cropped, corners, blockSize, apertureSize, k, BORDER_DEFAULT);
+            cornerHarris(cropped, corners, Settings::instance().harrisCornerBlockSize, Settings::instance().harrisCornerApertureSize,
+                         Settings::instance().harrisCornerVariance, BORDER_DEFAULT);
 
 			//Normalisierung
 			normalize(corners, corners_norm, 0, 255, NORM_MINMAX, CV_32FC1, Mat());
@@ -82,13 +84,14 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat _src, LocatableObject _sp
 			{
 				for (int k = 0; k < corners_norm.cols; k++)
 				{
-					if ((int)corners_norm.at<float>(j, k) > thresh)
+                    if ((int)corners_norm.at<float>(j, k) > Settings::instance().harrisCornerThresh)
 					{
 						bool foundNew = true;
 
 						for (unsigned int l = 0; l < cornerP.size(); l++){
 
-                            if (abs(cornerP[l].x - k) <= harrisCornerMergeArea && abs(cornerP[l].y - j) <= harrisCornerMergeArea){
+                            if (abs(cornerP[l].x - k) <= Settings::instance().harrisCornerMergeArea &&
+                                    abs(cornerP[l].y - j) <= Settings::instance().harrisCornerMergeArea){
 
 								foundNew = false;
 								cornerP[l].x = (cornerP[l].x + k) / 2;

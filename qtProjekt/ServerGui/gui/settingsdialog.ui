@@ -45,9 +45,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-522</y>
+      <y>-555</y>
       <width>463</width>
-      <height>911</height>
+      <height>944</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_3">
@@ -55,7 +55,7 @@
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
      <item row="0" column="0">
-      <widget class="QLabel" name="label_23">
+      <widget class="QLabel" name="uLabel_1">
        <property name="font">
         <font>
          <weight>75</weight>
@@ -147,7 +147,7 @@
       <widget class="QLineEdit" name="lineEdit_1"/>
      </item>
      <item row="4" column="0">
-      <widget class="QLabel" name="label_24">
+      <widget class="QLabel" name="uLabel_2">
        <property name="font">
         <font>
          <weight>75</weight>
@@ -239,7 +239,7 @@
       <widget class="QLineEdit" name="lineEdit_2"/>
      </item>
      <item row="10" column="0">
-      <widget class="QLabel" name="label_26">
+      <widget class="QLabel" name="uLabel_3">
        <property name="font">
         <font>
          <weight>75</weight>
@@ -331,7 +331,7 @@
       <widget class="QLineEdit" name="lineEdit_3"/>
      </item>
      <item row="14" column="0">
-      <widget class="QLabel" name="label_27">
+      <widget class="QLabel" name="uLabel_4">
        <property name="font">
         <font>
          <weight>75</weight>
@@ -439,7 +439,7 @@
       <widget class="QLineEdit" name="lineEdit_8"/>
      </item>
      <item row="20" column="0">
-      <widget class="QLabel" name="label_28">
+      <widget class="QLabel" name="uLabel_5">
        <property name="font">
         <font>
          <weight>75</weight>
@@ -471,7 +471,7 @@
       <widget class="QLineEdit" name="lineEdit_9"/>
      </item>
      <item row="22" column="0">
-      <widget class="QLabel" name="label_29">
+      <widget class="QLabel" name="uLabel_6">
        <property name="font">
         <font>
          <weight>75</weight>
@@ -520,19 +520,6 @@
      </item>
      <item row="24" column="1">
       <widget class="QLineEdit" name="lineEdit_11"/>
-     </item>
-     <item row="25" column="0">
-      <widget class="QLabel" name="label_30">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Kamerakalibrierung</string>
-       </property>
-      </widget>
      </item>
      <item row="26" column="0">
       <widget class="QLabel" name="label_18">
@@ -628,6 +615,38 @@
      </item>
      <item row="30" column="1">
       <widget class="QLineEdit" name="lineEdit_16"/>
+     </item>
+     <item row="31" column="1">
+      <widget class="QLineEdit" name="lineEdit_17"/>
+     </item>
+     <item row="25" column="0">
+      <widget class="QLabel" name="uLabel_7">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kamerakalibrierung</string>
+       </property>
+      </widget>
+     </item>
+     <item row="31" column="0">
+      <widget class="QLabel" name="label_23">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

@@ -7,8 +7,10 @@ PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NU
 
     init();
     stopStream = true;
-    fieldLoc = FieldLocator(LocatableObject((Form)landMarkShapeOrigin, landMarkColorOriginMin, landMarkColorOriginMax, landMarkSizeOrigin),
-                            LocatableObject((Form)landMarkShapeReference, landMarkColorReferenceMin, landMarkColorReferenceMax, landMarkSizeReference));
+    fieldLoc = FieldLocator(LocatableObject((Form)Settings::instance().landMarkShapeOrigin, Settings::instance().landMarkColorOriginMin,
+                                            Settings::instance().landMarkColorOriginMax, Settings::instance().landMarkSizeOrigin),
+                            LocatableObject((Form)Settings::instance().landMarkShapeReference, Settings::instance().landMarkColorReferenceMin,
+                                            Settings::instance().landMarkColorReferenceMax, Settings::instance().landMarkSizeReference));
 
     ips = new ObjectLocator();
 
@@ -132,7 +134,8 @@ void PlayerStream::run() {
             cropFView.filter(undistorted,cropped);
 
 
-            result = ips->getAllObjects(cropped, LocatableObject((Form) objectShape, objectColorMin, objectColorMax, objectSizeCM));
+            result = ips->getAllObjects(cropped, LocatableObject((Form) Settings::instance().objectShape, Settings::instance().objectColorMin,
+                                                                 Settings::instance().objectColorMax, Settings::instance().objectSizeCM));
 
             for (size_t i = 0; i < result.size(); i++){
                 circle(cropped, result[i].position, cropped.cols/100, Scalar(0, 0, 255), -1);
@@ -194,7 +197,7 @@ QImage PlayerStream::getCurrentImage() const {
 void PlayerStream::init(){
 
     delete mpt;
-    mpt = new MetricPositionTransformator(cameraParmFile,calibPanelHeightMM);
+    mpt = new MetricPositionTransformator(cameraParmFile,Settings::instance().calibPanelHeightMM);
     undist.readParam(cameraParmFile);
 
 }
