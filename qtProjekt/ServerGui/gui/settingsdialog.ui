@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsDialog</class>
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>482</width>
+    <height>451</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Einstellungen</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>410</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="SettingsScrollarea">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>481</width>
+     <height>391</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-522</y>
+      <width>463</width>
+      <height>911</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_3">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_23">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Landmarke: Ursprung</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_1">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="comboBox_1">
+       <item>
+        <property name="text">
+         <string>Dreieck</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Viereck</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="comboBox_2">
+       <item>
+        <property name="text">
+         <string>Schwarz</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Weiss</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="lineEdit_1"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_24">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Landmarken Referenz</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="comboBox_3">
+       <item>
+        <property name="text">
+         <string>Dreieck</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Viereck</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QComboBox" name="comboBox_4">
+       <item>
+        <property name="text">
+         <string>Schwarz</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Weiss</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="lineEdit_2"/>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_26">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Objektmarke:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QComboBox" name="comboBox_5">
+       <item>
+        <property name="text">
+         <string>Dreieck</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Viereck</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QComboBox" name="comboBox_6">
+       <item>
+        <property name="text">
+         <string>Schwarz</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Weiss</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QLineEdit" name="lineEdit_3"/>
+     </item>
+     <item row="14" column="0">
+      <widget class="QLabel" name="label_27">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kantenerkennung:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="1">
+      <widget class="QLineEdit" name="lineEdit_4"/>
+     </item>
+     <item row="16" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="1">
+      <widget class="QLineEdit" name="lineEdit_5"/>
+     </item>
+     <item row="17" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="1">
+      <widget class="QLineEdit" name="lineEdit_6"/>
+     </item>
+     <item row="18" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="1">
+      <widget class="QLineEdit" name="lineEdit_7"/>
+     </item>
+     <item row="19" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="19" column="1">
+      <widget class="QLineEdit" name="lineEdit_8"/>
+     </item>
+     <item row="20" column="0">
+      <widget class="QLabel" name="label_28">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kreiserkennung:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="21" column="0">
+      <widget class="QLabel" name="label_15">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="21" column="1">
+      <widget class="QLineEdit" name="lineEdit_9"/>
+     </item>
+     <item row="22" column="0">
+      <widget class="QLabel" name="label_29">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Gaussfilter:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="0">
+      <widget class="QLabel" name="label_16">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="23" column="1">
+      <widget class="QLineEdit" name="lineEdit_10"/>
+     </item>
+     <item row="24" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="24" column="1">
+      <widget class="QLineEdit" name="lineEdit_11"/>
+     </item>
+     <item row="25" column="0">
+      <widget class="QLabel" name="label_30">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kamerakalibrierung</string>
+       </property>
+      </widget>
+     </item>
+     <item row="26" column="0">
+      <widget class="QLabel" name="label_18">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="26" column="1">
+      <widget class="QLineEdit" name="lineEdit_12"/>
+     </item>
+     <item row="27" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="27" column="1">
+      <widget class="QLineEdit" name="lineEdit_13"/>
+     </item>
+     <item row="28" column="0">
+      <widget class="QLabel" name="label_20">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="28" column="1">
+      <widget class="QLineEdit" name="lineEdit_14"/>
+     </item>
+     <item row="29" column="0">
+      <widget class="QLabel" name="label_21">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="29" column="1">
+      <widget class="QLineEdit" name="lineEdit_15"/>
+     </item>
+     <item row="30" column="0">
+      <widget class="QLabel" name="label_22">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="30" column="1">
+      <widget class="QLineEdit" name="lineEdit_16"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>SettingsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>SettingsDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
