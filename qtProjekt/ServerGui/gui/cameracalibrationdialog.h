@@ -26,14 +26,13 @@ private slots:
 
     void updatePlayerStream(QImage img);
     //  void getExeptionForGui(eagleeye::EeException e);
-    void updateCalibSuccess(bool e);
+    void updateCalibSuccess(int e);
 
     void on_buttonTakePicture_clicked();
     void on_buttonStartCalib_2_clicked();
     void on_buttonStartStream_clicked();
 
     void setCntShowlabel(int _i);
-
 
 private:
 

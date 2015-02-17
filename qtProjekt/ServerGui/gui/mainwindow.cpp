@@ -97,11 +97,13 @@ void MainWindow::on_actionKamerakalibrierung_triggered() {
 
         cameraCalibrationDialog cameraDialog;
         cameraDialog.setModal(true);
+        myPlayer->stop();
         cameraDialog.exec();
 
         if(!foundCalib || cameraDialog.getCalibSuccess()) {
             foundCalib = cameraDialog.getCalibSuccess();
         }
+        myPlayer->play();
     }
 
 }

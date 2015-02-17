@@ -54,6 +54,7 @@ public:
 
     void start();
     void reset();
+    int getImagePointsSize()const;
 
     Mat getImgAt(int index);
 

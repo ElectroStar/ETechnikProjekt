@@ -111,7 +111,7 @@ void PlayerCalib::run() {
 
         case Finished:
 
-            emit sendCalibStatus(true);
+            emit sendCalibStatus(calibrator->getImagePointsSize());
             stopStream = true;
             break;
 

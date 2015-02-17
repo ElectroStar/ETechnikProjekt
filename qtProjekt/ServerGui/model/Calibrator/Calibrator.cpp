@@ -19,15 +19,19 @@ using namespace cv;
 # define _CRT_SECURE_NO_WARNINGS
 #endif
 
-Settings Calibrator::getS() const
-{
+Settings Calibrator::getS() const{
     return s;
 }
 
-void Calibrator::setS(const Settings &value)
-{
+void Calibrator::setS(const Settings &value){
     s = value;
 }
+
+int Calibrator::getImagePointsSize()const{
+    return imagePoints.size();
+}
+
+
 Calibrator::Calibrator(){
 
     const string inputSettingsFile = calibConfigFile;

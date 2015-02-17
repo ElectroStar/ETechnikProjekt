@@ -7,10 +7,10 @@ cameraCalibrationDialog::cameraCalibrationDialog(QWidget *parent) : QDialog(pare
 
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(picCntSend(int)),this, SLOT(setCntShowlabel(int)));
-  //  QObject::connect(myPlayer, SIGNAL(sendExceptionToGui(eagleeye::EeException)),this, SLOT(getExeptionForGui(eagleeye::EeException)));
-    QObject::connect(myPlayer, SIGNAL(sendCalibStatus(bool)),this, SLOT(updateCalibSuccess(bool)));
+    QObject::connect(myPlayer, SIGNAL(sendCalibStatus(int)),this, SLOT(updateCalibSuccess(int)));
 
-   // qRegisterMetaType<eagleeye::EeException>("eagleeye::EeException");
+    //QObject::connect(myPlayer, SIGNAL(sendExceptionToGui(eagleeye::EeException)),this, SLOT(getExeptionForGui(eagleeye::EeException)));
+    //qRegisterMetaType<eagleeye::EeException>("eagleeye::EeException");
 
     ui->setupUi(this);
     ui->buttonStartCalib_2->setEnabled(false);
@@ -54,9 +54,9 @@ void cameraCalibrationDialog::getExeptionForGui(eagleeye::EeException e) {
 
 }
 */
-void cameraCalibrationDialog::updateCalibSuccess(bool e) {
+void cameraCalibrationDialog::updateCalibSuccess(int e) {
 
-    calibSuccess=e;
+    calibSuccess=(bool)e;
     ErrorDialog err;
 
     if(!e) {
@@ -64,7 +64,8 @@ void cameraCalibrationDialog::updateCalibSuccess(bool e) {
         err.setWindowTitle("Error");
     }
     else {
-        err.setMsg("Kalibrierung erfolgreich!");
+
+        err.setMsg(QString("Kalibrierung erfolgreich! Es wurden ") + QString().setNum(e) + QString(" Bilder erkannt"));
         err.setWindowTitle("Erfolgreich");
     }
 
@@ -108,6 +109,8 @@ void cameraCalibrationDialog::on_buttonStartStream_clicked() {
  void cameraCalibrationDialog::setCntShowlabel(int _i) {
      ui->labelShowPicCnt->setText(QString("Aufnahmen: ")+QString().setNum(_i));
  }
+
+
  bool cameraCalibrationDialog::getCalibSuccess() const
  {
      return calibSuccess;
