@@ -45,9 +45,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>-555</y>
+      <y>-522</y>
       <width>463</width>
-      <height>944</height>
+      <height>911</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_3">
@@ -76,7 +76,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Form</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -106,7 +106,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Farbe</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -136,7 +136,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Laenge in Cm</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -168,7 +168,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Form</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -198,7 +198,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Farbe</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -228,7 +228,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Laenge in Cm</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -260,7 +260,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Form</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -290,7 +290,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Farbe</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -320,7 +320,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Laenge in Cm</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -352,7 +352,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>FIltergroesse</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -371,7 +371,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Apertur</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -390,7 +390,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Varianz</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -409,7 +409,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Schwellwert</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -428,7 +428,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Nachbarschaft</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -460,7 +460,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Schwellwert</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -492,7 +492,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Filtergroesse</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -511,7 +511,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Intensitaet</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -520,6 +520,19 @@
      </item>
      <item row="24" column="1">
       <widget class="QLineEdit" name="lineEdit_11"/>
+     </item>
+     <item row="25" column="0">
+      <widget class="QLabel" name="uLabel_7">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kamerakalibrierung</string>
+       </property>
+      </widget>
      </item>
      <item row="26" column="0">
       <widget class="QLabel" name="label_18">
@@ -530,7 +543,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Breite der Kalibrierplatte</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -549,7 +562,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Hoehe der Kalibrierplatte</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -568,7 +581,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Dicke der Kalibrierplatte (mm)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -587,7 +600,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Kaestchenbreite (mm)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -606,7 +619,7 @@
         </size>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>Anzahl Kalibrieraufnahmen</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -615,38 +628,6 @@
      </item>
      <item row="30" column="1">
       <widget class="QLineEdit" name="lineEdit_16"/>
-     </item>
-     <item row="31" column="1">
-      <widget class="QLineEdit" name="lineEdit_17"/>
-     </item>
-     <item row="25" column="0">
-      <widget class="QLabel" name="uLabel_7">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Kamerakalibrierung</string>
-       </property>
-      </widget>
-     </item>
-     <item row="31" column="0">
-      <widget class="QLabel" name="label_23">
-       <property name="minimumSize">
-        <size>
-         <width>250</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
      </item>
     </layout>
    </widget>
