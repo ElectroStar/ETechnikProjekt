@@ -1,11 +1,16 @@
-cmake_minimum_required (VERSION 2.6)
+#============================================================================
+# @file CMakeLists.txt
+# @brief CMake Liste zur Erstellung des Transmission-Service-Programms
+#
+# Diese CMake Liste ueberprueft ob die Abhaenigkeiten fuer das 
+# Transmission-Service-Programms vorhanden sind. Es kommpiliert das 
+# Transmission-Service-Programm und verknuepft es mit den entsprechenden 
+# Bibilotheken.
+#
+# @author : Sebastian Hollermann
+#============================================================================
+cmake_minimum_required (VERSION 2.8.11)
 project (Transmissionservice)
-# Versionsnummer
-set (Transmissionservice_VERSION_MAJOR 0)
-set (Transmissionservice_VERSION_MINOR 9)
- 
-# PThreads suchen, ist Vorraussetzung
-find_package(Threads REQUIRED)
  
 # Sourcen-Verzeichnis
 add_subdirectory(src)
