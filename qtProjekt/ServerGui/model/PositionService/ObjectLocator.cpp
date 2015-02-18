@@ -5,7 +5,7 @@
 //============================================================================
 
 #include "ObjectLocator.h"
-#include "Settings.h";
+#include "Settings.h"
 
 ObjectLocator::ObjectLocator() {
 
