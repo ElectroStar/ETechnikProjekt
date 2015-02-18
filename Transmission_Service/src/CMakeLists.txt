@@ -17,7 +17,4 @@ add_executable(transmissionservice ${serviceSrcs})
 
 target_link_libraries(transmissionservice ${CMAKE_THREAD_LIBS_INIT})
 
-install(TARGETS transmissionservice
-	RUNTIME DESTINATION ${PROJECT_SOURCE_DIR}/bin
-	LIBRARY DESTINATION ${PROJECT_SOURCE_DIR}/lib
-	ARCHIVE DESTINATION ${PROJECT_SOURCE_DIR}/lib/static)
+install(TARGETS transmissionservice DESTINATION ${Install_Dir})

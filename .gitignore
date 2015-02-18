@@ -8,3 +8,6 @@ build/
 
 #Binary-Verzeichnis ignorieren
 bin/
+
+#Doxygen Doc Verzeichnis ignorieren
+doc/
