@@ -12,6 +12,7 @@
 #include "cameracalibrationdialog.h"
 #include "errordialog.h"
 #include "infoeagleeyedialog.h"
+#include "gui/settingsdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -48,6 +49,8 @@ private slots:
     void on_buttonStartTracking_clicked();
 
     void on_checkBoxSend_clicked(bool checked);
+
+    void on_actionIP_EInstellungen_triggered();
 
 private:
     bool foundConfig;

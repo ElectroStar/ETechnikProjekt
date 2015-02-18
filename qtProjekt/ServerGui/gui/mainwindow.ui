@@ -143,7 +143,7 @@
    </property>
    <widget class="QMenu" name="menuHauptmenue">
     <property name="title">
-     <string>Einstellungen</string>
+     <string>Bearbeiten</string>
     </property>
     <addaction name="actionIP_EInstellungen"/>
     <addaction name="actionKamerakalibrierung"/>
@@ -160,7 +160,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionIP_EInstellungen">
    <property name="text">
-    <string>IP-EInstellungen</string>
+    <string>Einstellungen</string>
    </property>
   </action>
   <action name="actionKamerakalibrierung">

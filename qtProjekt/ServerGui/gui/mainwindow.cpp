@@ -178,3 +178,28 @@ void MainWindow::on_checkBoxSend_clicked(bool checked) {
     }
 
 }
+
+void MainWindow::on_actionIP_EInstellungen_triggered() {
+
+    if(!foundConfig) {
+        ErrorDialog err;
+        err.setMsg("Konnte Konfigurationsdatei nicht finden!");
+        err.setModal(true);
+        err.exec();
+    }
+
+    else {
+
+        SettingsDialog settingsDialog;
+        settingsDialog.setModal(true);
+        myPlayer->stop();
+
+        settingsDialog.exec();
+
+        myPlayer->setMode(PlayerStream::Init);
+        ui->buttonStarteStream->setText(tr("Starte Stream"));
+        ui->buttonFindLandMark->setEnabled(false);
+        ui->checkBoxSend->setEnabled(false);
+        ui->buttonStartTracking->setEnabled(false);
+    }
+}
