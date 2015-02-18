@@ -104,8 +104,8 @@ void PlayerStream::run() {
 
 
             for (size_t i = 0; i < boundaries.size(); i++){
-                circle(undistorted, boundaries[i].position, boundaries[i].edgeLengthPx/7, Scalar(0, 0, 255),-1);
-                circle(undistorted, boundaries[i].position,  boundaries[i].edgeLengthPx/14, Scalar(0, 255, 0),-1);
+                circle(undistorted, boundaries[i].position, boundaries[i].edgeLengthPx, Scalar(0, 0, 255),-1);
+                circle(undistorted, boundaries[i].position,  boundaries[i].edgeLengthPx/2, Scalar(0, 255, 0),-1);
             }
 
             if (boundaries.size() == 2){
@@ -141,26 +141,41 @@ void PlayerStream::run() {
             result = ips->getAllObjects(cropped, objectTemp);
 
             for (size_t i = 0; i < result.size(); i++){
-                circle(cropped, result[i].position, cropped.cols/100, Scalar(0, 0, 255), -1);
-                circle(cropped, result[i].position, cropped.cols/150, Scalar(255, 0, 0), -1);
+                circle(cropped, result[i].position, boundaries[i].edgeLengthPx, Scalar(0, 0, 255), -1);
+                circle(cropped, result[i].position, boundaries[i].edgeLengthPx/2, Scalar(255, 0, 0), -1);
             }
 
             if(result.size()==0){
 
-                emit newCord(QString("-"), QString("-"));
+                emit newCord(QString(""), QString(""));
             }
             else {
 
 
+                if(boundaries[0].position.x < boundaries[1].position.x) {
+                    result[0].position.x+=boundaries[0].position.x;
+                }
+                else {
+                    result[0].position.x+=boundaries[1].position.x;
+                }
+
+                if(boundaries[0].position.y < boundaries[1].position.y) {
+                    result[0].position.y+=boundaries[0].position.y;
+                }
+                else {
+                     result[0].position.y+=boundaries[1].position.y;
+                }
+
                 Mat temp = mpt->transform(boundaries[0],result[0]);
-                double x = temp.at<double>(0,0);
-                double y = temp.at<double>(1,0);
+                int x = temp.at<double>(0,0)/10;
+                int y = temp.at<double>(1,0)/10;
 
                 if(send) {
                     tm->transmit(Point2d(x,y));
                 }
 
-                emit newCord(QString().setNum(x), QString().setNum(y));
+                emit newCord(QString().setNum(x) + QString(" cm"), QString().setNum(y)+ QString(" cm"));
+               // emit newCord(QString().setNum(result[0].position.x), QString().setNum(result[0].position.y));
             }
 
             Converter::convertMatToQImage(cropped,img);

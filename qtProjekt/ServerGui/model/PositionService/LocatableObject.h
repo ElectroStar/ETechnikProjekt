@@ -27,7 +27,7 @@ public:
 	int colorMin;
 	int colorMax;
 	Form form;
-	float sizeInCm;
+    double sizeInCm;
 
 public:
 
@@ -41,7 +41,7 @@ public:
 	*	@param[in] _colorMax 	Obere Farbkante (8-Bit)
 	*  	@param[in] _sizeInCm 	Groesse des realen Objekts
 	*/
-	LocatableObject(Form _form, int _colorMin, int _colorMax, float _sizeInCm);
+    LocatableObject(Form _form, int _colorMin, int _colorMax, double _sizeInCm);
 	
 	/** Destruktor.
 	*/

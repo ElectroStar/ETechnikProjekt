@@ -10,7 +10,7 @@ LocatableObject::LocatableObject(){
 
 }
 
-LocatableObject::LocatableObject(Form _form, int _colorMin, int _colorMax, float _sizeInCm) {
+LocatableObject::LocatableObject(Form _form, int _colorMin, int _colorMax, double _sizeInCm) {
 	
 	form = _form;
 	colorMin = _colorMin;

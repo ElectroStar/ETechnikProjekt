@@ -23,8 +23,8 @@ class LocatedObject {
 
 public:
 	
-	Point position;
-	int edgeLengthPx;
+    Point2d position;
+    double edgeLengthPx;
 	LocatableObject spec;
 
 public:
@@ -38,7 +38,7 @@ public:
 	*  	@param[in] _length 	Laenge der Objektkante
 	*  	@param[in] _spec 	Objektspezifikaion
 	*/
-	LocatedObject(Point _p, int _length, LocatableObject _spec);
+    LocatedObject(Point2d _p, double _length, LocatableObject _spec);
 	
 	/** Destruktor.
 	*/

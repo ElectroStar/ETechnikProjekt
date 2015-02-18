@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <opencv_storage>
 <Settings>
-  <landMarkShapeOrigin>3</landMarkShapeOrigin>
-  <landMarkShapeReference>3</landMarkShapeReference>
+  <landMarkShapeOrigin>4</landMarkShapeOrigin>
+  <landMarkShapeReference>4</landMarkShapeReference>
   <landMarkColorOriginMin>128</landMarkColorOriginMin>
   <landMarkColorOriginMax>255</landMarkColorOriginMax>
   <landMarkColorReferenceMin>0</landMarkColorReferenceMin>
   <landMarkColorReferenceMax>127</landMarkColorReferenceMax>
-  <landMarkSizeOrigin>10</landMarkSizeOrigin>
-  <landMarkSizeReference>10</landMarkSizeReference>
+  <landMarkSizeOrigin>8</landMarkSizeOrigin>
+  <landMarkSizeReference>8</landMarkSizeReference>
   <objectShape>3</objectShape>
   <objectColorMin>0</objectColorMin>
   <objectColorMax>127</objectColorMax>
-  <objectSizeCM>10</objectSizeCM>
+  <objectSizeCM>8</objectSizeCM>
   <harrisCornerBlockSize>4</harrisCornerBlockSize>
   <harrisCornerApertureSize>3</harrisCornerApertureSize>
   <harrisCornerVariance>1.0000000149011612e-01</harrisCornerVariance>
@@ -29,7 +29,7 @@
   <Calibrate_FixAspectRatio>1.</Calibrate_FixAspectRatio>
   <Write_DetectedFeaturePoints>1</Write_DetectedFeaturePoints>
   <Write_extrinsicParameters>1</Write_extrinsicParameters>
-  <calibPanelHeightMM>6</calibPanelHeightMM>
+  <calibPanelHeightMM>23</calibPanelHeightMM>
   <Write_outputFileName>out_camera_data.xml</Write_outputFileName>
   <Calibrate_AssumeZeroTangentialDistortion>1</Calibrate_AssumeZeroTangentialDistortion>
   <Calibrate_FixPrincipalPointAtTheCenter>1</Calibrate_FixPrincipalPointAtTheCenter>

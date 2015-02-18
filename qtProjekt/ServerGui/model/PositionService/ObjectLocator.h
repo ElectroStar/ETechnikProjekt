@@ -18,7 +18,7 @@ class ObjectLocator : public IPositionService {
 private:
 
 	//Gefundene Kreise und Kanten
-	vector<Point> cornerP;
+    vector<Point2d> cornerP;
 	vector<Vec3f> circles;
 
 public:

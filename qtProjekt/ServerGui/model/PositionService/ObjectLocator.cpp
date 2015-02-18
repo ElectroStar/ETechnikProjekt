@@ -30,7 +30,7 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat &_src, LocatableObject &_
                  Settings::instance().gaussianStandardDeviation, Settings::instance().gaussianStandardDeviation);
 
 	//Hough Transformation fuer Kreise anwenden
-    HoughCircles(src_gray_blurred, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows / 20, 200, Settings::instance().houghCircleThreshold, 0, 0);
+    HoughCircles(src_gray_blurred, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows / 10, 200, Settings::instance().houghCircleThreshold, 0, 0);
 
 	//Die gefundenen Kreise auswerten
     if (circles.size() > 0){
@@ -102,7 +102,7 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat &_src, LocatableObject &_
 
 						if (foundNew){
 
-							cornerP.push_back(Point(k, j));
+                            cornerP.push_back(Point2d(k, j));
 						}
 					}
 				}
@@ -112,7 +112,7 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat &_src, LocatableObject &_
 			if (cornerP.size() == _spec.form){
 
 				//Offset wieder draufaddieren, Zentrum berechnen
-				Point center(0, 0);
+                Point2d center(0, 0);
 				for (unsigned int m = 0; m < cornerP.size(); m++){
 
 					cornerP[m].x += referencePx;
@@ -131,10 +131,10 @@ vector<LocatedObject> ObjectLocator::getAllObjects(Mat &_src, LocatableObject &_
 
 					//Laenge einer Aussenkante berechnen (Euklid)
 					//Funktioniert fuer Dreiecke und Vierecke
-					int distance = (int)sqrt(pow(cornerP[0].x - cornerP[1].x, 2) + pow(cornerP[0].y - cornerP[1].y, 2));
+                    double distance = sqrt(pow(cornerP[0].x - cornerP[1].x, 2) + pow(cornerP[0].y - cornerP[1].y, 2));
 
 					//Gefundenes Objekt speichern
-					objects.push_back(LocatedObject(Point(center.x, center.y), distance, _spec));
+                    objects.push_back(LocatedObject(Point2d(center.x, center.y), distance, _spec));
 				}
 
 			}

@@ -10,7 +10,7 @@ LocatedObject::LocatedObject() {
 
 }
 
-LocatedObject::LocatedObject(Point _p, int _length, LocatableObject _spec) {
+LocatedObject::LocatedObject(Point2d _p, double _length, LocatableObject _spec) {
 	
 	position = _p;
 	edgeLengthPx = _length;
