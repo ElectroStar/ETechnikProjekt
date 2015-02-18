@@ -13,7 +13,6 @@ Um die Programme des Projektes zu compilieren und zu installieren müssen Sie au
  * `mkdir build`
  * `cd build`
  * `cmake ../`
- * `make`
  * `make install`
  
 Wenn Sie nur ein bestimmtes Programm compilieren wollen müssen Sie einfach eine oder mehrere der Optionen
