@@ -3,14 +3,14 @@
 
 #include <iostream>
 
-PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NULL),send(false), mode(Idle) {
+PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NULL), send(false), mode(Idle) {
 
     init();
     stopStream = true;
-    fieldLoc = FieldLocator(LocatableObject((Form)landMarkShapeOrigin, landMarkColorOriginMin, landMarkColorOriginMax, landMarkSizeOrigin),
-                            LocatableObject((Form)landMarkShapeReference, landMarkColorReferenceMin, landMarkColorReferenceMax, landMarkSizeReference));
 
     ips = new ObjectLocator();
+
+    fieldLoc = FieldLocator(ips);
 
     //tm = new Transmitter("Adress", 3478);
 
@@ -65,16 +65,16 @@ void PlayerStream::run() {
 
     while(!stopStream) {
 
-        switch(mode) {
 
-        case Init:
+
+        if(mode == Init){
 
             init();
             mode = Idle;
 
-            break;
+        }
 
-        case Idle:
+        else if(mode == Idle){
 
             if (!capture.read(frame)) {
                 stopStream = true;
@@ -85,9 +85,9 @@ void PlayerStream::run() {
             Converter::convertMatToQImage(undistorted,img);
             emit processedImage(img);
 
-            break;
+         }
 
-        case FindLandMark:
+        else if(mode == FindLandMark){
 
             emit foundLandMarks(false);
 
@@ -97,11 +97,15 @@ void PlayerStream::run() {
 
             undist.filter(frame, undistorted);
 
-            boundaries = fieldLoc.locateField(undistorted);
+            LocatableObject originTemp((Form) Settings::instance().landMarkShapeOrigin, Settings::instance().landMarkColorOriginMin,Settings::instance().landMarkColorOriginMax, Settings::instance().landMarkSizeOrigin);
+            LocatableObject referenceTemp((Form) Settings::instance().landMarkShapeReference, Settings::instance().landMarkColorReferenceMin,Settings::instance().landMarkColorReferenceMax, Settings::instance().landMarkSizeReference);
+
+            boundaries = fieldLoc.locateField(undistorted,originTemp,referenceTemp);
+
 
             for (size_t i = 0; i < boundaries.size(); i++){
-                circle(undistorted, boundaries[i].position, undistorted.cols/100, Scalar(0, 0, 255));
-                circle(undistorted, boundaries[i].position, undistorted.cols/150, Scalar(0, 255, 0),-1);
+                circle(undistorted, boundaries[i].position, boundaries[i].edgeLengthPx/7, Scalar(0, 0, 255),-1);
+                circle(undistorted, boundaries[i].position,  boundaries[i].edgeLengthPx/14, Scalar(0, 255, 0),-1);
             }
 
             if (boundaries.size() == 2){
@@ -111,14 +115,16 @@ void PlayerStream::run() {
             Converter::convertMatToQImage(undistorted,img);
             emit processedImage(img);
 
-            break;
+        }
 
-        case FoundLandMark:
+        else if(mode == FoundLandMark){
             emit foundLandMarks(true);
-            break;
+         }
 
-        case Tracking:
+        else if(mode == Tracking){
 
+            LocatableObject objectTemp((Form) Settings::instance().objectShape, Settings::instance().objectColorMin,
+                                                                             Settings::instance().objectColorMax, Settings::instance().objectSizeCM);
             if (!capture.read(frame)) {
                 stopStream = true;
             }
@@ -132,7 +138,7 @@ void PlayerStream::run() {
             cropFView.filter(undistorted,cropped);
 
 
-            result = ips->getAllObjects(cropped, LocatableObject((Form) objectShape, objectColorMin, objectColorMax, objectSizeCM));
+            result = ips->getAllObjects(cropped, objectTemp);
 
             for (size_t i = 0; i < result.size(); i++){
                 circle(cropped, result[i].position, cropped.cols/100, Scalar(0, 0, 255), -1);
@@ -160,9 +166,9 @@ void PlayerStream::run() {
             Converter::convertMatToQImage(cropped,img);
             emit processedImage(img);
 
-            break;
-
         }
+
+
 
         this->msleep(delay);
     }
@@ -194,7 +200,7 @@ QImage PlayerStream::getCurrentImage() const {
 void PlayerStream::init(){
 
     delete mpt;
-    mpt = new MetricPositionTransformator(cameraParmFile,calibPanelHeightMM);
+    mpt = new MetricPositionTransformator(cameraParmFile,Settings::instance().calibPanelHeightMM);
     undist.readParam(cameraParmFile);
 
 }

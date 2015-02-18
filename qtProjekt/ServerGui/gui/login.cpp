@@ -32,13 +32,21 @@ void Login::on_pushButton_clicked() {
     }
     else {
 
+        w->setFoundCalib(checkFile(cameraParmFile));
+
+        if(checkFile(calibConfigFile)) {
+            w->setFoundConfig(true);
+            Settings::instance().readSettings();
+
+        }
+        else {
+            w->setFoundConfig(false);
+        }
+
         w->setAttribute(Qt::WA_DeleteOnClose, true);
 
         uint16_t x = this->x();
         uint16_t y = this->y();
-
-        w->setFoundCalib(checkFile(cameraParmFile));
-        w->setFoundConfig(checkFile(calibConfigFile));
 
         w->move(x,y);
         w->show();

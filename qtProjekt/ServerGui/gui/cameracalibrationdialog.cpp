@@ -89,7 +89,7 @@ cameraCalibrationDialog::~cameraCalibrationDialog() {
 void cameraCalibrationDialog::on_buttonTakePicture_clicked() {
     myPlayer->setTakePic(true);
 
-    if(myPlayer->getPicCnt() >= myPlayer->getSettings().nrFrames-1)
+    if(myPlayer->getPicCnt() >= Settings::instance().nrFrames-1)
     {
         ui->buttonStartCalib_2->setEnabled(true);
     }

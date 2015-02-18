@@ -9,7 +9,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <exception>
-#include "config.h"
+#include "Settings.h"
 #include "Calibrator.h"
 
 using namespace std;
@@ -19,43 +19,13 @@ using namespace cv;
 # define _CRT_SECURE_NO_WARNINGS
 #endif
 
-Settings Calibrator::getS() const{
-    return s;
-}
-
-void Calibrator::setS(const Settings &value){
-    s = value;
-}
 
 int Calibrator::getImagePointsSize()const{
     return imagePoints.size();
 }
 
 
-Calibrator::Calibrator(){
-
-    const string inputSettingsFile = calibConfigFile;
-
-    // Read the settings
-    FileStorage fs(inputSettingsFile, FileStorage::READ);
-
-    if (!fs.isOpened())
-    {
-        throw  eagleeye::EeException(eagleeye::EeException::ERROR_OPEN_CONFIGURATIONFILE);
-    }
-
-    s.readSettings(fs["Settings"]);
-
-    // close Settings file
-    fs.release();
-
-    //Check input data
-    if (!s.goodInput)
-    {
-        throw eagleeye::EeException(eagleeye::EeException::INVALID_CONFIGURATIONFILE);
-
-    }
-}
+Calibrator::Calibrator(){}
 
 void Calibrator::takePicture(Mat &_currentImage) {
 
@@ -64,7 +34,7 @@ void Calibrator::takePicture(Mat &_currentImage) {
 }
 
 void Calibrator::start() {
-    runCalibrationAndSave(s, imageSize, cameraMatrix, distCoeffs, imagePoints);
+    runCalibrationAndSave(Settings::instance(), imageSize, cameraMatrix, distCoeffs, imagePoints);
 }
 
 void Calibrator::reset() {
@@ -86,13 +56,13 @@ bool Calibrator::runCalibrationAndSave(Settings& s, Size imageSize, Mat&  camera
 	vector<float> reprojErrs;
 	double totalAvgErr = 0;
 
-	bool ok = runCalibration(s, imageSize, cameraMatrix, distCoeffs, imagePoints, rvecs, tvecs,
+    bool ok = runCalibration(Settings::instance(), imageSize, cameraMatrix, distCoeffs, imagePoints, rvecs, tvecs,
 		reprojErrs, totalAvgErr);
 	cout << (ok ? "Calibration succeeded" : "Calibration failed")
 		<< ". avg re projection error = " << totalAvgErr;
 
 	if (ok)
-		saveCameraParams(s, imageSize, cameraMatrix, distCoeffs, rvecs, tvecs, reprojErrs,
+        saveCameraParams(Settings::instance(), imageSize, cameraMatrix, distCoeffs, rvecs, tvecs, reprojErrs,
 		imagePoints, totalAvgErr);
 
 	return ok;
@@ -263,10 +233,10 @@ void Calibrator::process(Mat &view){
     bool found;
 
 
-    switch (s.calibrationPattern) // Find feature points on the input format
+    switch (Settings::instance().calibrationPattern) // Find feature points on the input format
     {
     case Settings::CHESSBOARD:
-        found = findChessboardCorners(view, s.boardSize, pointBuf,
+        found = findChessboardCorners(view, Settings::instance().boardSize, pointBuf,
             CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FAST_CHECK | CV_CALIB_CB_NORMALIZE_IMAGE);
         break;
 
@@ -279,7 +249,7 @@ void Calibrator::process(Mat &view){
     if (found)
     {
         // improve the found corners' coordinate accuracy for chessboard
-        if (s.calibrationPattern == Settings::CHESSBOARD)
+        if (Settings::instance().calibrationPattern == Settings::CHESSBOARD)
         {
             Mat viewGray;
             cvtColor(view, viewGray, COLOR_BGR2GRAY);
@@ -291,7 +261,7 @@ void Calibrator::process(Mat &view){
         imagePoints.push_back(pointBuf);
 
         // Draw the corners.
-        drawChessboardCorners(view, s.boardSize, Mat(pointBuf), found);
+        drawChessboardCorners(view, Settings::instance().boardSize, Mat(pointBuf), found);
     }
 }
 

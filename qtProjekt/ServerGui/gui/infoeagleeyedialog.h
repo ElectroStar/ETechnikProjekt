@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "config.h"
+#include "Settings.h"
 
 namespace Ui {
 class InfoEagleEyeDialog;

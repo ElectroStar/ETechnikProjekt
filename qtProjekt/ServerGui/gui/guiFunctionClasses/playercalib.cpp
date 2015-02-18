@@ -142,9 +142,3 @@ void PlayerCalib::msleep(int ms) {
     struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
     nanosleep(&ts, NULL);
 }
-
-
-Settings PlayerCalib::getSettings() const{
-    return calibrator->getS();
-}
-
