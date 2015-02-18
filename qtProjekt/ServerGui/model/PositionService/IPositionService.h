@@ -28,7 +28,7 @@ public:
 	*  	@param[in] _spec		Objektspezifikation
 	*  	@return					Alle erkannten Objekte des Typs
 	*/
-	virtual vector<LocatedObject> getAllObjects(Mat _src, LocatableObject _spec) = 0;
+    virtual vector<LocatedObject> getAllObjects(Mat &_src, LocatableObject &_spec) = 0;
 
 	/**
 	* Destruktor

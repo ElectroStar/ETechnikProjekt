@@ -25,28 +25,26 @@ class FieldLocator{
 
 private:
 
-	//Beschreibung der gesuchten Landmarken
-	LocatableObject origin;
-	LocatableObject reference;
-	IPositionService* ps;
+    IPositionService* ips;
 
 public:
 
-	/** Konstruktor.
+    /** Konstruktor.
+    */
+    FieldLocator();
+
+    /** Erweiterter Konstruktor.
+    *  	@param[in] _ips 		ObjectLocator
 	*/
-	FieldLocator();
-	
-	/** Erweiterter Konstruktor.
-	*  	@param[in] _origin 		Landmarke(Ursprung)
-	*  	@param[in] _reference 	Landmarke(Referenz)
-	*/
-	FieldLocator(LocatableObject _origin, LocatableObject _reference);
+    FieldLocator(IPositionService* _ips);
 	
 	/** Methode zur Lokalisierung der Landmarken.
 	*  	@param[in] _src 		Ausgangsbild
+    * 	@param[in] _origin 		Landmarke(Ursprung)
+    *  	@param[in] _reference 	Landmarke(Referenz)
 	*  	@return 				Gefundene Objekte gemaess Muster
 	*/
-    vector<LocatedObject> locateField(Mat _src);
+    vector<LocatedObject> locateField(Mat &_src, LocatableObject &_origin, LocatableObject &_reference);
 
 };
 

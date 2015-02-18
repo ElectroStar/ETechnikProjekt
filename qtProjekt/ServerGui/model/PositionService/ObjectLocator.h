@@ -32,7 +32,7 @@ public:
 	*  	@param[in] _spec 	Objektspezifikation
 	*  	@return 			Erkannte Objekte
 	*/
-	vector<LocatedObject> getAllObjects(Mat _src, LocatableObject _spec);
+    vector<LocatedObject> getAllObjects(Mat &_src, LocatableObject &_spec);
 	
 	/** Destruktor.
 	*/

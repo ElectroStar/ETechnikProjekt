@@ -5,7 +5,7 @@
 //============================================================================
 
 #include "ObjectLocator.h"
-#include "config.h"
+#include "Settings.h";
 
 ObjectLocator::ObjectLocator() {
 
@@ -15,7 +15,7 @@ ObjectLocator::~ObjectLocator(){
 
 }
 
-vector<LocatedObject> ObjectLocator::getAllObjects(Mat _src, LocatableObject _spec) {
+vector<LocatedObject> ObjectLocator::getAllObjects(Mat &_src, LocatableObject &_spec) {
 
 	//Ergebnisvektor anlegen
 	vector<LocatedObject> objects;

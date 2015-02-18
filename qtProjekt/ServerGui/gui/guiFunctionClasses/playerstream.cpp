@@ -3,16 +3,14 @@
 
 #include <iostream>
 
-PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NULL),send(false), mode(Idle) {
+PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NULL), send(false), mode(Idle) {
 
     init();
     stopStream = true;
-    fieldLoc = FieldLocator(LocatableObject((Form)Settings::instance().landMarkShapeOrigin, Settings::instance().landMarkColorOriginMin,
-                                            Settings::instance().landMarkColorOriginMax, Settings::instance().landMarkSizeOrigin),
-                            LocatableObject((Form)Settings::instance().landMarkShapeReference, Settings::instance().landMarkColorReferenceMin,
-                                            Settings::instance().landMarkColorReferenceMax, Settings::instance().landMarkSizeReference));
 
     ips = new ObjectLocator();
+
+    fieldLoc = FieldLocator(ips);
 
     //tm = new Transmitter("Adress", 3478);
 
@@ -99,7 +97,10 @@ void PlayerStream::run() {
 
             undist.filter(frame, undistorted);
 
-            boundaries = fieldLoc.locateField(undistorted);
+            boundaries = fieldLoc.locateField(undistorted, LocatableObject((Form) Settings::instance().landMarkShapeOrigin, Settings::instance().landMarkColorOriginMin,
+                                                                          Settings::instance().landMarkColorOriginMax, Settings::instance().landMarkSizeOrigin),
+                                              LocatableObject((Form) Settings::instance().landMarkShapeReference, Settings::instance().landMarkColorReferenceMin,
+                                                                Settings::instance().landMarkColorReferenceMax, Settings::instance().landMarkSizeReference));
 
             for (size_t i = 0; i < boundaries.size(); i++){
                 circle(undistorted, boundaries[i].position, undistorted.cols/100, Scalar(0, 0, 255));
