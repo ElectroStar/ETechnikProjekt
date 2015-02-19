@@ -22,6 +22,7 @@
 #include "model/FieldLocator/FieldLocator.h"
 #include "model/PositionService/MetricPositionTransformator.h"
 #include "model/Transmitter/Transmitter.h"
+#include "model/Transmitter/PosData.h"
 
 
 using namespace cv;

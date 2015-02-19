@@ -58,6 +58,7 @@ void TCPReceiver::run()
 				} catch (PositioningDataException& e) {
 					continue;
 				}
+				//cout << "Datensatz gefunden" << endl;
 			}
 		}
 

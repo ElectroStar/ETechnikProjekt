@@ -1,5 +1,7 @@
 
 #include "playerstream.h"
+#include "model/Transmitter/ConnectionException.h"
+#include "model/Transmitter/TransmittingException.h"
 
 #include <iostream>
 
@@ -12,7 +14,14 @@ PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NU
 
     fieldLoc = FieldLocator(ips);
 
-    //tm = new Transmitter("Adress", 3478);
+    tm = NULL;
+
+    /*
+    try {
+        tm = new Transmitter("127.0.0.1", 50728);
+    } catch (ConnectionException& e) {
+
+    }*/
 
 }
 
@@ -167,11 +176,41 @@ void PlayerStream::run() {
                 }
 
                 Mat temp = mpt->transform(boundaries[0],result[0]);
-                int x = temp.at<double>(0,0)/10;
-                int y = temp.at<double>(1,0)/10;
+                double x = temp.at<double>(0,0)/10;
+                double y = temp.at<double>(1,0)/10;
+                double z = temp.at<double>(2,0)/10;
 
+                Mat temp2 = mpt->transform(boundaries[0], boundaries[1]);
+                double x2 = temp2.at<double>(0,0)/10;
+                double y2 = temp2.at<double>(1,0)/10;
+                if( x2 < 0)
+                    x2 *= -1;
+                if( y2 < 0)
+                    y2 *= -1;
+
+                PosData* pos = new PosData();
+                pos->setX(x);
+                pos->setY(y);
+                pos->setZ(z);
+                pos->setX2(x2);
+                pos->setY2(y2);
                 if(send) {
-                    tm->transmit(Point2d(x,y));
+                    if(tm == NULL) {
+                        try {
+                            tm = new Transmitter("127.0.0.1", 50728);
+                            tm->transmit(*pos);
+                        } catch (ConnectionException& e) {
+
+                        } catch (TransmittingException& e) {
+                            if(tm != NULL)
+                            delete tm;
+
+                            tm = NULL;
+                        }
+                    } else
+                        tm->transmit(*pos);
+
+                    delete pos;
                 }
 
                 emit newCord(QString().setNum(x) + QString(" cm"), QString().setNum(y)+ QString(" cm"));

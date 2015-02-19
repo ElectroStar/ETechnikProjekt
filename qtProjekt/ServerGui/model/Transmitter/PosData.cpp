@@ -11,19 +11,65 @@
 #include <ctime>
 #include <sys/time.h>
 #include <stdlib.h>
+#include <algorithm>
 
 /**
  * Konstruktor
  */
+
+void PosData::setDate(long date)
+{
+    _date = date;
+}
+
+void PosData::setCoef(double coef)
+{
+    _coef = coef;
+}
+
+void PosData::setY2(double y2)
+{
+    _y2 = y2;
+}
+
+void PosData::setX2(double x2)
+{
+    _x2 = x2;
+}
+
+void PosData::setMr(const string &mr)
+{
+    _mr = mr;
+}
+
+void PosData::setError(double error)
+{
+    _error = error;
+}
+
+void PosData::setZ(double z)
+{
+    _z = z;
+}
+
+void PosData::setY(double y)
+{
+    _y = y;
+}
+
+void PosData::setX(double x)
+{
+    _x = x;
+}
 PosData::PosData() {
-	_x = 0;
-	_y = 0;
-	_z = 0;
-	_error = 0;
-	_mr = "xx";
-	_x2 = 0;
-	_y2 = 0;
-	_coef = 0;
+    _x = 0;
+    _y = 0;
+    _z = 0;
+    _error = 0;
+    _mr = "xx";
+    _x2 = 0;
+    _y2 = 0;
+    _coef = 0;
 	timeval zeit;
 	gettimeofday(&zeit, 0);
 	_date = zeit.tv_sec * 1000 + zeit.tv_usec / 1000;
@@ -110,9 +156,12 @@ PosData::PosData(string data) {
 
 PosData::operator string() const {
 	char buffer[512];
-	sprintf(buffer, "$%f,%f,%f,%f,%s,%f,%f,%f,%ld\r\n", _x, _y, _z, _error, _mr.c_str(),
+    std::setlocale(LC_NUMERIC, "en_US");
+    sprintf(buffer, "$%f;%f;%f;%f;%s;%f;%f;%f;%ld\r\n", _x, _y, _z, _error, _mr.c_str(),
 			_x2, _y2, _coef, _date);
 	string value(buffer);
+    std::replace( value.begin(), value.end(), ',', '.');
+    std::replace( value.begin(), value.end(), ';', ',');
 
 	return value;
 }

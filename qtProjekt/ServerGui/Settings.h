@@ -16,9 +16,9 @@ using namespace std;
 using namespace cv;
 
 #define currentVersion "1.3.3.7"
-#define cameraParmFile "/home/user/ServerGui/configFiles/out_camera_data.xml"
-#define calibConfigFile "/home/user/ServerGui/configFiles/eagleEyeParams.xml"
-#define cameraAdress "http://192.168.0.1:8080/?action=stream&amp;type=.mjpg"
+#define cameraParmFile "configFiles/out_camera_data.xml"
+#define calibConfigFile "configFiles/eagleEyeParams.xml"
+#define cameraAdress "http://192.168.150.6:8080/?action=stream&amp;type=.mjpg"
 
 
 #ifndef SETTINGS_H

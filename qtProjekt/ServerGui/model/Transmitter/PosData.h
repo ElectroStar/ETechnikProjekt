@@ -106,6 +106,15 @@ public:
 	 * Operator zum Umwandeln des Positionsdatensatzen einen String
 	 */
 	operator string() const;
+    void setDate(long date);
+    void setCoef(double coef);
+    void setY2(double y2);
+    void setX2(double x2);
+    void setMr(const string &mr);
+    void setError(double error);
+    void setZ(double z);
+    void setY(double y);
+    void setX(double x);
 };
 
 #endif /* POSDATA_H_ */
