@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <opencv_storage>
 <Settings>
-  <landMarkShapeOrigin>4</landMarkShapeOrigin>
+  <landMarkShapeOrigin>3</landMarkShapeOrigin>
   <landMarkShapeReference>4</landMarkShapeReference>
   <landMarkColorOriginMin>128</landMarkColorOriginMin>
   <landMarkColorOriginMax>255</landMarkColorOriginMax>
-  <landMarkColorReferenceMin>0</landMarkColorReferenceMin>
-  <landMarkColorReferenceMax>127</landMarkColorReferenceMax>
+  <landMarkColorReferenceMin>128</landMarkColorReferenceMin>
+  <landMarkColorReferenceMax>255</landMarkColorReferenceMax>
   <landMarkSizeOrigin>8</landMarkSizeOrigin>
   <landMarkSizeReference>8</landMarkSizeReference>
   <objectShape>3</objectShape>
@@ -15,9 +15,9 @@
   <objectSizeCM>8</objectSizeCM>
   <harrisCornerBlockSize>4</harrisCornerBlockSize>
   <harrisCornerApertureSize>3</harrisCornerApertureSize>
-  <harrisCornerVariance>1.0000000149011612e-01</harrisCornerVariance>
+  <harrisCornerVariance>5.0000000745058060e-02</harrisCornerVariance>
   <harrisCornerThresh>180</harrisCornerThresh>
-  <harrisCornerMergeArea>3</harrisCornerMergeArea>
+  <harrisCornerMergeArea>5</harrisCornerMergeArea>
   <houghCircleThreshold>50</houghCircleThreshold>
   <gaussianStandardDeviation>3</gaussianStandardDeviation>
   <gaussianSize>9</gaussianSize>

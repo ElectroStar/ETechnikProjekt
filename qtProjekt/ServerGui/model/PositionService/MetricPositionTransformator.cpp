@@ -49,7 +49,9 @@ cv::Mat MetricPositionTransformator::transform(const LocatedObject &origin, cons
     //Umrechnung in Weltkoordinaten
     Pw = Rz.t() * (Pk - t);
 
-    //TODO: ggf. Z-Komponente durch H ersetzen
+    //Y an Bildkooardinatensystem anpassen (invertieren)
+    Pw.at<double>(1, 0) = -Pw.at<double>(1, 0);
+
     return Pw;
 }
 
