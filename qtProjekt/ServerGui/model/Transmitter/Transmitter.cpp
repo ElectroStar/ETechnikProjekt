@@ -42,23 +42,6 @@ Transmitter::~Transmitter() {
 
 /**
  * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
- * @param	Position
- */
-void Transmitter::transmit(Point2d pos) {
-	// Positionsdaten erzeugen
-	PosData data(pos);
-
-	// Datenpaket versenden an den Server
-	string packet = data;
-
-	size_t laenge = packet.length();
-	ssize_t sended = write(_socket, packet.c_str(), packet.length());
-	if(sended != laenge)
-		throw TransmittingException();
-}
-
-/**
- * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
  * @param	PositionsData
  */
 void Transmitter::transmit(PosData pos) {

@@ -8,10 +8,8 @@
 #define POSDATA_H_
 
 #include <string>
-#include "opencv2/core/core.hpp"
 
 using namespace std;
-using namespace cv;
 
 /**
  * Klasse zur Repraesendation eines Positionsdatensatzes
@@ -21,24 +19,29 @@ using namespace cv;
 class PosData {
 private:
 	// Position in X-Richtung
-	string _x;
+	double _x;
 	// Position in Y-Richtung
-	string _y;
+	double _y;
 	// Position in Z-Richtung
-	string _z;
+	double _z;
 	// Fehler
-	string _error;
+	double _error;
 	// Marker
 	string _mr;
 	// Position des Randes in X-Richtung
-	string _x2;
+	double _x2;
 	// Position des Randes in Y-Richtung
-	string _y2;
+	double _y2;
 	// Koeffizient fuer reales Bild
-	string _coef;
+	double _coef;
 	// Datum
-	string _date;
+	long int _date;
 public:
+	/**
+	 * Konsturktor
+	 */
+	PosData();
+
 	/**
 	 * Konsturktor zum laden eines Positionsdatensatzes in String Format
 	 * @param data
@@ -46,34 +49,28 @@ public:
 	PosData(string data);
 
 	/**
-	 * Konstruktor zum erzeugen eines Positionsdatensatzes aus einen Double Point
-	 * @param pos
-	 */
-	PosData(Point2d pos);
-
-	/**
 	 * Methode zum Zurueckgeben der Position in X-Richtung
 	 * @return	Position in X-Richtung
 	 */
-	string getX() { return _x; }
+	double getX() { return _x; }
 
 	/**
 	 * Methode zum Zurueckgeben der Position in Y-Richtung
 	 * @return	Position in Y-Richtung
 	 */
-	string getY() { return _y; }
+	double getY() { return _y; }
 
 	/**
 	 * Methode zum Zurueckgeben der Position in Z-Richtung
 	 * @return	Position in Z-Richtung
 	 */
-	string getZ() { return _z; }
+	double getZ() { return _z; }
 
 	/**
 	 * Methode zum Zurueckgeben des Fehlers
 	 * @return	Fehler der Position
 	 */
-	string getError() { return _error; }
+	double getError() { return _error; }
 
 	/**
 	 * Methode zum Zurueckgeben des Markers
@@ -85,25 +82,25 @@ public:
 	 * Methode zum Zurueckgeben der Position des Randes in X-Richtung
 	 * @return	Randposition in X-Richtung
 	 */
-	string getX2() { return _x2; }
+	double getX2() { return _x2; }
 
 	/**
 	 * Methode zum Zurueckgeben der Position des Randes in Y-Richtung
 	 * @return	Randposition in Y-Richtung
 	 */
-	string getY2() { return _y2; }
+	double getY2() { return _y2; }
 
 	/**
 	 * Methode zum Zurueckgeben des Koeffizienten zwischen Bild und Positionsdaten
 	 * @return	Bild zu Positionssystem Koeffizient
 	 */
-	string getCoefficient() { return _coef; }
+	double getCoefficient() { return _coef; }
 
 	/**
 	 * Methode zum Zurueckgeben des Datums der Positionsbestimmung
 	 * @return	Zeitstempel zum Zeitpunkt wann die Position ermittelt wurde
 	 */
-	string getDate() { return _date; }
+	long int getDate() { return _date; }
 
 	/**
 	 * Operator zum Umwandeln des Positionsdatensatzen einen String

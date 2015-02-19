@@ -50,12 +50,6 @@ public:
 
 	/**
 	 * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
-	 * @param	Position
-	 */
-	void transmit(Point2d pos);
-
-	/**
-	 * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
 	 * @param	PositionsDataSet
 	 */
 	void transmit(PosData pos);

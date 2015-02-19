@@ -8,6 +8,26 @@
 #include "PositioningDataException.h"
 #include <regex.h>
 #include <stdio.h>
+#include <ctime>
+#include <sys/time.h>
+#include <stdlib.h>
+
+/**
+ * Konstruktor
+ */
+PosData::PosData() {
+	_x = 0;
+	_y = 0;
+	_z = 0;
+	_error = 0;
+	_mr = "xx";
+	_x2 = 0;
+	_y2 = 0;
+	_coef = 0;
+	timeval zeit;
+	gettimeofday(&zeit, 0);
+	_date = zeit.tv_sec * 1000 + zeit.tv_usec / 1000;
+}
 
 /**
  * Konstruktor zum Laden eines Positionsdatensatzes im String Format
@@ -25,7 +45,7 @@ PosData::PosData(string data) {
 	// Formatueberpruefung mit REGEX
 	regex_t reg;
 
-	string pattern = "[0-9]{3}\\.[0-9]{2},[0-9]{3}\\.[0-9]{2},[0-9]{3}\\.[0-9]{2},[0-9]{3}\\.[0-9]{2},[A-Za-z0-9]{2},[0-9]{3}\\.[0-9]{2},[0-9]{3}\\.[0-9]{2},[0-9]{4},[0-9]{18}\r\n";
+	string pattern = "[0-9]{1,}\\.[0-9]{1,},[0-9]{1,}\\.[0-9]{1,},[0-9]{1,}\\.[0-9]{1,},[0-9]{1,}\\.[0-9]{1,},[A-Za-z0-9]{2},[0-9]{1,}\\.[0-9]{1,},[0-9]{1,}\\.[0-9]{1,},[0-9]{1,}\\.[0-9]{1,},[0-9]{1,}\r\n";
 
 	regmatch_t matches[1];
 
@@ -40,36 +60,59 @@ PosData::PosData(string data) {
 	// Speicher von der REGEX-Pruefung wieder freigeben
 	regfree(&reg);
 
-	_x = data.substr(1, 6);
-	_y = data.substr(8, 6);
-	_z = data.substr(15, 6);
-	_error = data.substr(22, 6);
-	_mr = data.substr(27, 2);
-	_x2 = data.substr(30, 6);
-	_y2 = data.substr(37, 6);
-	_coef = data.substr(44, 4);
-	_date = data.substr(49, 18);
-}
+	size_t startIndex = 1;
+		size_t searchIndex = data.find("$");
+		if(searchIndex == string::npos)
+			throw PositioningDataException();
 
-/**
- * Konstruktor zum erzeugen eines Positionsdatensatzes aus einen Double Point
- * @param pos
- */
-PosData::PosData(Point2d pos) {
-	// z-Position wird auf 0 gesetzt
-	_z = "000.00";
-	char buffer[10];
+		size_t i = 1;
+		for(i = 1; i <= 9; i++) {
+			if(i < 9)
+				searchIndex = data.find(",", startIndex);
+			else
+				searchIndex = data.find("\r\n", startIndex);
 
-	if(sprintf(buffer, "%06.2f", pos.x) != 6)
-		throw PositioningDataException();
-	_x = buffer;
+			if(searchIndex == string::npos)
+				break;
 
-	if(sprintf(buffer, "%06.2f", pos.y) != 6)
-		throw PositioningDataException();
-	_y = buffer;
+			switch(i) {
+				case 1:
+					_x = atof(data.substr(startIndex, searchIndex-startIndex).c_str());
+					break;
+				case 2:
+					_y = atof(data.substr(startIndex, searchIndex-startIndex).c_str());
+					break;
+				case 3:
+					_z = atof(data.substr(startIndex, searchIndex-startIndex).c_str());
+					break;
+				case 4:
+					_error = atof(data.substr(startIndex, searchIndex-startIndex).c_str());
+					break;
+				case 5:
+					_mr = data.substr(startIndex, searchIndex-startIndex);
+					break;
+				case 6:
+					_x2 = atof(data.substr(startIndex, searchIndex-startIndex).c_str());
+					break;
+				case 7:
+					_y2 = atof(data.substr(startIndex, searchIndex-startIndex).c_str());
+					break;
+				case 8:
+					_coef = atof(data.substr(startIndex, searchIndex-startIndex).c_str());
+					break;
+				case 9:
+					_date = atol(data.substr(startIndex, searchIndex-startIndex).c_str());
+			}
+
+			startIndex = searchIndex+1;
+		}
 }
 
 PosData::operator string() const {
-	string value = "$" + _x + "," + _y + "," + _z + "\r\n";
+	char buffer[512];
+	sprintf(buffer, "$%f,%f,%f,%f,%s,%f,%f,%f,%ld\r\n", _x, _y, _z, _error, _mr.c_str(),
+			_x2, _y2, _coef, _date);
+	string value(buffer);
+
 	return value;
 }

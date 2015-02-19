@@ -10,6 +10,7 @@
 #include <string>
 #include <stdlib.h>
 #include <algorithm>
+#include "PositioningDataException.h"
 
 /**
  * Methode zum Abarbeiten der Aufgaben dieses Threads
@@ -43,7 +44,7 @@ void TCPReceiver::run()
 			}
 
 			size_t len;
-			char line[256];
+			char line[512];
 			// Waren ueberhaupt Daten im Socket?
 			// Wenn nicht wurde der Socket geschlossen
 			if((len = stream->receive(line, sizeof(line))) == 0) {
@@ -51,8 +52,12 @@ void TCPReceiver::run()
 			} else {
 				// Eintrag der Queue hinzufuegen
 				string arg(line);
-				PosData posData(arg);
-				_queue->push(posData);
+				try {
+					PosData posData(arg);
+					_queue->push(posData);
+				} catch (PositioningDataException& e) {
+					continue;
+				}
 			}
 		}
 
