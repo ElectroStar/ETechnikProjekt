@@ -5,23 +5,14 @@
 
 #include <iostream>
 
-PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NULL), send(false), mode(Idle) {
+PlayerStream::PlayerStream(QObject *parent) : QThread(parent),  mpt(NULL), tm(NULL), send(false), mode(Init) {
 
-    init();
     stopStream = true;
 
     ips = new ObjectLocator();
-
     fieldLoc = FieldLocator(ips);
 
     tm = NULL;
-
-    /*
-    try {
-        tm = new Transmitter("127.0.0.1", 50728);
-    } catch (ConnectionException& e) {
-
-    }*/
 
 }
 
@@ -73,8 +64,6 @@ void PlayerStream::run() {
     int delay = (1000/frameRate);
 
     while(!stopStream) {
-
-
 
         if(mode == Init){
 
@@ -146,7 +135,6 @@ void PlayerStream::run() {
 
             cropFView.filter(undistorted,cropped);
 
-
             result = ips->getAllObjects(cropped, objectTemp);
 
             for (size_t i = 0; i < result.size(); i++){
@@ -214,15 +202,12 @@ void PlayerStream::run() {
                 }
 
                 emit newCord(QString().setNum(x) + QString(" cm"), QString().setNum(y)+ QString(" cm"));
-               // emit newCord(QString().setNum(result[0].position.x), QString().setNum(result[0].position.y));
             }
 
             Converter::convertMatToQImage(cropped,img);
             emit processedImage(img);
 
         }
-
-
 
         this->msleep(delay);
     }

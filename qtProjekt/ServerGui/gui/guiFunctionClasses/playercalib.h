@@ -44,7 +44,6 @@ public:
 signals:
       void processedImage(const QImage &image);
       void picCntSend(int i);
-     // void sendExceptionToGui(const eagleeye::EeException e);
       void sendCalibStatus(const int value);
 
 protected:

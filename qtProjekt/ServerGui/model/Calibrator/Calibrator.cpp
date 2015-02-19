@@ -34,7 +34,7 @@ void Calibrator::takePicture(Mat &_currentImage) {
 }
 
 void Calibrator::start() {
-    runCalibrationAndSave(Settings::instance(), imageSize, cameraMatrix, distCoeffs, imagePoints);
+    runCalibrationAndSave(imageSize, cameraMatrix, distCoeffs, imagePoints);
 }
 
 void Calibrator::reset() {
@@ -48,7 +48,7 @@ Mat Calibrator::getImgAt(int index) {
     return img[index];
 }
 
-bool Calibrator::runCalibrationAndSave(Settings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
+bool Calibrator::runCalibrationAndSave(Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
 	vector<vector<Point2f> > imagePoints){
 
 
@@ -56,14 +56,12 @@ bool Calibrator::runCalibrationAndSave(Settings& s, Size imageSize, Mat&  camera
 	vector<float> reprojErrs;
 	double totalAvgErr = 0;
 
-    bool ok = runCalibration(Settings::instance(), imageSize, cameraMatrix, distCoeffs, imagePoints, rvecs, tvecs,
-		reprojErrs, totalAvgErr);
+    bool ok = runCalibration(Settings::instance(), imageSize, cameraMatrix, distCoeffs, imagePoints, rvecs, tvecs, reprojErrs, totalAvgErr);
 	cout << (ok ? "Calibration succeeded" : "Calibration failed")
 		<< ". avg re projection error = " << totalAvgErr;
 
 	if (ok)
-        saveCameraParams(Settings::instance(), imageSize, cameraMatrix, distCoeffs, rvecs, tvecs, reprojErrs,
-		imagePoints, totalAvgErr);
+        saveCameraParams(Settings::instance(), imageSize, cameraMatrix, distCoeffs, rvecs, tvecs, reprojErrs, imagePoints, totalAvgErr);
 
 	return ok;
 

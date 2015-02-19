@@ -2,6 +2,7 @@
 #define CAMERACALIBRATIONDIALOG_H
 
 #include <QDialog>
+#include <stdio.h>
 
 #include "guiFunctionClasses/playercalib.h"
 #include "model/Exception/exception.h"
@@ -35,6 +36,8 @@ private slots:
     void setCntShowlabel(int _i);
 
     void on_buttonBox_rejected();
+
+    void on_buttonBox_accepted();
 
 private:
 

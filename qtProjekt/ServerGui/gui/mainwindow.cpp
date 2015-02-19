@@ -100,15 +100,18 @@ void MainWindow::on_actionKamerakalibrierung_triggered() {
         myPlayer->stop();
         cameraDialog.exec();
 
-        if(!foundCalib || cameraDialog.getCalibSuccess()) {
+        if(cameraDialog.getCalibSuccess()) {
 
-            foundCalib = cameraDialog.getCalibSuccess();
+            foundCalib = true;
             myPlayer->setMode(PlayerStream::Init);
+
             ui->buttonStarteStream->setText(tr("Starte Stream"));
             ui->buttonFindLandMark->setEnabled(false);
             ui->checkBoxSend->setEnabled(false);
             ui->buttonStartTracking->setEnabled(false);
-        }          
+        }
+
+        myPlayer->start();
     }
 }
 
@@ -137,8 +140,6 @@ void MainWindow::on_buttonStartTracking_clicked() {
         ui->checkBoxSend->setEnabled(false);
         ui->checkBoxSend->setChecked(false);
         ui->buttonStartTracking->setText("Starte Tracking");
-
-
     }
     else {
          myPlayer->setMode(PlayerStream::Tracking);

@@ -62,8 +62,8 @@ private:
 
     /** Interne Methode zur Erkennung des Kalibriermusters.
 	*/
-    bool runCalibrationAndSave(Settings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
-		vector<vector<Point2f> > imagePoints);
+    bool runCalibrationAndSave(Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
+        vector<vector<Point2f> > imagePoints);
 
 	/** Methode zur Berechnung des Kalibirerfehlers.
 	*/

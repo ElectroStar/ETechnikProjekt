@@ -23,16 +23,17 @@ bool Login::checkFile(String _path) const {
 }
 
 void Login::on_pushButton_clicked() {
+
     MainWindow* w = new MainWindow();
 
-    this->setCursor(QCursor(Qt::WaitCursor));
+    setCursor(QCursor(Qt::WaitCursor));
     ui->progressBar->setValue((10));
 
     if (!w->connectWithStream()) {
         QMessageBox msgBox;
         msgBox.setText("Es konnte keine Verbidnung aufgebaut werden!");
         ui->progressBar->setValue((0));
-        this->setCursor(QCursor(Qt::ArrowCursor));
+        setCursor(QCursor(Qt::ArrowCursor));
         msgBox.exec();
     }
     else {
