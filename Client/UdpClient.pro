@@ -16,10 +16,19 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     positioningreceiver.cpp \
-    posdata.cpp
+    posdata.cpp \
+    guifunctionclasses/ModelCreator.cpp \
+    guifunctionclasses/converter.cpp \
+    imageupdater.cpp
 
 HEADERS  += mainwindow.h \
     positioningreceiver.h \
-    posdata.h
+    posdata.h \
+    guifunctionclasses/ModelCreator.h \
+    guifunctionclasses/converter.h \
+    guifunctionclasses/player.h \
+    imageupdater.h
 
 FORMS    += mainwindow.ui
+
+LIBS += `pkg-config opencv --libs`

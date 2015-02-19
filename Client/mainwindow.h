@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "posdata.h"
+#include "imageupdater.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,13 +18,14 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_cmd_start_clicked();
 
+    void on_cmd_start_clicked();
     void on_cmd_ende_clicked();
 
-    void guiNewPosition(PosData*);
+    void updatePlayerStream(QImage img, PosData* data);
 
 private:
+    QThread* imageProcessing;
     Ui::MainWindow *ui;
 };
 

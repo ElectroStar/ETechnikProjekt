@@ -24,10 +24,10 @@ class ModelCreator
 private:
 
 	Mat model;
-	int metricFieldWidth;
-	int metricFieldHeight;
-	int pixelFieldWidth;
-	int pixelFieldHeight;
+    double metricFieldWidth;
+    double metricFieldHeight;
+    int pixelFieldWidth;
+    int pixelFieldHeight;
 
 public:
 
@@ -41,7 +41,7 @@ public:
 	*  	@param[in] _x2 	Metrische Breite des Feldes
 	*  	@param[in] _y2 	Metrische Hoehe des Feldes
 	*/
-	Point calcPosition(int _x, int _y, int _x2, int _y2);
+    Point calcPosition(double _x, double _y, double _x2, double _y2);
 
 	/** Methode zum Zeichnen der Objektposition.
 	*  	@param[in] _p	Position im Bild
@@ -51,27 +51,27 @@ public:
 	/** Getter fuer das aktuelle Bild.
 	*  	@return 	Aktuelles Bild
 	*/
-	Mat getModel();
+    Mat& getModel();
 	
 	/** Getter fuer die reale Feldbreite.
 	*  	@return 	Feldbreite in cm
 	*/
-	int getMetricFieldWidth();
+    double getMetricFieldWidth();
 
 	/** Setter fur die reale Feldbreite.
 	*  	@param[in] _x 	Feldbreite in cm
 	*/
-	void setMetricFieldWidth(int _x);
+    void setMetricFieldWidth(double _x);
 
 	/** Getter fuer die reale Feldhoehe.
 	*  	@return 	Feldhoehe in cm
 	*/
-	int getMetricFieldHeight();
+    double getMetricFieldHeight();
 
 	/** Setter fur die reale Feldhoehe.
 	*  	@param[in] _y 	Feldhoehe in cm
 	*/
-	void setMetricFieldHeight(int _y);
+    void setMetricFieldHeight(double _y);
 
 	/** Getter fuer die Bildbreite.
 	*  	@return 	Bildbreite in Pixel

@@ -3,10 +3,8 @@
 #include "positioningreceiver.h"
 #include "posdata.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
+
     ui->setupUi(this);
 }
 
@@ -15,33 +13,38 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::guiNewPosition(PosData* data) {
-    //qDebug()<<"Update Labe in thread: "<<QThread::currentThreadId();
+void MainWindow::updatePlayerStream(QImage img, PosData *data) {
+
+    if (!img.isNull())
+    {
+        ui->showStreamLabel->setAlignment(Qt::AlignCenter);
+        ui->showStreamLabel->setPixmap(QPixmap::fromImage(img).scaled(ui->showStreamLabel->size(),Qt::KeepAspectRatio, Qt::FastTransformation));
+    }
     ui->lbl_label->setText("X: " + QString::number(data->getX()) + " Y: " + QString::number(data->getY()) + " Z: " + QString::number(data->getZ()));
 }
 
 void MainWindow::on_cmd_start_clicked()
 {
+
     //qDebug()<<"From main Window thread: "<<QThread::currentThreadId();
     ui->lbl_label->setText(QString("Start"));
 
-    // Thread erzeugen
-    QThread* workerThread = new QThread();
+    imageProcessing = new QThread();
 
     // Worker erzeugen
-    PositioningReceiver* worker = new PositioningReceiver();
+    ImageUpdater* worker = new ImageUpdater();
 
     //connect(newThread, SIGNAL(started()), obj, SLOT(doWork()));
-    connect(worker, SIGNAL(newPosition(PosData*)), this, SLOT(guiNewPosition(PosData*)));
-    worker->moveToThread(workerThread);
+    connect(worker, SIGNAL(processedImage(QImage, PosData*)), this, SLOT(updatePlayerStream(QImage, PosData*)));
+    worker->moveToThread(imageProcessing);
 
-    workerThread->start();
+    imageProcessing->start();
 
     // Button deaktivieren
     ui->cmd_start->setEnabled(false);
+
 }
 
-void MainWindow::on_cmd_ende_clicked()
-{
+void MainWindow::on_cmd_ende_clicked() {
     this->close();
 }
