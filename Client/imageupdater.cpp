@@ -10,11 +10,10 @@ ImageUpdater::ImageUpdater(QObject *parent) : QObject(parent) {
     PositioningReceiver* worker = new PositioningReceiver();
 
     //connect(newThread, SIGNAL(started()), obj, SLOT(doWork()));
-    connect(worker, SIGNAL(newPosition(PosData*)), this, SLOT(guiNewPosition(PosData*)));
+    connect(worker, SIGNAL(newPosition(PosData*)), this, SLOT(NewPosition(PosData*)));
     worker->moveToThread(workerThread);
 
     workerThread->start();
-
 }
 
 ImageUpdater::~ImageUpdater() {

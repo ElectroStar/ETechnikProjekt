@@ -21,6 +21,7 @@ find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Network REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
+find_package(OpenCV REQUIRED)
 
 # Alle Sourcen und Header Dateien
 set(SOURCE_FILES
@@ -31,6 +32,13 @@ set(SOURCE_FILES
 	posdata.cpp
 	positioningreceiver.h
 	positioningreceiver.cpp
+	imageupdater.h
+	guifunctionclasses/player.h
+	guifunctionclasses/converter.h
+	guifunctionclasses/ModelCreator.h
+	imageupdater.cpp
+	guifunctionclasses/converter.cpp
+	guifunctionclasses/ModelCreator.cpp
 )
 
 # Alle UI-Dateien
@@ -45,7 +53,7 @@ QT5_WRAP_UI(UI_HEADERS ${UI_FILES})
 add_executable(eagleeye ${SOURCE_FILES} ${UI_HEADERS} ${UI_FILES})
 
 # Programm mit den entsprechenden Bibilotheken verknuepfen lasse
-target_link_libraries(eagleeye Qt5::Widgets Qt5::Network Qt5::Gui Qt5::Core)
+target_link_libraries(eagleeye Qt5::Widgets Qt5::Network Qt5::Gui Qt5::Core ${OpenCV_LIBS})
 
 # Programm ins Installationsverzeichnis schieben
 install(TARGETS eagleeye DESTINATION ${Install_Dir})

@@ -62,7 +62,7 @@ Point ModelCreator::calcPosition(double _x, double _y, double _x2, double _y2){
 void ModelCreator::drawPosition(Point _p)
 {
 
-	circle(model, _p, (int)model.rows / 50, Scalar(0, 0, 255), -1);
+    circle(model, _p, (int)model.rows / 50, Scalar(255, 0, 0), -1);
 }
 
 Mat& ModelCreator::getModel()
