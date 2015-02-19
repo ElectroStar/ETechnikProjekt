@@ -7,7 +7,7 @@ DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "Eagle Eye"
 PROJECT_NUMBER         = 
 PROJECT_BRIEF          = 
-PROJECT_LOGO           = "Logo.jpg"
+PROJECT_LOGO           = "../Logo.jpg"
 OUTPUT_DIRECTORY       = ../doc
 CREATE_SUBDIRS         = YES
 OUTPUT_LANGUAGE        = English
@@ -108,10 +108,9 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 INPUT                  =  \
-                         Client \
-                         Positioning_Service \
-                         qtProjekt \
-                         Transmission_Service
+                         ../Client \
+			 ../qtProjekt \
+                         ../Transmission_Service
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
