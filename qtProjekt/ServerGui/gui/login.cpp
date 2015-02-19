@@ -25,13 +25,19 @@ bool Login::checkFile(String _path) const {
 void Login::on_pushButton_clicked() {
     MainWindow* w = new MainWindow();
 
+    this->setCursor(QCursor(Qt::WaitCursor));
+    ui->progressBar->setValue((10));
+
     if (!w->connectWithStream()) {
         QMessageBox msgBox;
         msgBox.setText("Es konnte keine Verbidnung aufgebaut werden!");
+        ui->progressBar->setValue((0));
+        this->setCursor(QCursor(Qt::ArrowCursor));
         msgBox.exec();
     }
     else {
 
+        ui->progressBar->setValue((50));
         w->setFoundCalib(checkFile(cameraParmFile));
 
         if(checkFile(calibConfigFile)) {
@@ -47,6 +53,8 @@ void Login::on_pushButton_clicked() {
 
         uint16_t x = this->x();
         uint16_t y = this->y();
+
+        ui->progressBar->setValue((100));
 
         w->move(x,y);
         w->show();
