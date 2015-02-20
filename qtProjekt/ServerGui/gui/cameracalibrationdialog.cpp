@@ -29,6 +29,7 @@ void cameraCalibrationDialog::updateCalibSuccess(int e) {
 
     calibSuccess=(bool)e;
     ErrorDialog err;
+    setCursor(QCursor(Qt::ArrowCursor));
 
     if(!e) {
         err.setMsg("Es ist ein Fehler waerend der Kalibrierung aufgetreten!");
@@ -71,6 +72,7 @@ void cameraCalibrationDialog::on_buttonStartCalib_2_clicked() {
     myPlayer->setMode(PlayerCalib::Calib);
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setEnabled(false);
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+    setCursor(QCursor(Qt::WaitCursor));
 }
 
 void cameraCalibrationDialog::on_buttonStartStream_clicked() {
@@ -84,16 +86,16 @@ void cameraCalibrationDialog::on_buttonStartStream_clicked() {
 
 }
 
- void cameraCalibrationDialog::setCntShowlabel(int _i) {
+void cameraCalibrationDialog::setCntShowlabel(int _i) {
      ui->labelShowPicCnt->setText(QString("Aufnahmen: ")+QString().setNum(_i));
  }
 
 
- bool cameraCalibrationDialog::getCalibSuccess() const {
+bool cameraCalibrationDialog::getCalibSuccess() const {
      return calibSuccess;
  }
 
- void cameraCalibrationDialog::setCalibSuccess(bool value) {
+void cameraCalibrationDialog::setCalibSuccess(bool value) {
      calibSuccess = value;
  }
 
@@ -103,4 +105,8 @@ void cameraCalibrationDialog::on_buttonBox_rejected() {
 
 void cameraCalibrationDialog::on_buttonBox_accepted() {
 
+    const char *old = Settings::instance().outputFileName.c_str();
+    const char *work = String(cameraParmFile).c_str();
+
+    rename(old, work);
 }

@@ -1,8 +1,10 @@
 #include "login.h"
 
-Login::Login(QWidget *parent) : QDialog(parent),ui(new Ui::Login){
+Login::Login(QWidget *parent) : QDialog(parent),ui(new Ui::Login) {
+
     ui->setupUi(this);
     ui->label_2->setText(currentVersion);
+    ui->progressBar->hide();
 }
 
 Login::~Login(){
@@ -24,6 +26,7 @@ bool Login::checkFile(String _path) const {
 
 void Login::on_pushButton_clicked() {
 
+    ui->progressBar->show();
     MainWindow* w = new MainWindow();
 
     setCursor(QCursor(Qt::WaitCursor));
@@ -32,8 +35,11 @@ void Login::on_pushButton_clicked() {
     if (!w->connectWithStream()) {
         QMessageBox msgBox;
         msgBox.setText("Es konnte keine Verbidnung aufgebaut werden!");
+
         ui->progressBar->setValue((0));
+        ui->progressBar->hide();
         setCursor(QCursor(Qt::ArrowCursor));
+
         msgBox.exec();
     }
     else {

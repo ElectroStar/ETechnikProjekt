@@ -85,8 +85,8 @@ void MainWindow::on_buttonStarteStream_clicked() {
 
 void MainWindow::on_actionKamerakalibrierung_triggered() {
 
-    if(!foundConfig)
-    {
+    if(!foundConfig) {
+
         ErrorDialog err;
         err.setMsg("Konnte Konfigurationsdatei nicht finden!");
         err.setModal(true);
@@ -110,11 +110,9 @@ void MainWindow::on_actionKamerakalibrierung_triggered() {
             ui->checkBoxSend->setEnabled(false);
             ui->buttonStartTracking->setEnabled(false);
         }
-
         myPlayer->start();
     }
 }
-
 
 void MainWindow::on_action_ber_EagleEye_triggered() {
 
@@ -148,23 +146,20 @@ void MainWindow::on_buttonStartTracking_clicked() {
     }
 
 }
-bool MainWindow::getFoundCalib() const
-{
+
+bool MainWindow::getFoundCalib() const {
     return foundCalib;
 }
 
-void MainWindow::setFoundCalib(bool value)
-{
+void MainWindow::setFoundCalib(bool value) {
     foundCalib = value;
 }
 
-bool MainWindow::getFoundConfig() const
-{
+bool MainWindow::getFoundConfig() const {
     return foundConfig;
 }
 
-void MainWindow::setFoundConfig(bool value)
-{
+void MainWindow::setFoundConfig(bool value) {
     foundConfig = value;
 }
 
@@ -177,7 +172,6 @@ void MainWindow::on_checkBoxSend_clicked(bool checked) {
     else {
         myPlayer->setSend(false);
     }
-
 }
 
 void MainWindow::on_actionIP_EInstellungen_triggered() {
@@ -197,10 +191,16 @@ void MainWindow::on_actionIP_EInstellungen_triggered() {
 
         settingsDialog.exec();
 
-        myPlayer->setMode(PlayerStream::Init);
-        ui->buttonStarteStream->setText(tr("Starte Stream"));
-        ui->buttonFindLandMark->setEnabled(false);
-        ui->checkBoxSend->setEnabled(false);
-        ui->buttonStartTracking->setEnabled(false);
+        if(!settingsDialog.getCanceled()) {
+
+            myPlayer->setMode(PlayerStream::Init);
+            ui->buttonStarteStream->setText(tr("Starte Stream"));
+            ui->buttonFindLandMark->setEnabled(false);
+            ui->checkBoxSend->setEnabled(false);
+            ui->buttonStartTracking->setEnabled(false);
+        }
+        else {
+            myPlayer->play();
+        }
     }
 }

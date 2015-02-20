@@ -17,7 +17,6 @@ SOURCES += main.cpp\
     gui/login.cpp \
     gui/guiFunctionClasses/drawimage.cpp \
     gui/guiFunctionClasses/playerstream.cpp \
-    gui/guiFunctionClasses/playertracking.cpp \
     gui/guiFunctionClasses/converter.cpp \
     gui/cameracalibrationdialog.cpp \
     model/Calibrator/Calibrator.cpp \
@@ -43,7 +42,6 @@ HEADERS  += gui/mainwindow.h \
     gui/login.h \
     gui/guiFunctionClasses/drawimage.h \
     gui/guiFunctionClasses/playerstream.h \
-    gui/guiFunctionClasses/playertracking.h \
     gui/guiFunctionClasses/converter.h \
     gui/cameracalibrationdialog.h \
     model/Calibrator/Calibrator.h \
