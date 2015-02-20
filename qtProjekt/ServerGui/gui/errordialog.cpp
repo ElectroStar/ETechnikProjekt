@@ -12,3 +12,7 @@ void ErrorDialog::setMsg(QString _msg) {
 ErrorDialog::~ErrorDialog() {
     delete ui;
 }
+
+void ErrorDialog::on_pushButton_clicked() {
+    this->close();
+}

@@ -45,6 +45,7 @@ signals:
       void processedImage(const QImage &image);
       void picCntSend(int i);
       void sendCalibStatus(const int value);
+      void progressBar(const int value);
 
 protected:
      void run();

@@ -1,9 +1,9 @@
 #include "playercalib.h"
 
-PlayerCalib::PlayerCalib(QObject *parent) : QThread(parent), picCnt(0), takePic(false), mode(Init)  {
+PlayerCalib::PlayerCalib(QObject *parent) : QThread(parent), picCnt(0), takePic(false), mode(Init) {
+
     calibrator = new Calibrator();
     stopStream = true;
-
 }
 
 PlayerCalib::~PlayerCalib() {
@@ -131,12 +131,10 @@ void PlayerCalib::setMode(int value) {
     mode = (Mode)value;
 }
 
-int PlayerCalib::getPicCnt() const
-{
+int PlayerCalib::getPicCnt() const {
     return picCnt;
 }
 
-void PlayerCalib::setPicCnt(int value)
-{
+void PlayerCalib::setPicCnt(int value) {
     picCnt = value;
 }
