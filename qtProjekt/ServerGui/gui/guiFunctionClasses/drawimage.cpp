@@ -1,8 +1,6 @@
 
 #include "drawimage.h"
 
-#include <iostream>
-using namespace std;
 
 DrawImage::DrawImage(uint16_t _imageHeight, uint16_t _imageWidth) : imageHeight(_imageHeight), imageWidth(_imageWidth) {
 

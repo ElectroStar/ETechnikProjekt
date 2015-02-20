@@ -8,7 +8,6 @@
 #include <iostream>
 
 #include "gui/guiFunctionClasses/playerstream.h"
-#include "gui/guiFunctionClasses/playertracking.h"
 #include "cameracalibrationdialog.h"
 #include "errordialog.h"
 #include "infoeagleeyedialog.h"
@@ -45,11 +44,8 @@ private slots:
     void on_action_ber_EagleEye_triggered();
 
     void on_buttonFindLandMark_clicked();
-
     void on_buttonStartTracking_clicked();
-
     void on_checkBoxSend_clicked(bool checked);
-
     void on_actionIP_EInstellungen_triggered();
 
 private:

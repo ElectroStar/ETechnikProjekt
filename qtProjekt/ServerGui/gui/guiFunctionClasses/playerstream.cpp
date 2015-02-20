@@ -38,7 +38,6 @@ void PlayerStream::play() {
     }
 }
 
-
 int PlayerStream::getMode() const {
     return mode;
 }
@@ -48,15 +47,14 @@ void PlayerStream::setMode(const int value) {
 }
 
 
-bool PlayerStream::getSend() const
-{
+bool PlayerStream::getSend() const {
     return send;
 }
 
-void PlayerStream::setSend(bool value)
-{
+void PlayerStream::setSend(bool value) {
     send = value;
 }
+
 void PlayerStream::run() {
 
     Mat undistorted, cropped;
@@ -69,7 +67,6 @@ void PlayerStream::run() {
 
             init();
             mode = Idle;
-
         }
 
         else if(mode == Idle){
@@ -171,6 +168,7 @@ void PlayerStream::run() {
                 Mat temp2 = mpt->transform(boundaries[0], boundaries[1]);
                 double x2 = temp2.at<double>(0,0)/10;
                 double y2 = temp2.at<double>(1,0)/10;
+
                 if( x2 < 0)
                     x2 *= -1;
                 if( y2 < 0)
@@ -182,6 +180,7 @@ void PlayerStream::run() {
                 pos->setZ(z);
                 pos->setX2(x2);
                 pos->setY2(y2);
+
                 if(send) {
                     if(tm == NULL) {
                         try {
@@ -206,9 +205,7 @@ void PlayerStream::run() {
 
             Converter::convertMatToQImage(cropped,img);
             emit processedImage(img);
-
         }
-
         this->msleep(delay);
     }
 }
@@ -219,11 +216,11 @@ PlayerStream::~PlayerStream() {
     stopStream = true;
     capture.release();
     condition.wakeOne();
-    mutex.unlock();
-
     delete ips;
     delete mpt;
     delete tm;
+    mutex.unlock();
+
     wait();
 }
 
@@ -236,6 +233,7 @@ void PlayerStream::msleep(int ms) {
 QImage PlayerStream::getCurrentImage() const {
     return img;
 }
+
 void PlayerStream::init(){
 
     delete mpt;
@@ -244,10 +242,10 @@ void PlayerStream::init(){
 
 }
 
-
 int PlayerStream::getImageHeight()  {
     return capture.get(CV_CAP_PROP_FRAME_HEIGHT);
 }
+
 int PlayerStream::getImageWidth()  {
     return capture.get(CV_CAP_PROP_FRAME_WIDTH);
 }

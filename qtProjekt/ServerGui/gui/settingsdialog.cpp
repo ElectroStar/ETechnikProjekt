@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsDialog){
+SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent), ui(new Ui::SettingsDialog), canceled(true) {
 
     ui->setupUi(this);
 
@@ -171,4 +171,13 @@ void SettingsDialog::on_buttonBox_accepted() {
     Settings::instance().nrFrames = (ui->lineEdit_16->text()).toInt();
 
     Settings::instance().writeSettings();
+
+    canceled = false;
 }
+
+bool SettingsDialog::getCanceled() const {
+    return canceled;
+}
+
+
+

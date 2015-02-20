@@ -8,19 +8,21 @@ namespace Ui {
 class SettingsDialog;
 }
 
-class SettingsDialog : public QDialog
-{
+class SettingsDialog : public QDialog {
     Q_OBJECT
 
 public:
     explicit SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
 
+    bool getCanceled() const;
+
 private slots:
     void on_buttonBox_accepted();
 
 private:
     Ui::SettingsDialog *ui;
+    bool canceled;
 };
 
 #endif // SETTINGSDIALOG_H
