@@ -65,6 +65,11 @@ void ModelCreator::drawPosition(Point _p)
     circle(model, _p, (int)model.rows / 50, Scalar(255, 0, 0), -1);
 }
 
+void ModelCreator::redraw(){
+
+    model.setTo(Scalar(255,255,255));
+}
+
 Mat& ModelCreator::getModel()
 {
 	return model;

@@ -49,10 +49,7 @@ void MainWindow::on_cmd_ende_clicked() {
 
 void MainWindow::on_resetButton_clicked()
 {
-    /////////////////////////////////////////////////////////ACHTUNG: SEGMENTATION FAULT MOEGLICH -> MUTEX?! ////////
-    ////////////////// EMPFAENGR MUSS GESTOPPT WERDEN!!
-    delete worker->modelCreator;
-    worker->modelCreator = new ModelCreator(1280);
+    worker->modelCreator->redraw();
 }
 
 void MainWindow::on_actionUeber_Eagle_Eye_triggered() {

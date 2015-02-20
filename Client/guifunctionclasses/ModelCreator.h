@@ -24,6 +24,7 @@ class ModelCreator
 private:
 
 	Mat model;
+    Point oldPosition;
     double metricFieldWidth;
     double metricFieldHeight;
     int pixelFieldWidth;
@@ -47,6 +48,11 @@ public:
 	*  	@param[in] _p	Position im Bild
 	*/
 	void drawPosition(Point _p);
+
+    /**
+    * Methode zum Loeschen der Zeichenflaeche
+    */
+    void redraw();
 
 	/** Getter fuer das aktuelle Bild.
 	*  	@return 	Aktuelles Bild
