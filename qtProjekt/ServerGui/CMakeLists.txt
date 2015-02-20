@@ -30,7 +30,6 @@ set(SOURCE_FILES
 	gui/login.cpp
 	gui/guiFunctionClasses/drawimage.cpp
     	gui/guiFunctionClasses/playerstream.cpp
-    	gui/guiFunctionClasses/playertracking.cpp
     	gui/guiFunctionClasses/converter.cpp
     	gui/cameracalibrationdialog.cpp
     	model/Calibrator/Calibrator.cpp
@@ -54,7 +53,6 @@ set(SOURCE_FILES
     	gui/login.h
     	gui/guiFunctionClasses/drawimage.h
     	gui/guiFunctionClasses/playerstream.h
-    	gui/guiFunctionClasses/playertracking.h
     	gui/guiFunctionClasses/converter.h
     	gui/cameracalibrationdialog.h
     	model/Calibrator/Calibrator.h
