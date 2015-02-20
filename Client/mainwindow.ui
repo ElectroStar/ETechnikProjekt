@@ -6,51 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>848</width>
+    <width>841</width>
     <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Eagle Eye - Kamerabasiertes Indoor-Navigationssystem (Client)</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="image.qrc">
+    <normaloff>:/new/prefix1/image/icon.jpg</normaloff>:/new/prefix1/image/icon.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="lbl_label">
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>470</y>
+      <y>460</y>
       <width>381</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="cmd_start">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>470</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Start</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="cmd_ende">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>470</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ende</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="showStreamLabel">
@@ -69,19 +47,66 @@
      <string/>
     </property>
    </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>460</y>
+      <width>351</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="cmd_start">
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resetButton">
+       <property name="text">
+        <string>Zuruecksetzen</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cmd_ende">
+       <property name="text">
+        <string>Ende</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>848</width>
+     <width>841</width>
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuInfo">
+    <property name="title">
+     <string>Info</string>
+    </property>
+    <addaction name="actionUeber_Eagle_Eye"/>
+   </widget>
+   <addaction name="menuInfo"/>
   </widget>
+  <action name="actionUeber_Eagle_Eye">
+   <property name="text">
+    <string>Ueber Eagle Eye</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -22,10 +22,13 @@ ImageUpdater::~ImageUpdater() {
 
 void ImageUpdater::NewPosition(PosData* data) {
 
-    Point temp =modelCreator->calcPosition(data->getX(), data->getY(), data->getMaxX(), data->getMaxY());
+    Point temp = modelCreator->calcPosition(data->getX(), data->getY(), data->getMaxX(), data->getMaxY());
     modelCreator->drawPosition(temp);
 
     Converter::convertMatToQImage(modelCreator->getModel(),img);
     emit processedImage(img,data);
 }
+
+
+
 

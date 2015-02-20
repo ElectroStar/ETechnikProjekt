@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     posdata.cpp \
     guifunctionclasses/ModelCreator.cpp \
     guifunctionclasses/converter.cpp \
-    imageupdater.cpp
+    imageupdater.cpp \
+    infoeagleeyedialog.cpp
 
 HEADERS  += mainwindow.h \
     positioningreceiver.h \
@@ -27,8 +28,13 @@ HEADERS  += mainwindow.h \
     guifunctionclasses/ModelCreator.h \
     guifunctionclasses/converter.h \
     guifunctionclasses/player.h \
-    imageupdater.h
+    imageupdater.h \
+    infoeagleeyedialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    infoeagleeyedialog.ui
 
 LIBS += `pkg-config opencv --libs`
+
+RESOURCES += \
+    image.qrc

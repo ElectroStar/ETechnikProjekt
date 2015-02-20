@@ -2,8 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 #include "posdata.h"
 #include "imageupdater.h"
+#include "infoeagleeyedialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,8 +26,13 @@ private slots:
 
     void updatePlayerStream(QImage img, PosData* data);
 
+    void on_resetButton_clicked();
+
+    void on_actionUeber_Eagle_Eye_triggered();
+
 private:
     QThread* imageProcessing;
+    ImageUpdater* worker;
     Ui::MainWindow *ui;
 };
 

@@ -15,8 +15,11 @@ class ImageUpdater : public QObject
 {
     Q_OBJECT
 public:
+
+    ModelCreator *modelCreator;
     ImageUpdater(QObject *parent = 0);
     ~ImageUpdater();
+
 
 signals:
     void processedImage(const QImage &image, PosData* data);
@@ -27,7 +30,6 @@ private slots:
 
 private:
 
-    ModelCreator *modelCreator;
     QImage img;
 };
 
