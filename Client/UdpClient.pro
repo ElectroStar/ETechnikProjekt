@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     guifunctionclasses/ModelCreator.cpp \
     guifunctionclasses/converter.cpp \
     imageupdater.cpp \
-    infoeagleeyedialog.cpp
+    infoeagleeyedialog.cpp \
+    showimagedialog.cpp
 
 HEADERS  += mainwindow.h \
     positioningreceiver.h \
@@ -29,10 +30,12 @@ HEADERS  += mainwindow.h \
     guifunctionclasses/converter.h \
     guifunctionclasses/player.h \
     imageupdater.h \
-    infoeagleeyedialog.h
+    infoeagleeyedialog.h \
+    showimagedialog.h
 
 FORMS    += mainwindow.ui \
-    infoeagleeyedialog.ui
+    infoeagleeyedialog.ui \
+    showimagedialog.ui
 
 LIBS += `pkg-config opencv --libs`
 

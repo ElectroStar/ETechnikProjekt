@@ -22,7 +22,7 @@ public:
 
 
 signals:
-    void processedImage(const QImage &image, PosData* data);
+    void processedImage(const QImage &image);
 
 private slots:
 
