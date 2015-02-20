@@ -50,6 +50,9 @@ void cameraCalibrationDialog::updateCalibSuccess(int e) {
 
     err.setModal(true);
     err.exec();
+}
+
+void updateProgressBar(const int value) {
 
 }
 

@@ -26,7 +26,6 @@ public:
 private slots:
 
     void updatePlayerStream(QImage img);
-    //  void getExeptionForGui(eagleeye::EeException e);
     void updateCalibSuccess(int e);
 
     void on_buttonTakePicture_clicked();

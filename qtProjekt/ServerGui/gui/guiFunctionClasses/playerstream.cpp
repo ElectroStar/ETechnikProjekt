@@ -200,7 +200,7 @@ void PlayerStream::run() {
                     delete pos;
                 }
 
-                emit newCord(QString().setNum(x) + QString(" cm"), QString().setNum(y)+ QString(" cm"));
+                emit newCord(QString().setNum((int)x) + QString(" cm"), QString().setNum((int)y)+ QString(" cm"));
             }
 
             Converter::convertMatToQImage(cropped,img);
