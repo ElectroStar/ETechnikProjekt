@@ -7,7 +7,7 @@
 #include "ModelCreator.h"
 
 
-ModelCreator::ModelCreator(int _pxWidth) :  metricFieldWidth(0), metricFieldHeight(0) ,pixelFieldWidth(_pxWidth), pixelFieldHeight(0) {
+ModelCreator::ModelCreator(int _pxWidth) :  oldPosition(0,0), metricFieldWidth(0), metricFieldHeight(0) ,pixelFieldWidth(_pxWidth), pixelFieldHeight(0) {
 
 }
 
@@ -62,7 +62,16 @@ Point ModelCreator::calcPosition(double _x, double _y, double _x2, double _y2){
 void ModelCreator::drawPosition(Point _p)
 {
 
-    circle(model, _p, (int)model.rows / 50, Scalar(255, 0, 0), -1);
+    if(oldPosition.x != 0 && oldPosition.y !=0){
+
+        circle(model, oldPosition, (int)model.rows / 50, Scalar(255, 0, 0), -1);
+    }
+
+        circle(model, _p, (int)model.rows / 50, Scalar(255, 0, 0), -1);
+        circle(model, _p, (int)model.rows / 80, Scalar(0, 0, 0), -1);
+
+        oldPosition = _p;
+
 }
 
 void ModelCreator::redraw(){
