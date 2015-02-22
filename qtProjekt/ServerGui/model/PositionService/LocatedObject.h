@@ -7,11 +7,12 @@
 #ifndef LOCATEDOBJECT_H_
 #define LOCATEDOBJECT_H_
 
+#include <stdint.h>
+#include "LocatableObject.h"
+
 #include "opencv2/core/core.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <stdint.h>
-#include "LocatableObject.h"
 
 using namespace cv;
 

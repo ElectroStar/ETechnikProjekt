@@ -13,7 +13,6 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #include "Settings.h"
-#include "model/Exception/exception.h"
 
 using namespace std;
 using namespace cv;
@@ -32,10 +31,7 @@ private:
     vector<vector<Point2f> > imagePoints;
     Mat cameraMatrix, distCoeffs;
     Size imageSize;
-
     enum { DETECTION = 0, CAPTURING = 1, CALIBRATED = 2 };
-
-
     Vector<Mat> img;
 
 public:
@@ -45,16 +41,31 @@ public:
 	Calibrator();
 	
 	/** Methode zur Durchfuehrung der Kalibrierung.
-	*  	@param[in] inputCapture 	Kameraobjekt
+    *  	@param[in] view 	OpenCV-Mat
 	*/
     void process(Mat &view);
 
+    /** Methode zur Aufnahme eines Bildes.
+    *  	@param[in] currentImage 	OpenCV-Mat
+    */
     void takePicture(Mat &_currentImage);
 
+    /** Methode zum Starten der Kalibrierung.
+    */
     void start();
+
+    /** Methode zum Zuruecksetzen des Kalibirervorgangs.
+    */
     void reset();
+
+    /** Getter fuer die Anzahl der gueltigen Kalibrierbilder.
+    * @return       Anzahl Bilder
+    */
     int getImagePointsSize()const;
 
+    /** Getter fuer die aufgenommenen Bilder.
+    * @return       OpenCV-Mat
+    */
     Mat getImgAt(int index);
 
 

@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: playercalib.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "playercalib.h"
 
 PlayerCalib::PlayerCalib(QObject *parent) : QThread(parent), picCnt(0), takePic(false), mode(Init) {
@@ -44,6 +50,7 @@ void PlayerCalib::run() {
 
     while(!stopStream) {
 
+        //Statemachine
         switch(mode) {
 
         case Init:
@@ -102,6 +109,7 @@ void PlayerCalib::run() {
             break;
         }
 
+        //Konvertierung und Uebertragung an Oberflaeche
         Converter::convertMatToQImage(frame,img);
         emit processedImage(img);
         this->msleep(delay);

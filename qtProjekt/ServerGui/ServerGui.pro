@@ -15,7 +15,6 @@ TEMPLATE = app
 SOURCES += main.cpp\
     gui/mainwindow.cpp \
     gui/login.cpp \
-    gui/guiFunctionClasses/drawimage.cpp \
     gui/guiFunctionClasses/playerstream.cpp \
     gui/guiFunctionClasses/converter.cpp \
     gui/cameracalibrationdialog.cpp \
@@ -24,7 +23,6 @@ SOURCES += main.cpp\
     gui/errordialog.cpp \
     gui/guiFunctionClasses/player.cpp \
     gui/guiFunctionClasses/playercalib.cpp \
-    model/Exception/exception.cpp \
     gui/infoeagleeyedialog.cpp \
     model/PositionService/LocatableObject.cpp \
     model/PositionService/LocatedObject.cpp \
@@ -40,7 +38,6 @@ SOURCES += main.cpp\
 
 HEADERS  += gui/mainwindow.h \
     gui/login.h \
-    gui/guiFunctionClasses/drawimage.h \
     gui/guiFunctionClasses/playerstream.h \
     gui/guiFunctionClasses/converter.h \
     gui/cameracalibrationdialog.h \
@@ -50,7 +47,6 @@ HEADERS  += gui/mainwindow.h \
     gui/errordialog.h \
     gui/guiFunctionClasses/player.h \
     gui/guiFunctionClasses/playercalib.h \
-    model/Exception/exception.h \
     gui/infoeagleeyedialog.h \
     model/PositionService/IPositionService.h \
     model/PositionService/LocatableObject.h \

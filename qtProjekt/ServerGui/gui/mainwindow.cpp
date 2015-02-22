@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: mainwindow.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -5,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     myPlayer = new PlayerStream();
 
+    //Verbindung der Slots mit den Signalen aus dem PlayerStream
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(foundLandMarks(bool)),this, SLOT(updateTrackingButton(bool)));
     QObject::connect(myPlayer, SIGNAL(newCord(QString,QString)), this, SLOT(updatePosLabel(QString,QString)));

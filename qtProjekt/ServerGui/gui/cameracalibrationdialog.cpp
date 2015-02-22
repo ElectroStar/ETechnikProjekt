@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: cameracalibrationdialog.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "cameracalibrationdialog.h"
 #include "ui_cameracalibrationdialog.h"
 
@@ -5,6 +11,7 @@ cameraCalibrationDialog::cameraCalibrationDialog(QWidget *parent) : QDialog(pare
 
     myPlayer = new PlayerCalib();
 
+    //Verbindung der Slots mit den Signalen aus dem PlayerCalib
     QObject::connect(myPlayer, SIGNAL(processedImage(QImage)),this, SLOT(updatePlayerStream(QImage)));
     QObject::connect(myPlayer, SIGNAL(picCntSend(int)),this, SLOT(setCntShowlabel(int)));
     QObject::connect(myPlayer, SIGNAL(sendCalibStatus(int)),this, SLOT(updateCalibSuccess(int)));
@@ -50,10 +57,6 @@ void cameraCalibrationDialog::updateCalibSuccess(int e) {
 
     err.setModal(true);
     err.exec();
-}
-
-void updateProgressBar(const int value) {
-
 }
 
 cameraCalibrationDialog::~cameraCalibrationDialog() {

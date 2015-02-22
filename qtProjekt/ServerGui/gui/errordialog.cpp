@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: errordialog.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "errordialog.h"
 #include "ui_errordialog.h"
 

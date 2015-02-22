@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: settingsdialog.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
 

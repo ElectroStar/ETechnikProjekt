@@ -1,3 +1,13 @@
+//============================================================================
+// Datei	: main.cpp
+// Projekt	: Kamerabasiertes Indoor-Navigationssystem
+// Modul	: Elektrotechnik Projekt WS 2014/2015
+// Prof 	: Prof. Dr. Arno Ruckelshausen
+// Autoren	: Christian Jungblut, Eric Buschermoehle, Joel Bartelheimer,
+//            Michael Over, Benjamin Augenstein, Thanh Tung Pham
+// Version	: 1.0
+//============================================================================
+
 #include "gui/login.h"
 #include <QApplication>
 

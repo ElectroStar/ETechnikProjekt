@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: FieldLocator.cpp
+// Autor	: Christian Jungblut
+// Version	: 1.0
+//============================================================================
+
 #include "FieldLocator.h"
 #include "..//PositionService/ObjectLocator.h"
 #include <stdio.h>

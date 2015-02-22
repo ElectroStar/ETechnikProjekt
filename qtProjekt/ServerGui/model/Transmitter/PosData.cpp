@@ -13,10 +13,6 @@
 #include <stdlib.h>
 #include <algorithm>
 
-/**
- * Konstruktor
- */
-
 void PosData::setDate(long date)
 {
     _date = date;
@@ -80,6 +76,7 @@ PosData::PosData() {
  * @param data
  */
 PosData::PosData(string data) {
+
 	// Daten liegen im Format $XXX.XX,YYY.YY,ZZZ.ZZ,FFF.FF,MR,XXX.XX,YYY.YY,KOEF,YYYYMMDDHHmmSSffff<CR><LF> vor
 	if(data.length() < 1)
 		throw PositioningDataException();

@@ -1,6 +1,6 @@
 //============================================================================
 // Datei	: Settings.h
-// Autor	: Christian Jungblut + Codebeispiel aus OpenCV
+// Autor	: Christian Jungblut
 // Version	: 1.0
 //============================================================================
 
@@ -20,11 +20,10 @@ using namespace cv;
 #define calibConfigFile "configFiles/eagleEyeParams.xml"
 #define cameraAdress "http://192.168.150.6:8080/?action=stream&amp;type=.mjpg"
 
-
 #ifndef SETTINGS_H
 #define	SETTINGS_H
 
-/** Klasse zur Speicherung von Kalibrierparametern.
+/** Klasse zur Speicherung von Programmparametern.
  *  @author		Christian
  *  @date		21.12.2014
  */
@@ -84,9 +83,8 @@ public:
 	bool calibZeroTangentDist; // Assume zero tangential distortion
 	bool calibFixPrincipalPoint;// Fix the principal point at the center
 	string outputFileName;      // The name of the file where to write
-    int calibPanelHeightMM;
+    int calibPanelHeightMM;     // Height of Calibration panel
 	string input;               
-
 	int cameraID;
 	InputType inputType;
 	bool goodInput;

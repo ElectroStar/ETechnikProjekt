@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: login.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "login.h"
 
 Login::Login(QWidget *parent) : QDialog(parent),ui(new Ui::Login) {

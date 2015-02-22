@@ -3,11 +3,11 @@
 // Autor	: Eric Buschermoehle
 // Version	: 1.0
 //============================================================================
+
 #ifndef LOCATABLEOBJECT_H_
 #define LOCATABLEOBJECT_H_
 
 #include <stdint.h>
-
 
 //Definition der moeglichen Formen
 enum Form {

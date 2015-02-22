@@ -24,9 +24,11 @@ private:
 
 public:
 
+    /** Konstruktor
+      */
     CropFieldView();
 
-  /** Konstruktor
+  /** Erweiterter Konstruktor
 	*  	@param[in] _first		Erster Punkt
 	*  	@param[in] _second		Zweiter Punkt
 	*/
@@ -42,12 +44,24 @@ public:
 	*/
 	void filter(Mat &_input, Mat &_output) const;
 
-    //coding guidelines
+    /** Getter fuer den ersten Referenzpunkt.
+    * @return       OpenCV-Point
+    */
     Point getFirst() const;
+
+    /** Setter fuer den ersten Referenzpunkt.
+    *  	@param[in] value 	OpenCv-Point
+    */
     void setFirst(const Point &value);
 
-
+    /** Getter fuer den zweiten Referenzpunkt.
+    * @return       OpenCV-Point
+    */
     Point getSecond() const;
+
+    /** Setter fuer den zweiten Referenzpunkt.
+    *  	@param[in] value 	OpenCv-Point
+    */
     void setSecond(const Point &value);
 };
 

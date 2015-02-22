@@ -17,6 +17,7 @@ using namespace std;
  * @date	05.11.2014
  */
 class PosData {
+
 private:
 	// Position in X-Richtung
 	double _x;
@@ -36,14 +37,16 @@ private:
 	double _coef;
 	// Datum
 	long int _date;
+
 public:
+
 	/**
-	 * Konsturktor
+     * Konstruktor
 	 */
 	PosData();
 
 	/**
-	 * Konsturktor zum laden eines Positionsdatensatzes in String Format
+     * Konstruktor zum Laden eines Positionsdatensatzes in String Format
 	 * @param data
 	 */
 	PosData(string data);
@@ -106,14 +109,51 @@ public:
 	 * Operator zum Umwandeln des Positionsdatensatzen einen String
 	 */
 	operator string() const;
+
+
+    /** Methode zum Setzen des Datums
+     * @param date      Datum
+     */
     void setDate(long date);
+
+    /** Methode zum Setzen des Koeffizienten Bild/Positionsdaten
+     * @param coef      Koeffizient
+     */
     void setCoef(double coef);
+
+    /** Methode zum Setzen der Position des Randes in Y-Richtung.
+     * @param y2        Feldhoehe
+     */
     void setY2(double y2);
+
+    /** Methode zum Setzen der Position des Randes in X-Richtung.
+     * @param date      Feldbreite
+     */
     void setX2(double x2);
+
+    /** Methode zum Setzen des Markers.
+     * @param mr        Marker
+     */
     void setMr(const string &mr);
+
+    /** Methode zum Setzen des Fehlers.
+     * @param error     Abweichung
+     */
     void setError(double error);
+
+    /** Methode zum Setzen der Position in Z-Richtung.
+     * @param z         Z-Position
+     */
     void setZ(double z);
+
+    /** Methode zum Setzen der Position in Y-Richtung
+     * @param y         Y-Position
+     */
     void setY(double y);
+
+    /** Methode zum Setzen der Position in X-Richtung.
+     * @param x         X-Position
+     */
     void setX(double x);
 };
 

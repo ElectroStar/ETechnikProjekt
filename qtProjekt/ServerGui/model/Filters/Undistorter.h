@@ -1,5 +1,5 @@
 //============================================================================
-// Datei	: ImageFilter.h
+// Datei	: Undistorter.h
 // Autor	: Eric Buschermoehle
 // Version	: 1.0
 //============================================================================
@@ -39,13 +39,13 @@ public:
 	~Undistorter();
 
   /** Methode zum entzerren eines Bildes
-	*  	@param[in] _input 	  Eingangsbild
-	*  	@param[in] _output  	Ausgangsbild
+    *  	@param[in] _distorted       Eingangsbild
+    *  	@param[out] _undistorted  	Ausgangsbild
 	*/
 	void filter(Mat &_distorted, Mat &_undistorted) const;
   
   /** Methode zum Einlesen der Verzerrungsparameter
-	*  	@param[in] _path  	  Pfad
+    *  	@param[in] _path            Dateipfad
 	*/
 	int readParam(const string _path);
 

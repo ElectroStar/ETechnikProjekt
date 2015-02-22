@@ -1,3 +1,8 @@
+//============================================================================
+// Datei	: playerstream.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
 
 #include "playerstream.h"
 #include "model/Transmitter/ConnectionException.h"

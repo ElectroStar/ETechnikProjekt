@@ -20,7 +20,9 @@ using namespace cv;
  * @date	12.12.2014
  */
 class Transmitter {
+
 private:
+
 	// Empfangsport des Uebertragungsdienst
 	int _targetPort;
 
@@ -34,6 +36,7 @@ private:
 	 * @return 0 bei Misserfolg
 	 */
 	int resolveHostName(const char* host, struct in_addr* addr);
+
 public:
 
 	/**

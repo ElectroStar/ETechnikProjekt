@@ -1,5 +1,5 @@
 //============================================================================
-// Datei	: Calibrator.h
+// Datei	: Calibrator.cpp
 // Autor	: Christian Jungblut + Codebeispiel aus OpenCV
 // Version	: 1.0
 //============================================================================
