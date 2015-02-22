@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: mainwindow.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "positioningreceiver.h"

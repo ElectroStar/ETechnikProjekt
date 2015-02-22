@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: mainwindow.h
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -19,26 +25,49 @@ namespace Ui {
 class MainWindow;
 }
 
+/** Hauptoberflaeche fuer den Client
+ *  @author		Eric Buschermoehle
+ *  @date		22.02.2015
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
 
+    /** Konstruktor.
+    */
     explicit MainWindow(QWidget *parent = 0);
+
+    /**
+    * Destruktor
+    */
     ~MainWindow();
 
 private slots:
 
-    void NewPosition(PosData*data);
+    /** Slot zum anzeigen der aktuellen Position
+    *  	@param[in] data		aktuelle Objektposition
+    */
+    void NewPosition(PosData *data);
 
+    /** Slot zum starten Positionsanzeige
+    */
     void on_cmd_start_clicked();
+
+    /** Slot zum beenden des Clients
+    */
     void on_cmd_ende_clicked();
 
+    /** Slot zum starten des Informationsfensters
+    */
     void on_actionUeber_Eagle_Eye_triggered();
 
+    /** Slot zum starten der Grafischen Positionsanzeige
+    */
     void on_showModelButton_clicked();
 
 private:
+
     PositioningReceiver* positionReceiver;
     ShowImageDialog* showImageDialog;
     Ui::MainWindow *ui;
@@ -50,6 +79,3 @@ private:
 };
 
 #endif // MAINWINDOW_H
-
-
- //   void updatePlayerStream(QImage img, PosData* data);

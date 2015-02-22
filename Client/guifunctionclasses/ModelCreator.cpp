@@ -25,37 +25,41 @@ Point ModelCreator::calcPosition(double _x, double _y, double _x2, double _y2){
 		model = Mat(pixelFieldHeight, pixelFieldWidth, CV_8UC3, Scalar(255, 255, 255));
 	}
 
+    return calcNewPositionWithoutUpdate(_x,_y);
+}
+
+Point ModelCreator::calcNewPositionWithoutUpdate(double _x, double _y) {
 
     double ratioX = (double)pixelFieldWidth / metricFieldWidth;
     double ratioY = (double)pixelFieldHeight / metricFieldHeight;
 
-	Point result;
+    Point result;
     int xPx = (int)(ratioX*_x);
     int yPx = (int)(ratioY*_y);
 
     if (xPx > 0 && yPx > 0)
-	{
+    {
         result.x = xPx;
         result.y = model.rows - yPx;
 
-	}
+    }
     else if (xPx > 0 && yPx < 0){
-	
+
         result.x = xPx;
         result.y = -yPx;
-	}
+    }
     else if (xPx < 0 && yPx > 0){
-	
+
         result.x = model.cols + xPx;
         result.y = model.rows - yPx;
-	}
-	else
-	{
+    }
+    else
+    {
         result.x = model.cols + xPx;
         result.y = -yPx;
-	}
+    }
 
-	return result;
+    return result;
 }
 
 
@@ -71,7 +75,11 @@ void ModelCreator::drawPosition(Point _p)
         circle(model, _p, (int)model.rows / 80, Scalar(0, 0, 0), -1);
 
         oldPosition = _p;
+}
 
+void ModelCreator::drawLine(Point _p1, Point _p2) {
+
+    line(model, _p1, _p2, Scalar( 255, 255, 255 ),1,1);
 }
 
 void ModelCreator::redraw(){

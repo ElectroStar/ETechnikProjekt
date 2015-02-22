@@ -39,14 +39,11 @@ set(SOURCE_FILES
 	imageupdater.cpp
 	guifunctionclasses/converter.cpp
 	guifunctionclasses/ModelCreator.cpp
-	infoeagleeyedialog.cpp
-	infoeagleeyedialog.h
 )
 
 # Alle UI-Dateien
 set(UI_FILES
 	mainwindow.ui
-	infoeagleeyedialog.ui
 )
 
 # Header-Dateien aus den UI-Dateien erstellen

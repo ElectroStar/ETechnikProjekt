@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>682</width>
-    <height>524</height>
+    <width>765</width>
+    <height>509</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,12 +35,12 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>460</y>
-      <width>351</width>
-      <height>41</height>
+      <y>20</y>
+      <width>109</width>
+      <height>95</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="cmd_start">
        <property name="text">
@@ -67,7 +67,7 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>160</x>
       <y>10</y>
       <width>590</width>
       <height>450</height>
@@ -111,13 +111,18 @@
      </property>
     </column>
    </widget>
+   <zorder>lbl_label</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>tableWidget</zorder>
+   <zorder>showModelButton</zorder>
+   <zorder>cmd_start</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>682</width>
+     <width>765</width>
      <height>25</height>
     </rect>
    </property>

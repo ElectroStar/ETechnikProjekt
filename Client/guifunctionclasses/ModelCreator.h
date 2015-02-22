@@ -44,10 +44,22 @@ public:
 	*/
     Point calcPosition(double _x, double _y, double _x2, double _y2);
 
+    /** Methode zum Berechnen der Objektposition.
+    *  	@param[in] _x 	Metrische Position auf der x-Achse
+    *  	@param[in] _y 	Metrische Position auf der y-Achse
+    */
+    Point calcNewPositionWithoutUpdate(double _x, double _y);
+
 	/** Methode zum Zeichnen der Objektposition.
 	*  	@param[in] _p	Position im Bild
 	*/
 	void drawPosition(Point _p);
+
+    /** Methode zum Zeichnen einer Linie.
+    *  	@param[in] _p1	Position1 im Bild
+    *   @param[in] _p2	Position2 im Bild
+    */
+    void drawLine(Point _p1, Point _p2);
 
     /**
     * Methode zum Loeschen der Zeichenflaeche
