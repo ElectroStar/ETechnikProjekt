@@ -11,7 +11,6 @@ ModelCreator::ModelCreator(int _pxWidth) :  oldPosition(0,0), metricFieldWidth(0
 
 }
 
-
 Point ModelCreator::calcPosition(double _x, double _y, double _x2, double _y2){
 
 	if (metricFieldWidth!=_x2 || metricFieldHeight!=_y2){

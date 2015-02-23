@@ -36,7 +36,7 @@ void ShowImageDialog::start(PositioningReceiver* pr) {
     connect(worker, SIGNAL(processedImage(QImage)), this, SLOT(updatePlayerStream(QImage)));
 
     connect(worker, SIGNAL(sendDistance(double)), this, SLOT(setDistance(double)));
-    connect(this, SIGNAL(sendDrawNewLine(int,int,int,int), worker, SLOT(drawNewLine(int,int,int,int)));
+    connect(this, SIGNAL(sendDrawNewLine(int,int,int,int)), worker, SLOT(drawNewLine(int,int,int,int)));
 
     worker->moveToThread(imageProcessing);
 

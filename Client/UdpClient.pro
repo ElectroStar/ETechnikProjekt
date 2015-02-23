@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     imageupdater.cpp \
     infoeagleeyedialog.cpp \
     showimagedialog.cpp \
-    errordialog.cpp
+    errordialog.cpp \
+    guifunctionclasses/line.cpp
 
 HEADERS  += mainwindow.h \
     positioningreceiver.h \
@@ -32,7 +33,8 @@ HEADERS  += mainwindow.h \
     imageupdater.h \
     infoeagleeyedialog.h \
     showimagedialog.h \
-    errordialog.h
+    errordialog.h \
+    guifunctionclasses/line.h
 
 FORMS    += mainwindow.ui \
     infoeagleeyedialog.ui \

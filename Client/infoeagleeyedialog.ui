@@ -26,7 +26,7 @@
    <string>Information</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="image.qrc">
     <normaloff>:/new/image/image/icon.jpg</normaloff>:/new/image/image/icon.jpg</iconset>
   </property>
   <widget class="QPushButton" name="ButtonCloseInfo">
@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/image/hsLogo.png);</string>
+    <string notr="true">background-image: url(:/new/image/image/hsLogo.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -92,6 +92,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>

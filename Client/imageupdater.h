@@ -16,6 +16,7 @@
 #include "posdata.h"
 #include "guifunctionclasses/ModelCreator.h"
 #include "guifunctionclasses/converter.h"
+#include "guifunctionclasses/line.h"
 
 /** Klasse um Position des Objekts in Fenster anzuzeigen.
  *  @author		Eric
@@ -53,6 +54,7 @@ private:
 
     QImage img;
     bool showDistanze;
+    Line *line;
 };
 
 #endif // IMAGEUPDATER_H

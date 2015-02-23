@@ -1,3 +1,9 @@
+//============================================================================
+// Datei	: infoeagleeyedialog.cpp
+// Autor	: Eric Buschermoehle
+// Version	: 1.0
+//============================================================================
+
 #include "infoeagleeyedialog.h"
 #include "ui_infoeagleeyedialog.h"
 
@@ -13,8 +19,8 @@ InfoEagleEyeDialog::InfoEagleEyeDialog(QWidget *parent) : QDialog(parent), ui(ne
                             "Benjamin Augenstein\n"
                             "Tung Pham\n"
                             "Michael Over\n"
-                            "Christian Jungblut");
-    ui->labelVersion->setText("1.0.0.2");
+                            "Christian Jungblut (PL)");
+    ui->labelVersion->setText("1.2.2");
 
 }
 
