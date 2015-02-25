@@ -31,6 +31,11 @@
 
 using namespace std;
 
+/**
+ * Klasse zur Repraesentierung eines TCP-Streams
+ * @author	Vic Hargrave
+ * @date	05.11.2014
+ */
 class TCPStream
 {
     int     m_sd;
@@ -41,26 +46,78 @@ class TCPStream
     friend class TCPServer;
     friend class TCPConnector;
 
+    /**
+     * Dekonstruktor
+     */
     ~TCPStream();
 
+    /**
+     * Schreibt Daten aus dem Buffer in den Stream
+     * @param buffer Datenbuffer
+     * @param len Länge der Daten
+     * @return Anzahl der geschriebenen Bytes
+     */
     ssize_t send(const char* buffer, size_t len);
+
+    /**
+     * Liest Daten aus dem Stream
+     * @param buffer Buffer in dem die Daten gespeichert werden sollen
+     * @param len Maximale Länge des Buffers
+     * @param timeout Wartezeit bis Daten im Stream vorliegen in Sekunden
+     * @return Anzahl der gelesenden Bytes
+     */
     ssize_t receive(char* buffer, size_t len, int timeout=0);
 
+    /**
+     * Ermittelt die Partner IP-Adresse
+     * @return IP-Adresse des Partners
+     */
     string getPeerIP();
+
+    /**
+     * Ermittelt den Port des Partners
+     * @return Port des Partners
+     */
     int    getPeerPort();
+
+    /**
+     * Gibt die Socketnummer zurueck
+     */
     operator int();
 
+    /**
+     * Enum zum Status des Streams
+     */
     enum {
-        connectionClosed = 0,
-        connectionReset = -1,
-        connectionTimedOut = -2
+        connectionClosed = 0,  //!< Verbindung geschlossen
+        connectionReset = -1,  //!< Verbindungsreset
+        connectionTimedOut = -2//!< Verbindungstimeout
     };
 
   private:
+    /**
+     * Wartet eine Zeit bis ein Event im Stream auftritt
+     * @param timeout Wartezeit in Sekunden
+     * @return true wenn ein Event aufgetreten ist, False bei Ablauf der Wartezeit
+     */
     bool waitForReadEvent(int timeout);
 
+    /**
+     * Konstruktor
+     * @param sd Socketnummer
+     * @param address Adresse
+     */
     TCPStream(int sd, struct sockaddr_in* address);
+
+    /**
+     * Konstruktor
+     */
     TCPStream();
+
+    /**
+     * Kopierkonstruktor
+     * @param stream TCPStream
+     */
     TCPStream(const TCPStream& stream);
 };
 

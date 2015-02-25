@@ -29,6 +29,12 @@
 #include <errno.h>
 #include "TCPConnector.h"
 
+/**
+ * Verbindet sich zu einen TCP-Server
+ * @param server Adresse des Servers
+ * @param port Port des TCP-Servers
+ * @return TCPStream zwischen Client und Server, NULL bei Fehler
+ */
 TCPStream* TCPConnector::connect(const char* server, int port)
 {
     struct sockaddr_in address;
@@ -47,6 +53,13 @@ TCPStream* TCPConnector::connect(const char* server, int port)
     return new TCPStream(sd, &address);
 }
 
+/**
+ * Verbindet sich zu einen TCP-Server
+ * @param server Adresse des Servers
+ * @param port Port des TCP-Servers
+ * @param timeout Timeoutwert in Sekunden
+ * @return TCPStream zwischen Client und Server, NULL bei Fehler
+ */
 TCPStream* TCPConnector::connect(const char* server, int port, int timeout)
 {
     if (timeout == 0) return connect(server, port);
@@ -106,6 +119,12 @@ TCPStream* TCPConnector::connect(const char* server, int port, int timeout)
     return new TCPStream(sd, &address);
 }
 
+/**
+ * Loest einen DNS-Name in eine IP-Adresse auf
+ * @param host Name des Hosts
+ * @param addr IP-Adresse des Hosts
+ * @return 0 bei Erfolg, bei Fehler den Fehlercode der Funktion getaddrinfo
+ */
 int TCPConnector::resolveHostName(const char* hostname, struct in_addr* addr)
 {
     struct addrinfo *res;

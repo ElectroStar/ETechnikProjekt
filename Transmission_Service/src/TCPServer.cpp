@@ -26,9 +26,17 @@
 #include <arpa/inet.h>
 #include "TCPServer.h"
 
+/**
+ * Konstruktor
+ * @param port Port auf dem gehorcht werden soll
+ * @param address Adresse welche Akzeptiert werden soll, wenn nicht gefüllt wird jeder Adresse akzeptiert
+ */
 TCPServer::TCPServer(int port, const char* address)
     : m_lsd(0), m_port(port), m_address(address), m_listening(false) {}
 
+/**
+ * Dekonsturktor
+ */
 TCPServer::~TCPServer()
 {
     if (m_lsd > 0) {
@@ -36,6 +44,10 @@ TCPServer::~TCPServer()
     }
 }
 
+/**
+ * Startet den Server und bindet somit den Port und fängt das horchen an
+ * @return Bei Erfolg 0 sonst Fehlercode vom bind oder listen Befehl
+ */
 int TCPServer::start()
 {
     if (m_listening == true) {
@@ -73,6 +85,10 @@ int TCPServer::start()
     return result;
 }
 
+/**
+ * Wartet bis ein gültiger Client sich verbunden hat
+ * @return TCPStream des Clients, bei Fehler NULL
+ */
 TCPStream* TCPServer::accept()
 {
     if (m_listening == false) {
@@ -90,6 +106,9 @@ TCPStream* TCPServer::accept()
     return new TCPStream(sd, &address);
 }
 
+/**
+ * Gibt die Nummer des Sockets zurück
+ */
 TCPServer::operator int() {
 	return m_lsd;
 }

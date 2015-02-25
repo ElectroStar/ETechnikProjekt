@@ -36,10 +36,10 @@ public:
 
 	/**
 	 * Methode zum Ermitteln eines Netzwerkinterfaces
-	 * @param interfaceName	Interfacename dessen Daten ermittelt werden sollen
+	 * @param adapterName	Interfacename dessen Daten ermittelt werden sollen
 	 * @return	true = Interface gefunden, false = Interface nicht gefunden
 	 */
-	bool determineInterface(string interfaceName);
+	bool determineInterface(string adapterName);
 
 	/**
 	 * Methode zum Zurueckgeben des Interfacenamens

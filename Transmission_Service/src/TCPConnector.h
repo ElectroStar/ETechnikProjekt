@@ -27,13 +27,38 @@
 #include <netinet/in.h>
 #include "TCPStream.h"
 
+/**
+ * Klasse zur Repraesentierung eines TCP-Clients
+ * @author	Vic Hargrave
+ * @date	05.11.2014
+ */
 class TCPConnector
 {
   public:
+	/**
+	 * Verbindet sich zu einen TCP-Server
+	 * @param server Adresse des Servers
+	 * @param port Port des TCP-Servers
+	 * @return TCPStream zwischen Client und Server, NULL bei Fehler
+	 */
     TCPStream* connect(const char* server, int port);
+
+    /**
+     * Verbindet sich zu einen TCP-Server
+     * @param server Adresse des Servers
+     * @param port Port des TCP-Servers
+     * @param timeout Timeoutwert in Sekunden
+     * @return TCPStream zwischen Client und Server, NULL bei Fehler
+     */
     TCPStream* connect(const char* server, int port, int timeout);
 
   private:
+    /**
+     * Loest einen DNS-Name in eine IP-Adresse auf
+     * @param host Name des Hosts
+     * @param addr IP-Adresse des Hosts
+     * @return 0 bei Erfolg, bei Fehler den Fehlercode der Funktion getaddrinfo
+     */
     int resolveHostName(const char* host, struct in_addr* addr);
 };
 

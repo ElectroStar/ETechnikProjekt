@@ -30,6 +30,11 @@
 
 using namespace std;
 
+/**
+ * Klasse zur Repraesentierung eines TCP-Servers
+ * @author	Vic Hargrave
+ * @date	05.11.2014
+ */
 class TCPServer
 {
     int    m_lsd;
@@ -38,11 +43,33 @@ class TCPServer
     bool   m_listening;
 
   public:
+    /**
+     * Konstruktor
+     * @param port Port auf dem gehorcht werden soll
+     * @param address Adresse welche Akzeptiert werden soll, wenn nicht gefüllt wird jeder Adresse akzeptiert
+     */
     TCPServer(int port, const char* address="");
+
+    /**
+     * Dekonsturktor
+     */
     ~TCPServer();
 
+    /**
+     * Startet den Server und bindet somit den Port und fängt das horchen an
+     * @return Bei Erfolg 0 sonst Fehlercode vom bind oder listen Befehl
+     */
     int        start();
+
+    /**
+     * Wartet bis ein gültiger Client sich verbunden hat
+     * @return TCPStream des Clients, bei Fehler NULL
+     */
     TCPStream* accept();
+
+    /**
+     * Gibt die Nummer des Sockets zurück
+     */
     operator int();
 };
 

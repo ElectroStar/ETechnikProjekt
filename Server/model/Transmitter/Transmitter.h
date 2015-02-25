@@ -53,7 +53,7 @@ public:
 
 	/**
 	 * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
-	 * @param	PositionsDataSet
+	 * @param pos	PositionsDataSet
 	 */
 	void transmit(PosData pos);
 };

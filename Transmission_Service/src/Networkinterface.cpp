@@ -25,7 +25,7 @@ Networkinterface::Networkinterface() {
 
 /**
  * Methode zum Ermitteln eines Netzwerkinterfaces
- * @param interfaceName	Interfacename dessen Daten ermittelt werden sollen
+ * @param adapterName	Interfacename dessen Daten ermittelt werden sollen
  * @return	true = Interface gefunden, false = Interface nicht gefunden
  */
 bool Networkinterface::determineInterface(string adapterName) {

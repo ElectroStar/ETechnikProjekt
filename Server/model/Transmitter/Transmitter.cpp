@@ -42,7 +42,7 @@ Transmitter::~Transmitter() {
 
 /**
  * Methode zum Uebermitteln der ermittelten Position an den Uebertragungsdienst
- * @param	PositionsData
+ * @param pos	PositionsData
  */
 void Transmitter::transmit(PosData pos) {
 	// Datenpaket versenden an den Server
@@ -54,6 +54,12 @@ void Transmitter::transmit(PosData pos) {
 		throw TransmittingException();
 }
 
+/**
+ * Methode zum Ermitteln der Adresse eines Hostnames
+ * @param host	Name des Hosts
+ * @param addr	Adresse
+ * @return 0 bei Misserfolg
+ */
 int Transmitter::resolveHostName(const char* hostname, struct in_addr* addr)
 {
     struct addrinfo *res;

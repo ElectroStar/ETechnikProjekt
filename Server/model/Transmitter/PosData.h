@@ -127,7 +127,7 @@ public:
     void setY2(double y2);
 
     /** Methode zum Setzen der Position des Randes in X-Richtung.
-     * @param date      Feldbreite
+     * @param x2      Feldbreite
      */
     void setX2(double x2);
 
