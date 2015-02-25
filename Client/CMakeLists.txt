@@ -25,32 +25,45 @@ find_package(OpenCV REQUIRED)
 
 # Alle Sourcen und Header Dateien
 set(SOURCE_FILES
-	main.cpp
 	mainwindow.h
-	mainwindow.cpp
-	posdata.h
-	posdata.cpp
-	positioningreceiver.h
-	positioningreceiver.cpp
-	imageupdater.h
-	guifunctionclasses/player.h
-	guifunctionclasses/converter.h
-	guifunctionclasses/ModelCreator.h
-	imageupdater.cpp
-	guifunctionclasses/converter.cpp
-	guifunctionclasses/ModelCreator.cpp
+    	positioningreceiver.h
+    	posdata.h
+    	guifunctionclasses/ModelCreator.h
+    	guifunctionclasses/converter.h
+    	imageupdater.h
+    	infoeagleeyedialog.h
+    	showimagedialog.h
+    	errordialog.h
+    	guifunctionclasses/line.h
+	main.cpp
+        mainwindow.cpp
+    	positioningreceiver.cpp
+    	posdata.cpp
+    	guifunctionclasses/ModelCreator.cpp
+    	guifunctionclasses/converter.cpp
+    	imageupdater.cpp
+    	infoeagleeyedialog.cpp
+    	showimagedialog.cpp
+    	errordialog.cpp
+    	guifunctionclasses/line.cpp
 )
 
 # Alle UI-Dateien
 set(UI_FILES
 	mainwindow.ui
+    	infoeagleeyedialog.ui
+    	showimagedialog.ui
+    	errordialog.ui
 )
 
 # Header-Dateien aus den UI-Dateien erstellen
 QT5_WRAP_UI(UI_HEADERS ${UI_FILES})
 
+# Code fuer die Resourcen erstellen
+qt5_add_resources(RESOURCE_FILES image.qrc)
+
 # Programm erstellen lassen
-add_executable(eagleeye ${SOURCE_FILES} ${UI_HEADERS} ${UI_FILES})
+add_executable(eagleeye ${SOURCE_FILES} ${UI_HEADERS} ${UI_FILES} ${RESOURCE_FILES})
 
 # Programm mit den entsprechenden Bibilotheken verknuepfen lasse
 target_link_libraries(eagleeye Qt5::Widgets Qt5::Network Qt5::Gui Qt5::Core ${OpenCV_LIBS})

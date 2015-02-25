@@ -25,33 +25,8 @@ find_package(OpenCV REQUIRED)
 
 # Alle Sourcen und Header Dateien
 set(SOURCE_FILES
-	main.cpp
-    	gui/mainwindow.cpp
-	gui/login.cpp
-	gui/guiFunctionClasses/drawimage.cpp
-    	gui/guiFunctionClasses/playerstream.cpp
-    	gui/guiFunctionClasses/converter.cpp
-    	gui/cameracalibrationdialog.cpp
-    	model/Calibrator/Calibrator.cpp
-    	model/Filters/Undistorter.cpp
-    	gui/errordialog.cpp
-    	gui/guiFunctionClasses/player.cpp
-    	gui/guiFunctionClasses/playercalib.cpp
-    	model/Exception/exception.cpp
-    	gui/infoeagleeyedialog.cpp
-    	model/PositionService/LocatableObject.cpp
-    	model/PositionService/LocatedObject.cpp
-    	model/PositionService/MetricPositionTransformator.cpp
-    	model/PositionService/ObjectLocator.cpp
-    	model/Filters/CropFieldView.cpp
-    	model/FieldLocator/FieldLocator.cpp
-    	model/Transmitter/PosData.cpp
-    	model/Transmitter/Transmitter.cpp
-    	gui/settingsdialog.cpp
-    	Settings.cpp
 	gui/mainwindow.h
     	gui/login.h
-    	gui/guiFunctionClasses/drawimage.h
     	gui/guiFunctionClasses/playerstream.h
     	gui/guiFunctionClasses/converter.h
     	gui/cameracalibrationdialog.h
@@ -60,8 +35,7 @@ set(SOURCE_FILES
     	model/Filters/Undistorter.h
     	gui/errordialog.h
     	gui/guiFunctionClasses/player.h
-    	gui/guiFunctionClasses/playercalib.h
-    	model/Exception/exception.h
+   	gui/guiFunctionClasses/playercalib.h
     	gui/infoeagleeyedialog.h
     	model/PositionService/IPositionService.h
     	model/PositionService/LocatableObject.h
@@ -77,6 +51,28 @@ set(SOURCE_FILES
     	model/Transmitter/TransmittingException.h
     	gui/settingsdialog.h
     	Settings.h
+    	main.cpp
+    	gui/mainwindow.cpp
+    	gui/login.cpp
+    	gui/guiFunctionClasses/playerstream.cpp
+    	gui/guiFunctionClasses/converter.cpp
+    	gui/cameracalibrationdialog.cpp
+    	model/Calibrator/Calibrator.cpp
+    	model/Filters/Undistorter.cpp
+    	gui/errordialog.cpp
+    	gui/guiFunctionClasses/player.cpp
+    	gui/guiFunctionClasses/playercalib.cpp
+    	gui/infoeagleeyedialog.cpp
+    	model/PositionService/LocatableObject.cpp
+    	model/PositionService/LocatedObject.cpp
+    	model/PositionService/MetricPositionTransformator.cpp
+    	model/PositionService/ObjectLocator.cpp
+    	model/Filters/CropFieldView.cpp
+    	model/FieldLocator/FieldLocator.cpp
+    	model/Transmitter/PosData.cpp
+    	model/Transmitter/Transmitter.cpp
+    	gui/settingsdialog.cpp
+    	Settings.cpp
 )
 
 # Alle UI-Dateien
