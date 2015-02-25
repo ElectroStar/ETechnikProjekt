@@ -109,7 +109,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 INPUT                  =  \
                          ../Client \
-			 ../qtProjekt \
+			 ../Server \
                          ../Transmission_Service
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
