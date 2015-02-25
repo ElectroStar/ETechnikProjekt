@@ -50,7 +50,7 @@ if(${SERVER})
 	find_package(Qt5Core REQUIRED)
 	find_package(Qt5Gui REQUIRED)
 	find_package(OpenCV REQUIRED)
-	add_subdirectory(qtProjekt/ServerGui)
+	add_subdirectory(Server)
 endif()
 
 # Transmission-Service Verzeichnis
