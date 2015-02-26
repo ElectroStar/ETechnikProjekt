@@ -32,7 +32,7 @@ void ImageUpdater::NewPosition(PosData* data) {
     }
 }
 
-void ImageUpdater::drawNewLine(int x1, int y1, int x2, int y2) {
+void ImageUpdater::drawNewLine(double x1, double y1, double x2, double y2) {
 
     Point p1 = modelCreator->calcNewPositionWithoutUpdate(x1,y1);
     Point p2 = modelCreator->calcNewPositionWithoutUpdate(x2,y2);
@@ -45,10 +45,23 @@ void ImageUpdater::drawNewLine(int x1, int y1, int x2, int y2) {
     }
 
     else {
+        showDistanze = false;
         delete line;
         line = new Line(x1,y1,x2,y2);
 
+        /*
+        double minX;
+        double minY;
+        double maxX;
+        double maxY;
+        line->getMax(minX,minY,maxX,maxY, modelCreator->getMetricFieldWidth(),modelCreator->getMetricFieldHeight());
+
+       // Point p1_1 = modelCreator->calcNewPositionWithoutUpdate(minX,minY);
+        Point p2_1 = modelCreator->calcNewPositionWithoutUpdate(maxX,maxY);
+    */
         modelCreator->drawLine(p1,p2);
+        //modelCreator->drawLine(Point((int)minX,(int)minY),Point((int)maxX,(int)maxY));
+
         showDistanze = true;
         emit validData(true);
     }

@@ -37,6 +37,8 @@ public:
     *  	@param[in] py 	Punkt y
     */
     double calcDistance(double px, double py);
+
+    void getMax(double &minX, double &minY, double &maxX, double &maxY, int ImCordX, int ImCordY);
 };
 
 #endif // LINE_H

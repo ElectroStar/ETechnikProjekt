@@ -65,7 +65,7 @@ private slots:
     void setDistance(double value);
 
 signals:
-     void sendDrawNewLine(int x1, int y1, int x2, int y2);
+     void sendDrawNewLine(double x1, double y1, double x2, double y2);
 
 private:
     Ui::ShowImageDialog *ui;

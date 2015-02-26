@@ -78,7 +78,7 @@ void ModelCreator::drawPosition(Point _p)
 
 void ModelCreator::drawLine(Point _p1, Point _p2) {
 
-    line(model, _p1, _p2, Scalar( 255, 255, 255 ),1,1);
+    line(model, _p1, _p2, Scalar( 0, 0, 0 ),5,1);
 }
 
 void ModelCreator::redraw(){

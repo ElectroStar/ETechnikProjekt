@@ -35,8 +35,9 @@ void ShowImageDialog::start(PositioningReceiver* pr) {
     connect(pr, SIGNAL(newPosition(PosData*)), worker, SLOT(NewPosition(PosData*)));
     connect(worker, SIGNAL(processedImage(QImage)), this, SLOT(updatePlayerStream(QImage)));
 
+    connect(worker, SIGNAL(validData(bool)), this, SLOT(validData(bool)));
     connect(worker, SIGNAL(sendDistance(double)), this, SLOT(setDistance(double)));
-    connect(this, SIGNAL(sendDrawNewLine(int,int,int,int)), worker, SLOT(drawNewLine(int,int,int,int)));
+    connect(this, SIGNAL(sendDrawNewLine(double,double,double,double)), worker, SLOT(drawNewLine(double,double,double,double)));
 
     worker->moveToThread(imageProcessing);
 
@@ -73,10 +74,10 @@ void ShowImageDialog::on_pushButton_2_clicked() {
     }
 
     else {
-        int x1 = ui->lineEditPos1x->text().toInt();
-        int y1 = ui->lineEditPos1y->text().toInt();
-        int x2 = ui->lineEditPos2x->text().toInt();
-        int y2 = ui->lineEditPos1y->text().toInt();
+        double x1 = ui->lineEditPos1x->text().toDouble();
+        double y1 = ui->lineEditPos1y->text().toDouble();
+        double x2 = ui->lineEditPos2x->text().toDouble();
+        double y2 = ui->lineEditPos2y->text().toDouble();
 
         emit sendDrawNewLine(x1,y1,x2,y2);
 

@@ -128,4 +128,5 @@ void MainWindow::on_zurucksetzenBottum_clicked() {
 
     ui->tableWidget->clear();
     ui->tableWidget->setRowCount(1);
+    currentSizeTable = 0;
 }
