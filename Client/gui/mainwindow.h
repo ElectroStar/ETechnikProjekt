@@ -13,12 +13,11 @@
 #include <iostream>
 #include <iomanip>
 
-#include "posdata.h"
-#include "imageupdater.h"
+#include "controller/imageupdater.h"
 #include "infoeagleeyedialog.h"
 #include "showimagedialog.h"
-#include "positioningreceiver.h"
-#include "posdata.h"
+#include "model/receiver/positioningreceiver.h"
+#include "model/receiver/posdata.h"
 
 
 namespace Ui {
@@ -65,6 +64,8 @@ private slots:
     /** Slot zum starten der Grafischen Positionsanzeige
     */
     void on_showModelButton_clicked();
+
+    void on_zurucksetzenBottum_clicked();
 
 private:
 

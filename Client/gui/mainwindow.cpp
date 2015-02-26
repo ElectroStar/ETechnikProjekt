@@ -6,8 +6,8 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "positioningreceiver.h"
-#include "posdata.h"
+#include "model/receiver/positioningreceiver.h"
+#include "model/receiver/posdata.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), maxSizeTable(20), currentSizeTable(0) {
 
@@ -122,4 +122,10 @@ void MainWindow::on_showModelButton_clicked() {
     showImageDialog->start(this->positionReceiver);
     showImageDialog->setModal(true);
     showImageDialog->show();
+}
+
+void MainWindow::on_zurucksetzenBottum_clicked() {
+
+    ui->tableWidget->clear();
+    ui->tableWidget->setRowCount(1);
 }

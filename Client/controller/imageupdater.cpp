@@ -5,7 +5,7 @@
 //============================================================================
 
 #include "imageupdater.h"
-#include "mainwindow.h"
+#include "gui/mainwindow.h"
 
 ImageUpdater::ImageUpdater(QObject *parent) : QObject(parent), showDistanze(false), line(NULL) {
 

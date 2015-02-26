@@ -13,35 +13,38 @@ TARGET = UdpClient
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    positioningreceiver.cpp \
-    posdata.cpp \
-    guifunctionclasses/ModelCreator.cpp \
-    guifunctionclasses/converter.cpp \
-    imageupdater.cpp \
-    infoeagleeyedialog.cpp \
-    showimagedialog.cpp \
-    errordialog.cpp \
-    guifunctionclasses/line.cpp
+SOURCES += main.cpp \
+    controller/imageupdater.cpp \
+    gui/errordialog.cpp \
+    gui/infoeagleeyedialog.cpp \
+    gui/mainwindow.cpp \
+    gui/showimagedialog.cpp \
+    model/receiver/posdata.cpp \
+    model/receiver/positioningreceiver.cpp \
+    model/converter.cpp \
+    model/line.cpp \
+    model/ModelCreator.cpp
 
-HEADERS  += mainwindow.h \
-    positioningreceiver.h \
-    posdata.h \
-    guifunctionclasses/ModelCreator.h \
-    guifunctionclasses/converter.h \
-    imageupdater.h \
-    infoeagleeyedialog.h \
-    showimagedialog.h \
-    errordialog.h \
-    guifunctionclasses/line.h
-
-FORMS    += mainwindow.ui \
-    infoeagleeyedialog.ui \
-    showimagedialog.ui \
-    errordialog.ui
 
 LIBS += `pkg-config opencv --libs`
 
 RESOURCES += \
     image.qrc
+
+HEADERS += \
+    controller/imageupdater.h \
+    gui/errordialog.h \
+    gui/infoeagleeyedialog.h \
+    gui/mainwindow.h \
+    gui/showimagedialog.h \
+    model/receiver/posdata.h \
+    model/receiver/positioningreceiver.h \
+    model/converter.h \
+    model/line.h \
+    model/ModelCreator.h
+
+FORMS += \
+    gui/errordialog.ui \
+    gui/infoeagleeyedialog.ui \
+    gui/mainwindow.ui \
+    gui/showimagedialog.ui

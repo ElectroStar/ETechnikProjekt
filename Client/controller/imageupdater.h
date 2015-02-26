@@ -12,11 +12,11 @@
 #include <QtNetwork/QUdpSocket>
 #include <opencv2/core/core.hpp>
 
-#include "positioningreceiver.h"
-#include "posdata.h"
-#include "guifunctionclasses/ModelCreator.h"
-#include "guifunctionclasses/converter.h"
-#include "guifunctionclasses/line.h"
+#include "model/receiver/positioningreceiver.h"
+#include "model/receiver/posdata.h"
+#include "model/ModelCreator.h"
+#include "model/converter.h"
+#include "model/line.h"
 
 /** Klasse um Position des Objekts in Fenster anzuzeigen.
  *  @author		Eric

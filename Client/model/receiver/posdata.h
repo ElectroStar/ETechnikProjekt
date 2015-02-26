@@ -7,10 +7,6 @@ class PosData : public QObject
 {
     Q_OBJECT
 public:
-    /**
-     * Konstruktor
-     * @param parent Vaterobjekt
-     */
     explicit PosData(QObject *parent = 0);
     ~PosData();
 
@@ -89,7 +85,7 @@ public:
 
     /**
      * Setzt den Fehler der Positionsdaten
-     * @param value Fehler der Positionsdaten
+     * @param Fehler der Positionsdaten
      */
     void setError(double value) { _error = value; }
 

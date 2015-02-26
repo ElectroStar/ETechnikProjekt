@@ -9,7 +9,7 @@
 
 #include <QDialog>
 
-#include "imageupdater.h"
+#include "controller/imageupdater.h"
 #include "errordialog.h"
 
 namespace Ui {

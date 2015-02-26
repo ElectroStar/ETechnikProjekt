@@ -14,7 +14,7 @@
    <string>Eagle Eye - Kamerabasiertes Indoor-Navigationssystem (Client)</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="image.qrc">
+   <iconset resource="../image.qrc">
     <normaloff>:/new/prefix1/image/icon.jpg</normaloff>:/new/prefix1/image/icon.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -36,8 +36,8 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>109</width>
-      <height>95</height>
+      <width>111</width>
+      <height>128</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -52,6 +52,13 @@
       <widget class="QPushButton" name="cmd_ende">
        <property name="text">
         <string>Ende</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="zurucksetzenBottum">
+       <property name="text">
+        <string>Zurucksetzen</string>
        </property>
       </widget>
      </item>
@@ -111,11 +118,6 @@
      </property>
     </column>
    </widget>
-   <zorder>lbl_label</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>tableWidget</zorder>
-   <zorder>showModelButton</zorder>
-   <zorder>cmd_start</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -142,7 +144,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="image.qrc"/>
+  <include location="../image.qrc"/>
  </resources>
  <connections/>
 </ui>
