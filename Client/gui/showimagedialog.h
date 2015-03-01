@@ -62,9 +62,19 @@ private slots:
     */
     void validData(bool value);
 
+    /** Slot zum anzeigen des neuen Abstandes.
+    *  	@param[in] value		aktueller Abstand zur Geraden.
+    */
     void setDistance(double value);
 
 signals:
+
+    /** Signal zum zeichnes einer Linie
+    *  	@param[in] x1		Start x
+    *   @param[in] x1		Start y
+    *   @param[in] x1		Ende x
+    *   @param[in] x1		Ende y
+    */
      void sendDrawNewLine(double x1, double y1, double x2, double y2);
 
 private:

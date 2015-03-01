@@ -65,6 +65,8 @@ private slots:
     */
     void on_showModelButton_clicked();
 
+    /** Slot zum Zuruecksetzen der Tabelle
+    */
     void on_zurucksetzenBottum_clicked();
 
 private:

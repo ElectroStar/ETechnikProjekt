@@ -35,23 +35,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     file << std::setw(18) << "Uhrzeit und Datum";
     file << std::endl;
 
-
-/*
-    for(int i = 0; i<10; i++) {
-          currentSizeTable++;
-
-          ui->tableWidget->setRowCount(currentSizeTable);
-
-          QTableWidgetItem *newItem1 = new QTableWidgetItem("Test");
-          QTableWidgetItem *newItem2 = new QTableWidgetItem("Test");
-          QTableWidgetItem *newItem3 = new QTableWidgetItem("Test");
-
-          ui->tableWidget->setItem(currentSizeTable-1,0, newItem1);
-          ui->tableWidget->setItem(currentSizeTable-1,1, newItem2);
-          ui->tableWidget->setItem(currentSizeTable-1,2, newItem3);
-      }
-*/
-
 }
 
 MainWindow::~MainWindow() {

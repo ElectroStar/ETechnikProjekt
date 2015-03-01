@@ -55,10 +55,9 @@ void ImageUpdater::drawNewLine(double x1, double y1, double x2, double y2) {
         double maxX;
         double maxY;
         line->getMax(minX,minY,maxX,maxY, modelCreator->getMetricFieldWidth(),modelCreator->getMetricFieldHeight());
-
-       // Point p1_1 = modelCreator->calcNewPositionWithoutUpdate(minX,minY);
         Point p2_1 = modelCreator->calcNewPositionWithoutUpdate(maxX,maxY);
-    */
+        */
+
         modelCreator->drawLine(p1,p2);
         //modelCreator->drawLine(Point((int)minX,(int)minY),Point((int)maxX,(int)maxY));
 

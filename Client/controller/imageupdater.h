@@ -44,10 +44,17 @@ signals:
 
 private slots:
 
-    /** Methode zur Lokalisierung Objekten eines bestimmbaren Typs.
+    /** Slot zur Lokalisierung Objekten eines bestimmbaren Typs.
     *  	@param[in] _posData			Neue Position
     */
     void NewPosition(PosData*);
+
+    /** Slot zum zeichnen einer Linie in die Graphische Oberflaeche.
+    *  	@param[in] x1			Start x
+    *   @param[in] y1			Start y
+    *   @param[in] x2			Ende x
+    *   @param[in] y1			Ende y
+    */
     void drawNewLine(double x1, double y1, double x2, double y2);
 
 private:
