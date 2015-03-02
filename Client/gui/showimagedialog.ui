@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Eagle Eye - Kamerabasiertes Indoor-Navigationssystem (Client)</string>
   </property>
   <widget class="QLabel" name="showImagelabel">
    <property name="geometry">

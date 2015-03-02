@@ -44,6 +44,8 @@ MainWindow::~MainWindow() {
 
 void MainWindow::NewPosition(PosData* data) {
 
+   ui->showModelButton->setEnabled(true);
+
    currentSizeTable++;
 
    ui->tableWidget->setRowCount(currentSizeTable);
@@ -84,7 +86,6 @@ void MainWindow::on_cmd_start_clicked() {
 
     positionReceiver->moveToThread(workerThread);
     workerThread->start();
-    ui->showModelButton->setEnabled(true);
 }
 
 void MainWindow::on_cmd_ende_clicked() {
